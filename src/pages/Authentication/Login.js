@@ -48,7 +48,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: 450,
     height: 700,
   },
 }));
@@ -100,6 +100,5 @@ export default function Login() {
         </SwipeableViews>
       </div>
     </div>
-
- );
+  );
 }

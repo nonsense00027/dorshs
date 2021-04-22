@@ -1,0 +1,11 @@
+.landing {
+  position: relative;
+}
+.navbar {
+  width: 100%;
+  background-color: rgba(34, 59, 35, 0.85);
+  height: 70px;
+  display: flex;
+  position: fixed;
+  top: 0;
+}
