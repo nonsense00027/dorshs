@@ -100,5 +100,6 @@ export default function Login() {
         </SwipeableViews>
       </div>
     </div>
-  );
+
+ );
 }
