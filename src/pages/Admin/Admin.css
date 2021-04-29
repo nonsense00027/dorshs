@@ -1,0 +1,41 @@
+.admin {
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar {
+  max-width: 250px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  padding: 25px 0;
+}
+
+.sidebar .active {
+  background-color: var(--secondary-color);
+  color: #fff !important;
+}
+
+.sidebar .active:hover {
+  background-color: var(--secondary-color);
+}
+
+.sidebar .active .MuiListItemIcon-root {
+  color: #fff !important;
+}
+
+.sidebar__header {
+  margin-bottom: 20px;
+}
+
+.sidebar__logo {
+  display: grid;
+  place-items: center;
+}
+
+.sidebar__logo img {
+  height: 150px;
+  object-fit: contain;
+}
