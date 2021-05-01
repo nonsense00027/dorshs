@@ -5,6 +5,7 @@ import Input from "@material-ui/core/Input";
 import { makeStyles } from "@material-ui/core/styles";
 import "../Enrollment/Enrollment.css";
 import { FormControlLabel, FormGroup } from "@material-ui/core";
+import { PhoneRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,10 +40,20 @@ const employmentStatus = [
 
 function ParentGuardianInfo({
   label,
+  lastname,
+  firstname,
+  middlename,
+  setLastname,
+  setFirstname,
+  setMiddlename,
   education,
   employment,
+  workingQuarantine,
   handleEducationChange,
   handleEmploymentChange,
+  handleWorkingChange,
+  phoneNumber,
+  setNumber,
 }) {
   const classes = useStyles();
 
@@ -50,10 +61,29 @@ function ParentGuardianInfo({
     <form className={classes.root} noValidate autoComplete="off">
       <div className="c1">
         <p>{`C1. ${label}'s Fullname`}</p>
-        <TextField required id="standard-required" label="Lastname" />
-        <TextField required id="standard-required" label="Firstname" />
-        <TextField required id="standard-required" label="Middlename" />
+        <TextField
+          required
+          id="standard-required"
+          label="Lastname"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
+        />
+        <TextField
+          required
+          id="standard-required"
+          label="Firstname"
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
+        />
+        <TextField
+          required
+          id="standard-required"
+          label="Middlename"
+          value={middlename}
+          onChange={(e) => setMiddlename(e.target.value)}
+        />
       </div>
+
       <div className="c2">
         <p>{`C2. ${label}'s Highest Education Attainment`}</p>
         <FormGroup>
@@ -62,7 +92,7 @@ function ParentGuardianInfo({
               control={
                 <Checkbox
                   checked={education.name === item.name}
-                  onChange={handleChange}
+                  onChange={handleEducationChange}
                   name={item.name}
                 />
               }
@@ -83,7 +113,7 @@ function ParentGuardianInfo({
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={item.name === employmentStatus.name}
+                  checked={item.name === employment.name}
                   onChange={handleEmploymentChange}
                   name={item.name}
                 />
@@ -95,9 +125,19 @@ function ParentGuardianInfo({
 
         <div className="c4">
           <p>C4. Working from due to community quarantine</p>
-          <Checkbox value="no" inputProps={{ "aria-label": "Checkbox A" }} />
+          <Checkbox
+            checked={workingQuarantine === "no"}
+            onChange={handleWorkingChange}
+            value="no"
+            inputProps={{ "aria-label": "Checkbox A" }}
+          />
           <label>YES</label>
-          <Checkbox value="yes" inputProps={{ "aria-label": "Checkbox A" }} />
+          <Checkbox
+            checked={workingQuarantine === "yes"}
+            onChange={handleWorkingChange}
+            value="yes"
+            inputProps={{ "aria-label": "Checkbox A" }}
+          />
           <label>NO</label>
         </div>
         <div className="c5">
@@ -106,6 +146,8 @@ function ParentGuardianInfo({
             id="filled-basic"
             label="Contact Number"
             variant="filled"
+            value={phoneNumber}
+            onChange={(e) => setNumber(e.target.value)}
           />
         </div>
       </div>

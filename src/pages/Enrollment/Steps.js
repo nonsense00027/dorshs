@@ -30,10 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    "Select campaign settings",
-    "Create an ad group",
-    "Create an ad",
-    "Create unknown",
+    "A. Grade Level And School Information",
+    "B. Student Information",
+    "C. Parent/ Guardian Information",
+    "D. HOUSEHOLD CAPACITY AND ACCESS TO DISTANCE LEARNING",
   ];
 }
 
