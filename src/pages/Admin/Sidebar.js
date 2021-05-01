@@ -31,7 +31,7 @@ export default function Sidebar({ activeTab, handleTabChange }) {
     { id: 2, label: "Teachers", icon: <SupervisorAccountIcon /> },
     { id: 3, label: "Subjects", icon: <DnsIcon /> },
     { id: 4, label: "Settings", icon: <SettingsIcon /> },
-  ]);
+  ]); 
 
   return (
     <div className="sidebar">

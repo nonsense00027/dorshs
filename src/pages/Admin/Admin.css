@@ -11,15 +11,16 @@
   top: 0;
   height: 100%;
   padding: 25px 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .sidebar .active {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: #fff !important;
 }
 
 .sidebar .active:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .sidebar .active .MuiListItemIcon-root {
@@ -38,4 +39,8 @@
 .sidebar__logo img {
   height: 150px;
   object-fit: contain;
+}
+
+.admin__content {
+  padding-left: 260px;
 }

@@ -1,0 +1,31 @@
+.teachers {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.teachers__addForm form div {
+  display: flex;
+}
+
+.teachers__addButton {
+  background-color: var(--primary-color) !important;
+}
+
+.teachers__addForm .MuiFormControl-root {
+  margin: 5px;
+}
+
+.teachers__addForm p {
+  margin-left: 5px;
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.teachers__subjectsList {
+  display: block !important;
+  max-height: 250px;
+  overflow-y: scroll;
+  margin: 10px 0;
+}
