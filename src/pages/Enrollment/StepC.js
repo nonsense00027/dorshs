@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ParentGuardianInfo from "./ParentGuardianInfo";
 
 export default function StepC() {
-  const classes = useStyles();
   const [fatherEducation, setFatherEducation] = useState({});
   const [fatherLastname, setFatherLastname] = useState("");
   const [fatherFirstname, setFatherFirstname] = useState("");
@@ -84,7 +83,7 @@ export default function StepC() {
 
   return (
     <div className="stepC">
-      <div className="stepC__info">
+      <div className="row">
         <ParentGuardianInfo
           label="Father"
           lastname={fatherLastname}
