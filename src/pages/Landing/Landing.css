@@ -4,8 +4,37 @@
 .navbar {
   width: 100%;
   background-color: rgba(34, 59, 35, 0.85);
-  height: 70px;
+  height: 67px;
   display: flex;
   position: fixed;
   top: 0;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__left > img {
+  object-fit: contain;
+  height: 60px;
+  margin-left: 10px;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  margin-left: 10px;
+  font-family: Arial, sans-serif;
+  top: 0;
+}
+
+.navbar__right {
+  display: flex;
+  color: white;
+  margin-left: 900px;
+}
+
+

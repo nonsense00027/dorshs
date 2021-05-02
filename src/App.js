@@ -7,7 +7,8 @@ import Admin from "./pages/Admin/Admin";
 
 function App() {
   return (
-    <Router>
+    <div className="app">
+      <Router>
       <div className="app">
         <Switch>
           <Route path="/enrollment">
@@ -22,6 +23,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </div>
   );
 }
 
