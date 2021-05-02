@@ -96,10 +96,6 @@ function Teachers() {
       });
   };
 
-  const handleChange = (event) => {
-    setLevel(event.target.value);
-  };
-
   useEffect(() => {
     const unsubscribe = db
       .collection("teachers")

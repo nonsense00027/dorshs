@@ -147,7 +147,7 @@ function SubjectsTable({ subjects }) {
                         );
                       })}
                       <TableCell key={row.id} align="left">
-                        <IconButton onClick={() => handleClick(row.id)}>
+                        <IconButton>
                           <EditIcon />
                         </IconButton>
                         <IconButton onClick={() => handleDeleteDialogOpen(row)}>

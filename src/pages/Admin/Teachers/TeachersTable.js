@@ -83,7 +83,7 @@ function TeachersTable({ teachers }) {
 
   const handleDeleteSubject = (id) => {
     if (deleteSubject.id) {
-      db.collection("subjects")
+      db.collection("teachers")
         .doc(deleteSubject.id)
         .delete()
         .then((result) => {
@@ -126,7 +126,7 @@ function TeachersTable({ teachers }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {subjects
+              {teachers
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -147,7 +147,7 @@ function TeachersTable({ teachers }) {
                         );
                       })}
                       <TableCell key={row.id} align="left">
-                        <IconButton onClick={() => handleClick(row.id)}>
+                        <IconButton>
                           <EditIcon />
                         </IconButton>
                         <IconButton onClick={() => handleDeleteDialogOpen(row)}>
@@ -163,7 +163,7 @@ function TeachersTable({ teachers }) {
         <TablePagination
           rowsPerPageOptions={[10, 15, 20]}
           component="div"
-          count={subjects.length}
+          count={teachers.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

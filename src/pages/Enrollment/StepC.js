@@ -29,16 +29,6 @@ export default function StepC() {
   const [motherEmployment, setMotherEmployment] = useState({});
   const [guardianEmployment, setGuardianEmployment] = useState({});
 
-  const [state, setState] = React.useState({
-    elementary: false,
-    highschool: false,
-    college: false,
-    vocational: false,
-    master: false,
-    dnas: false,
-    others: false,
-  });
-
   const handleFatherEducation = (event) => {
     setFatherEducation({ name: event.target.name, label: event.target.label });
   };
