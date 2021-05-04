@@ -4,6 +4,7 @@ import Login from "./pages/Authentication/Login";
 import Landing from "./pages/Landing/Landing";
 import Enrollment from "./pages/Enrollment/Enrollment";
 import Admin from "./pages/Admin/Admin";
+import StepC from './pages/Enrollment/StepC';
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
           <Route path="/admin">
             <Admin />
           </Route>
-          <Route path="/">
+          <Route path="/landing">
             <Landing />
+          </Route>
+          <Route path="/"> 
+            <StepC />
           </Route>
         </Switch>
       </div>
