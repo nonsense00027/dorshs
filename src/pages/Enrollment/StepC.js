@@ -121,10 +121,10 @@ export default function CheckboxesGroup() {
           <p>
             C4. Working from due to community quarantine
           </p>
-          <Checkbox value="no" inputProps={{ 'aria-label': 'Checkbox A' }} />
-          <label>YES</label>
-          <Checkbox value="yes" inputProps={{ 'aria-label': 'Checkbox A' }} />
-          <label>NO</label>
+            <Checkbox value="no" inputProps={{ 'aria-label': 'Checkbox A' }} />
+            <label>YES</label>
+            <Checkbox value="yes" inputProps={{ 'aria-label': 'Checkbox A' }} />
+            <label>NO</label>
         </div>
         <div className="c5">
           <p>

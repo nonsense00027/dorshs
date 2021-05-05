@@ -12,7 +12,7 @@ function App() {
       <Router>
       <div className="app">
         <Switch>
-          <Route path="/enrollment">
+          <Route path="/">
             <Enrollment />
           </Route>
           <Route path="/admin">
@@ -20,9 +20,6 @@ function App() {
           </Route>
           <Route path="/landing">
             <Landing />
-          </Route>
-          <Route path="/"> 
-            <StepC />
           </Route>
         </Switch>
       </div>
