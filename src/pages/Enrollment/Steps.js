@@ -33,7 +33,7 @@ function getSteps() {
     "A. Grade Level And School Information",
     "B. Student Information",
     "C. Parent/ Guardian Information",
-    "D. HOUSEHOLD CAPACITY AND ACCESS TO DISTANCE LEARNING",
+    "D. Household Capacity And Access To Distance Learning",
   ];
 }
 
