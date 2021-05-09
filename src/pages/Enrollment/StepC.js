@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ParentGuardianInfo from "./ParentGuardianInfo";
+import { Button } from "@material-ui/core";
 
-export default function StepC() {
+export default function StepC({ handleNext }) {
   const [fatherEducation, setFatherEducation] = useState({});
   const [fatherLastname, setFatherLastname] = useState("");
   const [fatherFirstname, setFatherFirstname] = useState("");
@@ -125,6 +126,11 @@ export default function StepC() {
           phoneNumber={guardianNumber}
           setNumber={setGuardianNumber}
         />
+      </div>
+      <div className="enrollment__buttonContainer">
+        <Button variant="contained" color="primary" onClick={handleNext}>
+          Next
+        </Button>
       </div>
     </div>
   );

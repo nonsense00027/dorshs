@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "@material-ui/core";
 
-function StepB() {
+function StepB({ handleNext }) {
   const [birthCertificateNo, setBirthCertificateNo] = useState("");
   const [lrnNo, setLrnNo] = useState("");
   const [lastname, setLastname] = useState("");
@@ -28,6 +29,11 @@ function StepB() {
   return (
     <div>
       <h3>Step B</h3>
+      <div className="enrollment__buttonContainer">
+        <Button variant="contained" color="primary" onClick={handleNext}>
+          Next
+        </Button>
+      </div>
     </div>
   );
 }

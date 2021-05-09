@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Steps from "./Steps";
 import Container from "@material-ui/core/Container";
 
 function Enrollment() {
   return (
-    <div>
+    <div className="enrollment">
       <Container>
         <Steps />
       </Container>

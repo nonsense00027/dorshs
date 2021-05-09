@@ -30,23 +30,49 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    "A. Grade Level And School Information",
-    "B. Student Information",
-    "C. Parent/ Guardian Information",
-    "D. Household Capacity And Access To Distance Learning",
+    "Grade Level And School Information",
+    "Student Information",
+    "Parent/ Guardian Information",
+    "Household Capacity And Access To Distance Learning",
   ];
 }
 
-function getStepContent(step) {
+function getStepContent(
+  step,
+  handleNext,
+  handleBack,
+  handleStepA,
+  handleStepB,
+  handleStepC,
+  handleStepD
+) {
   switch (step) {
     case 0:
-      return <StepA />;
+      return <StepA handleNext={handleNext} handleStepA={handleStepA} />;
     case 1:
-      return <StepB />;
+      return (
+        <StepB
+          handleNext={handleNext}
+          handleBack={handleBack}
+          handleStepB={handleStepB}
+        />
+      );
     case 2:
-      return <StepC />;
+      return (
+        <StepC
+          handleNext={handleNext}
+          handleBack={handleBack}
+          handleStepC={handleStepC}
+        />
+      );
     case 3:
-      return <StepD />;
+      return (
+        <StepD
+          handleNext={handleNext}
+          handleBack={handleBack}
+          handleStepD={handleStepD}
+        />
+      );
     default:
       return "Unknown step";
   }
@@ -54,6 +80,10 @@ function getStepContent(step) {
 
 export default function Steps() {
   const classes = useStyles();
+  const [stepa, setStepa] = useState({});
+  const [stepb, setStepb] = useState({});
+  const [stepc, setStepc] = useState({});
+  const [stepd, setStepd] = useState({});
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
@@ -69,45 +99,55 @@ export default function Steps() {
     setActiveStep(0);
   };
 
+  const handleStepA = (info) => {
+    setStepa(info);
+  };
+
+  const handleStepB = (info) => {
+    setStepb(info);
+  };
+
+  const handleStepC = (info) => {
+    setStepc(info);
+  };
+
+  const handleStepD = (info) => {
+    setStepd(info);
+  };
+
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((label, index) => (
+      <Stepper activeStep={activeStep} alternativeLabel>
+        {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
-            <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
-              <div className={classes.actionsContainer}>
-                <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={classes.button}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </div>
-              </div>
-            </StepContent>
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
-      )}
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography className={classes.instructions}>
+              All steps completed
+            </Typography>
+            <Button onClick={handleReset}>Reset</Button>
+          </div>
+        ) : (
+          <div>
+            <Typography>
+              {getStepContent(
+                activeStep,
+                handleNext,
+                handleBack,
+                handleStepA,
+                handleStepB,
+                handleStepC,
+                handleStepD
+              )}
+            </Typography>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
