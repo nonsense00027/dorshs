@@ -10,6 +10,8 @@ import {
   TextField,
   MenuItem,
   CircularProgress,
+  Fab,
+  Tooltip,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -40,6 +42,18 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+const ranks = [
+  { label: "Secondary School Teacher I", value: "SST-I" },
+  { label: "Secondary School Teacher II", value: "SST-II" },
+  { label: "Secondary School Teacher III", value: "SST-III" },
+  { label: "Master Teacher I", value: "MT-I" },
+  { label: "Master Teacher II", value: "MT-II" },
+  { label: "Master Teacher III", value: "MT-III" },
+  { label: "Principal I", value: "P-I" },
+  { label: "Principal II", value: "P-II" },
+  { label: "Principal III", value: "P-III" },
+];
+
 function Teachers() {
   const classes = useStyles();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -67,16 +81,6 @@ function Teachers() {
       setChecked((prevChecked) => [...prevChecked, value.id]);
       setSubjects((prevSubjects) => [...prevSubjects, value]);
     }
-    // const currentIndex = checked.indexOf(value);
-    // const newChecked = [...checked];
-
-    // if (currentIndex === -1) {
-    //   newChecked.push(value);
-    // } else {
-    //   newChecked.splice(currentIndex, 1);
-    // }
-
-    // setChecked(newChecked);
   };
 
   const handleAddTeacher = (e) => {
@@ -127,7 +131,7 @@ function Teachers() {
 
   return (
     <div className="teachers">
-      <Button
+      {/* <Button
         className="teachers__addButton"
         variant="contained"
         color="primary"
@@ -135,14 +139,14 @@ function Teachers() {
         onClick={() => setOpen(true)}
       >
         Add Teacher
-      </Button>
+      </Button> */}
       <div className="teachers__tableContainer">
         {/* <TeachersTable teachers={teachers} /> */}
       </div>
 
       <Dialog
         className="teachers__addForm"
-        maxWidth="xs"
+        maxWidth="sm"
         fullWidth
         onClose={() => setOpen(false)}
         aria-labelledby="simple-dialog-title"
@@ -188,9 +192,9 @@ function Teachers() {
                 fullWidth
                 required
               >
-                <MenuItem value={"GRD7"}>Teacher I</MenuItem>
-                <MenuItem value={"GRD8"}>Teacher II</MenuItem>
-                <MenuItem value={"GRD9"}>Teacher III</MenuItem>
+                {ranks.map((rank) => (
+                  <MenuItem value={rank.value}>{rank.label}</MenuItem>
+                ))}
               </TextField>
 
               <TextField
@@ -233,7 +237,7 @@ function Teachers() {
               </List>
             </div>
             <Button
-              className="subjects__buttonCancel"
+              className="teachers__buttonCancel"
               fullWidth
               variant="contained"
               onClick={() => setOpen(false)}
@@ -242,7 +246,7 @@ function Teachers() {
             </Button>
             <Button
               type="submit"
-              className="subjects__buttonSubmit"
+              className="teachers__buttonSubmit"
               fullWidth
               variant="contained"
               color="primary"
@@ -260,9 +264,20 @@ function Teachers() {
         onClose={() => setSnackbarOpen(false)}
       >
         <Alert onClose={() => setSnackbarOpen(false)} severity="success">
-          Subject was successfully added!
+          Teacher was successfully added!
         </Alert>
       </Snackbar>
+
+      <Tooltip title="Add Teacher" aria-label="add" arrow>
+        <Fab
+          color="primary"
+          aria-label="add"
+          className="teachers__addTeacher"
+          onClick={() => setOpen(true)}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip>
     </div>
   );
 }

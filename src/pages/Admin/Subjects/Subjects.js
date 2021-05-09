@@ -10,6 +10,8 @@ import {
   TextField,
   MenuItem,
   CircularProgress,
+  Fab,
+  Tooltip,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -71,7 +73,7 @@ function Subjects() {
 
   return (
     <div className="subjects">
-      <Button
+      {/* <Button
         className="subjects__addButton"
         variant="contained"
         color="primary"
@@ -79,7 +81,7 @@ function Subjects() {
         onClick={() => setOpen(true)}
       >
         Add Subject
-      </Button>
+      </Button> */}
       <div className="subjects__tableContainer">
         <SubjectsTable subjects={subjects} />
       </div>
@@ -163,6 +165,17 @@ function Subjects() {
           Subject was successfully added!
         </Alert>
       </Snackbar>
+
+      <Tooltip title="Add Subject" aria-label="add" arrow>
+        <Fab
+          color="primary"
+          aria-label="add"
+          className="subjects__addSubject"
+          onClick={() => setOpen(true)}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip>
     </div>
   );
 }

@@ -24,3 +24,10 @@
 .subjects__buttonSubmit {
   background-color: var(--secondary-color) !important;
 }
+
+.subjects__addSubject {
+  position: fixed !important;
+  right: 50px;
+  bottom: 50px;
+  background-color: var(--secondary-color) !important;
+}
