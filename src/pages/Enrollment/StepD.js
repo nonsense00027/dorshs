@@ -49,6 +49,20 @@ const useStyles = makeStyles((theme) => ({
       compshop: false,
       places: false,
       none3: false,
+      online: false,
+      tv: false,
+      radio2: false,
+      module: false,
+      combi: false,
+      others3: false,
+      lack: false,
+      insu: false,
+      unstable: false,
+      exist: false,
+      difficult: false,
+      conflict: false,
+      no: false,
+      others4: false,
     });
   
     const handleChange = (event) => {
@@ -60,6 +74,10 @@ const useStyles = makeStyles((theme) => ({
     const { cable, noncable, basic, smart, tablet, radio, desktop, laptop, none2, others2 } = state;
     //D6 
     const { mobiledata, broad, compshop, places, none3 } = state;
+    //D7
+    const { online, tv, radio2, module, combi, others3 } = state;
+    //D8
+    const { lack, insu, unstable, exist, difficult, conflict, no, others4 } = state;
   return (
     <div className="stepD">
       <div className='d1'>
@@ -214,6 +232,78 @@ const useStyles = makeStyles((theme) => ({
             control={<Checkbox checked={none3} onChange={handleChange} name="none3" />}
             label="none"
           />
+          </FormGroup>
+        </form>
+        <form className={classes.root} noValidate autoComplete="off">
+          <p>
+            D7. What distance learning modality/ies do you prefer for your child? Choose all that applies.
+          </p>
+          <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={online} onChange={handleChange} name="online" />}
+            label="online Learning"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={tv} onChange={handleChange} name="tv" />}
+            label="television"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={radio2} onChange={handleChange} name="radio2" />}
+            label="radio"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={module} onChange={handleChange} name="module" />}
+            label="modular learning"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={combi} onChange={handleChange} name="combi" />}
+            label="combination of face to face with other modalities"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={others3} onChange={handleChange} name="others3" />}
+            label="others:"
+          />
+          <Input placeholder='others' inputProps={{ 'aria-label': 'description' }} />
+          </FormGroup>
+        </form>
+        <form className={classes.root} noValidate autoComplete="off">
+          <p>
+          D8. What are the challenges that may affect your child’s learning process through distance education? Choose all that applies.
+          </p>
+          <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={lack} onChange={handleChange} name="lack" />}
+            label="lack of available gadgets/ equipment"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={insu} onChange={handleChange} name="insu" />}
+            label="insufficient load/ data allowance"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={unstable} onChange={handleChange} name="unstable" />}
+            label="unstable mobile/ internet connection"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={exist} onChange={handleChange} name="exist" />}
+            label="existing health condition/s"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={difficult} onChange={handleChange} name="difficult" />}
+            label="difficulty in independent learning"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={conflict} onChange={handleChange} name="conflict" />}
+            label="conflict with other activities (i.e., house chores)"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={no} onChange={handleChange} name="no" />}
+            label="no or lack of available space for studying distractions (i.e., social media, noise from community/ neighbor)"
+          />
+           <FormControlLabel
+            control={<Checkbox checked={others4} onChange={handleChange} name="others4" />}
+            label="others:"
+          />
+          <Input placeholder='others' inputProps={{ 'aria-label': 'description' }} />
           </FormGroup>
         </form>
       </div>
