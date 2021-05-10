@@ -10,19 +10,17 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <div className="app">
-          <Switch>
-            <Route path="/admin">
-              <Admin />
-            </Route>
-            <Route path="/landing">
-              <Landing />
-            </Route>
-            <Route path="/">
-              <Enrollment />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/landing">
+            <Landing />
+          </Route>
+          <Route path="/">
+            <Enrollment />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );

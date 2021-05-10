@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Admin.css";
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 import Assessments from "./Assessments/Assessments";
 import Students from "./Students/Students";
 import Teachers from "./Teachers/Teachers";
@@ -31,6 +32,7 @@ function Admin() {
   return (
     <div className="admin">
       <Sidebar activeTab={activeTab} handleTabChange={handleTabChange} />
+      <Header />
       <div className="admin__content">{getComponent(activeTab)}</div>
     </div>
   );

@@ -71,6 +71,21 @@ function Subjects() {
     };
   }, []);
 
+  if (subjectLoading) {
+    return (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <div className="subjects">
       {/* <Button
@@ -100,36 +115,44 @@ function Subjects() {
 
         <DialogContent>
           <form onSubmit={handleAddSubject} autoComplete="off">
-            <div>
-              <TextField
-                id="standard-select-currency"
-                select
-                label="Select Grade Level"
-                value={level}
-                onChange={handleChange}
-                fullWidth
-                required
-                // helperText="Please select your currency"
-              >
-                <MenuItem value={"GRD7"}>Grade 7</MenuItem>
-                <MenuItem value={"GRD8"}>Grade 8</MenuItem>
-                <MenuItem value={"GRD9"}>Grade 9</MenuItem>
-                <MenuItem value={"GRD10"}>Grade 10</MenuItem>
-                <MenuItem value={"JHS"}>Junior High</MenuItem>
-                <MenuItem value={"SHS"}>Senior High</MenuItem>
-              </TextField>
+            <div className="row">
+              <div className="col">
+                <p>Select Grade Level</p>
+                <TextField
+                  id="standard-select-currency"
+                  select
+                  // label="Select Grade Level"
+                  variant="outlined"
+                  value={level}
+                  onChange={handleChange}
+                  fullWidth
+                  required
+                  // helperText="Please select your currency"
+                >
+                  <MenuItem value={"GRD7"}>Grade 7</MenuItem>
+                  <MenuItem value={"GRD8"}>Grade 8</MenuItem>
+                  <MenuItem value={"GRD9"}>Grade 9</MenuItem>
+                  <MenuItem value={"GRD10"}>Grade 10</MenuItem>
+                  <MenuItem value={"GRD11"}>Grade 11</MenuItem>
+                  <MenuItem value={"GRD12"}>Grade 12</MenuItem>
+                </TextField>
+              </div>
             </div>
-            <div>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Subject Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                fullWidth
-                required
-              />
+            <div className="row">
+              <div className="col">
+                <p>Subject Title</p>
+                <TextField
+                  autoFocus
+                  // margin="dense"
+                  id="name"
+                  // label="Subject Title"
+                  variant="outlined"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  fullWidth
+                  required
+                />
+              </div>
             </div>
             <div>
               <Button

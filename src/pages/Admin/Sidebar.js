@@ -31,15 +31,15 @@ export default function Sidebar({ activeTab, handleTabChange }) {
     { id: 2, label: "Teachers", icon: <SupervisorAccountIcon /> },
     { id: 3, label: "Subjects", icon: <DnsIcon /> },
     { id: 4, label: "Settings", icon: <SettingsIcon /> },
-  ]); 
+  ]);
 
   return (
     <div className="sidebar">
-      <div className="sidebar__header">
+      {/* <div className="sidebar__header">
         <div className="sidebar__logo">
           <img src={logo} alt="" />
         </div>
-      </div>
+      </div> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           {tabs.map((tab) => (

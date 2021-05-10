@@ -10,17 +10,43 @@
   left: 0;
   top: 0;
   height: 100%;
-  padding: 25px 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  /* padding: 30px 0; */
+  padding-top: 100px;
+  /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  z-index: 999;
+}
+
+.sidebar .MuiListItem-root {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 30px !important;
+}
+
+.sidebar .MuiSvgIcon-root {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .sidebar .active {
-  background-color: var(--primary-color);
-  color: #fff !important;
+  background-color: #fff;
+  color: var(--primary-color) !important;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.sidebar .active .MuiSvgIcon-root {
+  color: var(--primary-color) !important;
 }
 
 .sidebar .active:hover {
-  background-color: var(--primary-color);
+  background-color: #fff;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 30px !important;
 }
 
 .sidebar .active .MuiListItemIcon-root {
@@ -42,5 +68,38 @@
 }
 
 .admin__content {
+  padding-left: 270px;
+  padding-top: 100px;
+  height: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  /* height: 60px; */
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
   padding-left: 260px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__left img {
+  height: 60px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
+.header__left h3 {
+  font-size: 16px;
 }
