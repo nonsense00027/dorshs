@@ -1,22 +1,24 @@
-import React from "react";
-import '../Enrollment/Enrollment.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
-
+import React, { useState } from "react";
+import "../Enrollment/Enrollment.css";
+import { makeStyles } from "@material-ui/core/styles";
+import Checkbox from "@material-ui/core/Checkbox";
+import {
+  Button,
+  Input,
+  TextField,
+  FormLabel,
+  FormGroup,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& .MuiTextField-root': {
+    "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: '25ch',
-      display: 'flex',
+      width: "25ch",
+      display: "flex",
     },
     formControl: {
       margin: theme.spacing(3),
@@ -24,291 +26,354 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-  export default function CheckboxesGroup() {
-    const classes = useStyles();
-    const [state, setState] = React.useState({
-      parents: false,
-      elder: false,
-      grandparents: false,
-      extend: false,
-      others: false,
-      none: false,
-      able: false,
-      cable: false,
-      noncable: false,
-      basic: false,
-      smart: false,
-      tablet: false,
-      radio: false,
-      desktop: false,
-      laptop: false,
-      none2: false,
-      others2: false,
-      mobiledata: false,
-      broad: false,
-      compshop: false,
-      places: false,
-      none3: false,
-      online: false,
-      tv: false,
-      radio2: false,
-      module: false,
-      combi: false,
-      others3: false,
-      lack: false,
-      insu: false,
-      unstable: false,
-      exist: false,
-      difficult: false,
-      conflict: false,
-      no: false,
-      others4: false,
+const transportationList = [
+  "Walking",
+  "Public commute (land/water)",
+  "Family-owned vehicle",
+  "School service",
+];
+
+const membersStudyingList = [
+  { name: "kinder", label: "Kinder" },
+  { name: "grd1", label: "Grade 1" },
+  { name: "grd2", label: "Grade 2" },
+  { name: "grd3", label: "Grade 3" },
+  { name: "grd4", label: "Grade 4" },
+  { name: "grd5", label: "Grade 5" },
+  { name: "grd6", label: "Grade 6" },
+  { name: "grd7", label: "Grade 7" },
+  { name: "grd8", label: "Grade 8" },
+  { name: "grd9", label: "Grade 9" },
+  { name: "grd10", label: "Grade 10" },
+  { name: "grd11", label: "Grade 11" },
+  { name: "grd12", label: "Grade 12" },
+  { name: "others", label: "Others: (i.e college, vocational. etc)" },
+];
+
+const membersSupportList = [
+  "parents/ guardian",
+  "elder siblings",
+  "grandparents",
+  "extended members of the family",
+  "others (tutor, house helper",
+  "none",
+  "able to do independent learning",
+];
+
+const devicesHomeList = [
+  "cable TV",
+  "non-cable TV",
+  "basic cellphone",
+  "smartphone",
+  "tablet",
+  "radio",
+  "desktop computer",
+  "laptop",
+  "none",
+  "others: ",
+];
+
+const internetTypeList = [
+  "own mobile data",
+  "own broadband internet (DSL, wireless fiber, satellite)",
+  "computer shop",
+  "other places outside the home with internet connection (library, barangay/ municipal hall, neighbor, relatives)",
+  "none",
+];
+
+const modalityList = [
+  "online Learning",
+  "television",
+  "radio",
+  "modular learning",
+  "combination of face to face with other modalities",
+  "others: ",
+];
+
+const challengesList = [
+  "lack of available gadgets/ equipment",
+  "insufficient load/ data allowance",
+  "unstable mobile/ internet connection",
+  "existing health condition/s",
+  "difficulty in independent learning",
+  "conflict with other activities (i.e., house chores)",
+  "no or lack of available space for studying distractions (i.e., social media, noise from community/ neighbor)",
+  "others: ",
+];
+
+export default function CheckboxesGroup({ handleStepD }) {
+  const [transportation, setTransportation] = useState([]);
+  const [membersStudying, setMembersStudying] = useState(
+    { kinder: "" },
+    { grd1: "" },
+    { grd2: "" },
+    { grd3: "" },
+    { grd4: "" },
+    { grd5: "" },
+    { grd6: "" },
+    { grd7: "" },
+    { grd8: "" },
+    { grd9: "" },
+    { grd10: "" },
+    { grd11: "" },
+    { grd12: "" },
+    { others: "" }
+  );
+  const [membersSupport, setMembersSupport] = useState([]);
+  const [devicesHome, setDevicesHome] = useState([]);
+  const [internet, setInternet] = useState(null);
+  const [internetType, setInternetType] = useState("");
+  const [modality, setModality] = useState("");
+  const [challenges, setChallenges] = useState("");
+
+  const handleSubmit = () => {
+    handleStepD({
+      transportation,
+      membersStudying,
+      membersSupport,
+      devicesHome,
+      internet,
+      internetType,
+      modality,
+      challenges,
     });
-  
-    const handleChange = (event) => {
-      setState({ ...state, [event.target.name]: event.target.checked });
-    };
-    //D3.
-    const { parents, elder, grandparents, extend, others, none, able } = state;
-    //D4
-    const { cable, noncable, basic, smart, tablet, radio, desktop, laptop, none2, others2 } = state;
-    //D6 
-    const { mobiledata, broad, compshop, places, none3 } = state;
-    //D7
-    const { online, tv, radio2, module, combi, others3 } = state;
-    //D8
-    const { lack, insu, unstable, exist, difficult, conflict, no, others4 } = state;
+  };
+
+  const handleTransportationChange = (e) => {
+    if (e.target.checked) {
+      setTransportation((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = transportation.filter((item) => item !== e.target.value);
+      setTransportation(newContent);
+    }
+  };
+  const handleMembersSupportChange = (e) => {
+    if (e.target.checked) {
+      setMembersSupport((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = membersSupport.filter((item) => item !== e.target.value);
+      setMembersSupport(newContent);
+    }
+  };
+  const handleDevicesHomeChange = (e) => {
+    if (e.target.checked) {
+      setDevicesHome((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = devicesHome.filter((item) => item !== e.target.value);
+      setDevicesHome(newContent);
+    }
+  };
+  const handleInternetTypeChange = (e) => {
+    if (e.target.checked) {
+      setInternetType((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = internetType.filter((item) => item !== e.target.value);
+      setInternetType(newContent);
+    }
+  };
+  const handleModalityChange = (e) => {
+    if (e.target.checked) {
+      setModality((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = modality.filter((item) => item !== e.target.value);
+      setModality(newContent);
+    }
+  };
+  const handleChallengesChange = (e) => {
+    if (e.target.checked) {
+      setChallenges((prevContent) => [...prevContent, e.target.value]);
+    } else {
+      var newContent = challenges.filter((item) => item !== e.target.value);
+      setChallenges(newContent);
+    }
+  };
   return (
     <div className="stepD">
-      <div className='d1'>
-        <p>
-        D1. How Does your child go to school? Choose all that applies
-        </p>
-        <Checkbox value="1" inputProps={{ 'aria-label': 'Checkbox A' }} />
-          <label>Walking</label>
-          <Checkbox value="2" inputProps={{ 'aria-label': 'Checkbox B' }} />
-          <label>Public commute (land/water)</label>
-          <Checkbox value="3" inputProps={{ 'aria-label': 'Checkbox C' }} />
-          <label>family-owned vehicle </label>
-          <Checkbox value="4" inputProps={{ 'aria-label': 'Checkbox D' }} />
-          <label>School service</label>
+      <h2 className="section__title">Section D</h2>
+      <div className="row">
+        <div className="col">
+          <p>D1. How Does your child go to school? Choose all that applies</p>
+          <FormGroup>
+            {transportationList.map((item) => (
+              <FormControlLabel
+                key={item}
+                control={
+                  <Checkbox
+                    checked={transportation.includes(item)}
+                    value={item}
+                    onChange={handleTransportationChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
+          </FormGroup>
+        </div>
       </div>
-      <div className="d2">
-        <p>
-        D2. How many of your household members (including the enrollee) are studying in School Year 2020-2021? Please specify each.
-        </p>
-          <div>
-        <form>
-        <TextField required id="outlined-basic" label="Kinder" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 1" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 2" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 3" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 4" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 5" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 6" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 7" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 8" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 9" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 10" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 11" variant="outlined" />
-        <TextField required id="outlined-basic" label="Grade 12" variant="outlined" />
-        <TextField required id="outlined-basic" label="Others: (i.e college, vocational. etc)" variant="outlined" />
-        </form>
-          </div>
-        <form className={classes.root} noValidate autoComplete="off">
+      <div clasName="row">
+        <div className="col">
           <p>
-          D3. Who among the household members can provide instructional support to the child’s distance learning? Choose all that applies.
+            D2. How many of your household members (including the enrollee) are
+            studying in School Year 2020-2021? Please specify each.
+          </p>
+          {membersStudyingList.map((item) => (
+            <TextField
+              required
+              name={item.name}
+              value={membersStudying[item.name]}
+              label={item.label}
+              variant="outlined"
+              onChange={(e) =>
+                setMembersStudying((prevContent) => ({
+                  ...prevContent,
+                  [e.target.name]: [e.target.value],
+                }))
+              }
+            />
+          ))}
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
+          <p>
+            D3. Who among the household members can provide instructional
+            support to the child’s distance learning? Choose all that applies.
           </p>
           <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={parents} onChange={handleChange} name="parents" />}
-            label="parents/ guardian"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={elder} onChange={handleChange} name="elder" />}
-            label="elder siblings"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={grandparents} onChange={handleChange} name="grandparents" />}
-            label="grandparents"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={extend} onChange={handleChange} name="extend" />}
-            label="extended members of the family"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={others} onChange={handleChange} name="others" />}
-            label="others (tutor, house helper"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={none} onChange={handleChange} name="none" />}
-            label="none"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={able} onChange={handleChange} name="able" />}
-            label="able to do independent learning"
-          />
+            {membersSupportList.map((item) => (
+              <FormControlLabel
+                key={item}
+                control={
+                  <Checkbox
+                    checked={membersSupport.includes(item)}
+                    value={item}
+                    onChange={handleMembersSupportChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
           </FormGroup>
-        </form>
-        <form className={classes.root} noValidate autoComplete="off">
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
           <p>
-            D4. What devices are available at home that the learner can use for learning? Check all that applies.
+            D4. What devices are available at home that the learner can use for
+            learning? Check all that applies.
           </p>
           <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={cable} onChange={handleChange} name="cable" />}
-            label="cable TV"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={noncable} onChange={handleChange} name="noncable" />}
-            label="non-cable TV"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={basic} onChange={handleChange} name="basic" />}
-            label="basic cellphone"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={smart} onChange={handleChange} name="smart" />}
-            label="smartphone"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={tablet} onChange={handleChange} name="tablet" />}
-            label="tablet"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={radio} onChange={handleChange} name="radio" />}
-            label="radio"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={desktop} onChange={handleChange} name="desktop" />}
-            label="desktop computer"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={laptop} onChange={handleChange} name="laptop" />}
-            label="laptop"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={none2} onChange={handleChange} name="none2" />}
-            label="none"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={others2} onChange={handleChange} name="others2" />}
-            label="others: "
-          />
-          <Input placeholder='others' inputProps={{ 'aria-label': 'description' }} />
+            {devicesHomeList.map((item) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={devicesHome.includes(item)}
+                    value={item}
+                    onChange={handleDevicesHomeChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
+            <Input
+              placeholder="others"
+              inputProps={{ "aria-label": "description" }}
+            />
           </FormGroup>
-        </form>
-        <form className={classes.root} noValidate autoComplete="off">
-          <p>
-          D5. Do you have a way to connect to the internet? 
-          </p>
-          <Checkbox value="Yes" inputProps={{ 'aria-label': 'Checkbox A' }} />
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
+          <p>D5. Do you have a way to connect to the internet?</p>
+          <Checkbox
+            checked={internet === true}
+            value="Yes"
+            onChange={() => setInternet(true)}
+          />
           <label>Yes</label>
-          <Checkbox value="No" inputProps={{ 'aria-label': 'Checkbox A' }} />
+          <Checkbox
+            checked={internet === false}
+            value="No"
+            onChange={() => setInternet(false)}
+          />
           <label>No (if NO, proceed to D7)</label>
-        </form>
-        <form className={classes.root} noValidate autoComplete="off">
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
           <p>
-          D6. How do you connect to the internet? Choose all that applies.
+            D6. How do you connect to the internet? Choose all that applies.
           </p>
           <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={mobiledata} onChange={handleChange} name="mobiledata" />}
-            label="own mobile data"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={broad} onChange={handleChange} name="broad" />}
-            label="own broadband internet (DSL, wireless fiber, satellite)"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={compshop} onChange={handleChange} name="compshop" />}
-            label="computer shop"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={places} onChange={handleChange} name="places" />}
-            label="other places outside the home with internet connection (library, barangay/ municipal hall, neighbor, relatives)"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={none3} onChange={handleChange} name="none3" />}
-            label="none"
-          />
+            {internetTypeList.map((item) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={internetType.includes(item)}
+                    value={item}
+                    onChange={handleInternetTypeChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
           </FormGroup>
-        </form>
-        <form className={classes.root} noValidate autoComplete="off">
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
           <p>
-            D7. What distance learning modality/ies do you prefer for your child? Choose all that applies.
+            D7. What distance learning modality/ies do you prefer for your
+            child? Choose all that applies.
           </p>
           <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={online} onChange={handleChange} name="online" />}
-            label="online Learning"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={tv} onChange={handleChange} name="tv" />}
-            label="television"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={radio2} onChange={handleChange} name="radio2" />}
-            label="radio"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={module} onChange={handleChange} name="module" />}
-            label="modular learning"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={combi} onChange={handleChange} name="combi" />}
-            label="combination of face to face with other modalities"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={others3} onChange={handleChange} name="others3" />}
-            label="others:"
-          />
-          <Input placeholder='others' inputProps={{ 'aria-label': 'description' }} />
+            {modalityList.map((item) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={modality.includes(item)}
+                    value={item}
+                    onChange={handleModalityChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
+
+            <Input placeholder="others" />
           </FormGroup>
-        </form>
-        <form className={classes.root} noValidate autoComplete="off">
+        </div>
+      </div>
+      <div clasName="row">
+        <div className="col">
           <p>
-          D8. What are the challenges that may affect your child’s learning process through distance education? Choose all that applies.
+            D8. What are the challenges that may affect your child’s learning
+            process through distance education? Choose all that applies.
           </p>
           <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={lack} onChange={handleChange} name="lack" />}
-            label="lack of available gadgets/ equipment"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={insu} onChange={handleChange} name="insu" />}
-            label="insufficient load/ data allowance"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={unstable} onChange={handleChange} name="unstable" />}
-            label="unstable mobile/ internet connection"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={exist} onChange={handleChange} name="exist" />}
-            label="existing health condition/s"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={difficult} onChange={handleChange} name="difficult" />}
-            label="difficulty in independent learning"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={conflict} onChange={handleChange} name="conflict" />}
-            label="conflict with other activities (i.e., house chores)"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={no} onChange={handleChange} name="no" />}
-            label="no or lack of available space for studying distractions (i.e., social media, noise from community/ neighbor)"
-          />
-           <FormControlLabel
-            control={<Checkbox checked={others4} onChange={handleChange} name="others4" />}
-            label="others:"
-          />
-          <Input placeholder='others' inputProps={{ 'aria-label': 'description' }} />
+            {challengesList.map((item) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={challenges.includes(item)}
+                    value={item}
+                    onChange={handleChallengesChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
+
+            <TextField placeholder="others" />
           </FormGroup>
-        </form>
+        </div>
+      </div>
+      {/* </div> */}
+      <div className="enrollment__buttonContainer">
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
+          Next
+        </Button>
       </div>
     </div>
   );
 }
-
-

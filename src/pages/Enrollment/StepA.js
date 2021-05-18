@@ -49,7 +49,7 @@ const isSHS = (level) => {
   }
 };
 
-function StepA({ handleNext }) {
+function StepA({ handleNext, handleStepA }) {
   const classes = useStyles();
 
   const [sy, setSy] = useState("");
@@ -66,8 +66,28 @@ function StepA({ handleNext }) {
   const [track, setTrack] = useState("");
   const [strand, setStrand] = useState("");
 
+  const handleSubmit = () => {
+    handleStepA({
+      sy,
+      lrn,
+      returning,
+      enrollLevel,
+      lastSchool,
+      lastSchoolId,
+      lastGradeLevel,
+      lastSchoolAddress,
+      lastSchoolYearCompleted,
+      lastSchoolType,
+      semester,
+      track,
+      strand,
+    });
+  };
+
   return (
-    <div className="stepa">
+    <section>
+      {/* <h2 className="section__title">Section A</h2> */}
+
       <div className="row">
         <div className="col">
           <p>A1. School Year</p>
@@ -164,6 +184,8 @@ function StepA({ handleNext }) {
             onChange={(e) => setLastSchoolId(e.target.value)}
           />
         </div>
+      </div>
+      <div className="row">
         <div className="col">
           <p>A9. Last School Address</p>
           <TextField
@@ -216,13 +238,12 @@ function StepA({ handleNext }) {
         </div>
       </div> */}
       {isSHS(enrollLevel)}
-
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" color="primary" onClick={handleNext}>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Next
         </Button>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -11,6 +11,10 @@ import StepA from "./StepA";
 import StepB from "./StepB";
 import StepC from "./StepC";
 import StepD from "./StepD";
+import Success from "./Success";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { db } from "../../shared/configs/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
   resetContainer: {
     padding: theme.spacing(3),
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
   },
 }));
 
@@ -86,6 +94,15 @@ export default function Steps() {
   const [stepd, setStepd] = useState({});
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
+  const [open, setOpen] = useState(false);
+  const [idCode, setIdCode] = useState(null);
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+  // const handleToggle = () => {
+  //   setOpen(!open);
+  // };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -101,19 +118,38 @@ export default function Steps() {
 
   const handleStepA = (info) => {
     setStepa(info);
+    handleNext();
   };
 
   const handleStepB = (info) => {
     setStepb(info);
+    handleNext();
   };
 
   const handleStepC = (info) => {
     setStepc(info);
+    handleNext();
   };
 
   const handleStepD = (info) => {
     setStepd(info);
+    setOpen(true);
+    db.collection("students")
+      .add({
+        ...stepa,
+        ...stepb,
+        ...stepc,
+        ...stepd,
+        newEnrollee: true,
+      })
+      .then((result) => {
+        setIdCode(result.id);
+        setOpen(false);
+        handleNext();
+      });
   };
+
+  console.log("ENROLLMENT INFO", { ...stepa, ...stepb, ...stepc, ...stepd });
 
   return (
     <div className={classes.root}>
@@ -127,27 +163,27 @@ export default function Steps() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>
-              All steps completed
-            </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Success idCode={idCode} />
           </div>
         ) : (
           <div>
-            <Typography>
-              {getStepContent(
-                activeStep,
-                handleNext,
-                handleBack,
-                handleStepA,
-                handleStepB,
-                handleStepC,
-                handleStepD
-              )}
-            </Typography>
+            {/* <Typography> */}
+            {getStepContent(
+              activeStep,
+              handleNext,
+              handleBack,
+              handleStepA,
+              handleStepB,
+              handleStepC,
+              handleStepD
+            )}
+            {/* </Typography> */}
           </div>
         )}
       </div>
+      <Backdrop className={classes.backdrop} open={open}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ParentGuardianInfo from "./ParentGuardianInfo";
 import { Button } from "@material-ui/core";
 
-export default function StepC({ handleNext }) {
+export default function StepC({ handleNext, handleStepC }) {
   const [fatherEducation, setFatherEducation] = useState({});
   const [fatherLastname, setFatherLastname] = useState("");
   const [fatherFirstname, setFatherFirstname] = useState("");
@@ -21,42 +21,68 @@ export default function StepC({ handleNext }) {
   const [guardianLastname, setGuardianLastname] = useState("");
   const [guardianFirstname, setGuardianFirstname] = useState("");
   const [guardianMiddlename, setGuardianMiddlename] = useState("");
-  const [guardianWorkingQuarantine, setGuardianWorkingQuarantine] = useState(
-    null
-  );
+  const [guardianWorkingQuarantine, setGuardianWorkingQuarantine] =
+    useState(null);
   const [guardianNumber, setGuardianNumber] = useState("");
 
   const [fatherEmployment, setFatherEmployment] = useState({});
   const [motherEmployment, setMotherEmployment] = useState({});
   const [guardianEmployment, setGuardianEmployment] = useState({});
 
+  const handleSubmit = () => {
+    handleStepC({
+      fatherEducation,
+      fatherLastname,
+      fatherFirstname,
+      fatherMiddlename,
+      fatherWorkingQuarantine,
+      fatherNumber,
+      motherEducation,
+      motherLastname,
+      motherFirstname,
+      motherMiddlename,
+      motherWorkingQuarantine,
+      motherNumber,
+      guardianEducation,
+      guardianLastname,
+      guardianFirstname,
+      guardianMiddlename,
+      guardianWorkingQuarantine,
+      guardianNumber,
+      fatherEmployment,
+      motherEmployment,
+      guardianEmployment,
+    });
+  };
+
   const handleFatherEducation = (event) => {
-    setFatherEducation({ name: event.target.name, label: event.target.label });
+    setFatherEducation({ name: event.target.name, label: event.target.value });
+    console.log("LABEL", event.target.value);
   };
 
   const handleMotherEducation = (event) => {
-    setMotherEducation({ name: event.target.name, label: event.target.label });
+    setMotherEducation({ name: event.target.name, label: event.target.value });
   };
 
   const handleGuardianEducation = (event) => {
     setGuardianEducation({
       name: event.target.name,
-      label: event.target.label,
+      label: event.target.value,
     });
   };
 
   const handleFatherEmployment = (event) => {
-    setFatherEmployment({ name: event.target.name, label: event.target.label });
+    setFatherEmployment({ name: event.target.name, label: event.target.value });
   };
 
   const handleMotherEmployment = (event) => {
-    setMotherEmployment({ name: event.target.name, label: event.target.label });
+    setMotherEmployment({ name: event.target.name, label: event.target.value });
   };
 
   const handleGuardianEmployment = (event) => {
     setGuardianEmployment({
       name: event.target.name,
-      label: event.target.label,
+      label: event.target.value,
     });
   };
 
@@ -73,7 +99,8 @@ export default function StepC({ handleNext }) {
   };
 
   return (
-    <div className="stepC">
+    <section>
+      {/* <h2 className="section__title">Section C</h2> */}
       <div className="row">
         <ParentGuardianInfo
           label="Father"
@@ -128,10 +155,10 @@ export default function StepC({ handleNext }) {
         />
       </div>
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" color="primary" onClick={handleNext}>
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Next
         </Button>
       </div>
-    </div>
+    </section>
   );
 }

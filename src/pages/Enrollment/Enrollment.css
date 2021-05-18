@@ -57,6 +57,10 @@
   margin-bottom: 5px;
 }
 
+section {
+  margin: 50px 0;
+}
+
 .section__title {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -65,4 +69,56 @@
 .enrollment__buttonContainer {
   float: right;
   margin: 20px 0;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+/* SUCCESS */
+
+.success .MuiSvgIcon-root {
+  width: 7em !important;
+  height: 7em !important;
+  color: var(--primary-color) !important;
+}
+
+.success p {
+  color: #393939;
+  font-size: 18px;
+}
+
+.success__code {
+  background-color: #cae6ff42;
+  padding: 3px 40px;
+  border-radius: 25px;
+  margin: 10px 0;
+}
+
+.success__code h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.success h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.success h4:last-child {
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.success h4 span {
+  color: var(--primary-color);
+  font-size: 22px;
 }
