@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
+import AssessmentsTable from "./AssessmentsTable";
 import { db } from "../../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../../shared/utilities";
 
 function Assessments() {
-  const [students, setStudents] = useState([]);
+  const [newEnrollees, setNewEnrollees] = useState([]);
   const [studentsLoading, setStudentsLoading] = useState(true);
-
+  console.log("NEW ENROLLEES", newEnrollees);
   useEffect(() => {
     const unsubscribe = db
-      .collection("assessments")
-      .orderBy("timestamp", "asc")
+      .collection("students")
+      .where("newEnrollee", "==", true)
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        setStudents(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+        setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
         setStudentsLoading(false);
       });
     return () => {
@@ -22,6 +24,7 @@ function Assessments() {
   return (
     <div>
       <h1>Assessments</h1>
+      <AssessmentsTable enrollees={newEnrollees} />
     </div>
   );
 }

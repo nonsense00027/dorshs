@@ -15,6 +15,7 @@ import Success from "./Success";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { db } from "../../shared/configs/firebase";
+import firebase from "firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,6 +142,7 @@ export default function Steps() {
         ...stepc,
         ...stepd,
         newEnrollee: true,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((result) => {
         setIdCode(result.id);
