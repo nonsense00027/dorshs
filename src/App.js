@@ -14,11 +14,11 @@ function App() {
           <Route path="/admin">
             <Admin />
           </Route>
-          <Route path="/landing">
-            <Landing />
+          <Route path="/enrollment">
+            <Enrollment />
           </Route>
           <Route path="/">
-            <Enrollment />
+            <Landing />
           </Route>
         </Switch>
       </Router>

@@ -5,7 +5,7 @@ function Admin() {
   const handleLogin = () => {};
   return (
     <div className="base-container">
-      <div className="header">
+      <div className="login__header">
         <h2>Admin Login</h2>
       </div>
       <div className="content">

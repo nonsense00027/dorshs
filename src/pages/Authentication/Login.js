@@ -48,12 +48,14 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 450,
-    height: 700,
+    // width: 450,
+    // height: 700,
+    width: "100%",
+    height: "100%",
   },
 }));
 
-export default function Login() {
+export default function Login({ setOpen }) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -80,7 +82,7 @@ export default function Login() {
           >
             <Tab label="Student" {...a11yProps(0)} />
             <Tab label="Teacher" {...a11yProps(1)} />
-            <Tab label="Admin" {...a11yProps(2)} />
+            {/* <Tab label="Admin" {...a11yProps(2)} /> */}
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -89,14 +91,14 @@ export default function Login() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Student />
+            <Student setOpen={setOpen} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Teacher />
+            <Teacher setOpen={setOpen} />
           </TabPanel>
-          <TabPanel value={value} index={2} dir={theme.direction}>
+          {/* <TabPanel value={value} index={2} dir={theme.direction}>
             <Admin />
-          </TabPanel>
+          </TabPanel> */}
         </SwipeableViews>
       </div>
     </div>

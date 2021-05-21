@@ -20,6 +20,7 @@ import firebase from "firebase";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    paddingTop: 120,
   },
   button: {
     marginTop: theme.spacing(1),

@@ -1,31 +1,49 @@
-import React from "react";
-import { Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, TextField } from "@material-ui/core";
 
-function Teacher() {
+function Teacher({ setOpen }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const handleLogin = () => {};
   return (
     <div className="base-container">
-      <div className="header">
+      <div className="login__header">
         <h2>Teacher Login</h2>
       </div>
       <div className="content">
         <div className="form">
           <form onSubmit={handleLogin}>
             <div className="form-group">
-              <label>
-                <h4>Teacher Username</h4>
-              </label>
-              <input type="text" name="username" placeholder="Username" />
+              <p>Teacher Username</p>
+              <TextField
+                required
+                variant="outlined"
+                fullWidth
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
             <div className="form-group">
-              <label>
-                <h4> Password</h4>
-              </label>
-              <input type="password" name="password" placeholder="Password" />
+              <p> Password</p>
+              <TextField
+                required
+                variant="outlined"
+                type="password"
+                fullWidth
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <Button className="login-button" fullWidth type="submit">
               Login
             </Button>
+            {/* <Button
+              fullWidth
+              variant="contained"
+              onClick={() => setOpen(false)}
+            >
+              Cancel
+            </Button> */}
           </form>
         </div>
       </div>
