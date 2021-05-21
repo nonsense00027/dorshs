@@ -4,6 +4,8 @@ import { Button, Container, Dialog, DialogContent } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { makeStyles } from "@material-ui/core/styles";
 import Login from "../Authentication/Login";
+import { useUserContext } from "../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -11,8 +13,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getButton = (user, setOpen, history) => {
+  console.log("USER IN NAVBARR", user);
+  if (user) {
+    return (
+      <Button
+        variant="contained"
+        onClick={() => history.push(`/student/${user.lrnNo}`)}
+      >
+        Account
+        <ExitToAppIcon />
+      </Button>
+    );
+  } else {
+    return (
+      <Button variant="contained" onClick={() => setOpen(true)}>
+        Login
+        <ExitToAppIcon />
+      </Button>
+    );
+  }
+};
+
 function Navbar() {
+  const { user } = useUserContext();
   const classes = useStyles();
+  const history = useHistory();
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,10 +58,7 @@ function Navbar() {
           <p>About</p>
           <p>Resources</p>
           <p>FAQ</p>
-          <Button variant="contained" onClick={() => setOpen(true)}>
-            Login
-            <ExitToAppIcon />
-          </Button>
+          {getButton(user, setOpen, history)}
         </div>
       </Container>
 

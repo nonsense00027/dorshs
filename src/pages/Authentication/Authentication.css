@@ -70,3 +70,10 @@ form {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.MuiCircularProgress-colorPrimary {
+  width: 20px !important;
+  height: inherit !important;
+  color: #fff !important;
+  margin-right: 10px;
+}
