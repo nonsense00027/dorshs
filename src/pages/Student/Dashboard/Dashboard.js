@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import SchoolInfo from './SchoolInfo';
-import StudentInfo from './StudentInfo';
-import ParentInfo from './ParentInfo';
-import Household from './Household';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import SchoolInfo from "./SchoolInfo";
+import StudentInfo from "./StudentInfo";
+import ParentInfo from "./ParentInfo";
+import Household from "./Household";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,21 +40,21 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `nav-tab-${index}`,
-    'aria-controls': `nav-tabpanel-${index}`,
+    "aria-controls": `nav-tabpanel-${index}`,
   };
 }
 
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+// function LinkTab(props) {
+//   return (
+//     <Tab
+//       component="a"
+//       onClick={(event) => {
+//         event.preventDefault();
+//       }}
+//       {...props}
+//     />
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,17 +73,35 @@ export default function NavTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="default">
         <Tabs
           variant="fullWidth"
           value={value}
+          indicatorColor="primary"
+          textColor="primary"
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <LinkTab label="Grade Level And School Information" href="/drafts" {...a11yProps(0)} />
-          <LinkTab label="Student Information" href="/trash" {...a11yProps(1)} />
-          <LinkTab label="Parent/ Guardian Information " href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Household Capacity And Access To Distance Learning" href="/spam" {...a11yProps(3)} />
+          <Tab
+            label="Grade Level And School Information"
+            // href="/drafts"
+            {...a11yProps(0)}
+          />
+          <Tab
+            label="Student Information"
+            // href="/trash"
+            {...a11yProps(1)}
+          />
+          <Tab
+            label="Parent/ Guardian Information "
+            // href="/spam"
+            {...a11yProps(2)}
+          />
+          <Tab
+            label="Household Capacity And Access To Distance Learning"
+            // href="/spam"
+            {...a11yProps(3)}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

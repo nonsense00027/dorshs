@@ -5,7 +5,8 @@ import Landing from "./pages/Landing/Landing";
 import Enrollment from "./pages/Enrollment/Enrollment";
 import Admin from "./pages/Admin/Admin";
 import StepC from "./pages/Enrollment/StepC";
-import Dashboard from './pages/Student/Dashboard/Dashboard';
+import Dashboard from "./pages/Student/Dashboard/Dashboard";
+import Student from "./pages/Student/Student";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/enrollment">
             <Enrollment />
+          </Route>
+          <Route path="/student">
+            <Student />
           </Route>
           <Route path="/landing">
             <Landing />
