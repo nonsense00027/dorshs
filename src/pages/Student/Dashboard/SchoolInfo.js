@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import './Dashboard.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,38 +25,113 @@ export default function FormPropsTextFields() {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+      <div className="schoolInfo"> 
         <h4>
             Grade Level And School Information
         </h4>
-      <div>
-        <TextField fullWidth disabled id="standard-disabled" label="School Year" defaultValue="2020-2021" variant="outlined" />
+      <div className='row'>
+        <div className="col">
+          <p>
+            School Year
+          </p>
+        <TextField fullWidth disabled id="standard-disabled" defaultValue="2020-2021" variant="outlined" />
+        </div>
+        <div className="col">
         <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="No LRN" />
         <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="With LRN" />
         <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Returning (Balik-Aral)" />
+        </div>
       </div>
-      <div>
-      <TextField fullWidth disabled id="standard-disabled" label="Grade Level to enroll" defaultValue="Grade 12" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="Last Grade level completed" defaultValue="Grade 12" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="Last School Year completed" defaultValue="2020-2021" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="Last School Attended" defaultValue="UIC" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="School Id" defaultValue="180000002712" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="School Address" defaultValue="Father Selga St." variant="outlined" />
-      <p>School Type</p>
+      <div className="row">
+        <div className="col">
+          <p>
+            Grade Level to enroll
+          </p>
+      <TextField fullWidth disabled id="standard-disabled"  defaultValue="Grade 12" variant="outlined" />  
+        </div>
+        <div className="col">
+          <p>
+            Last Grade Level completed
+          </p>
+          <TextField fullWidth disabled id="standard-disabled"  defaultValue="Grade 12" variant="outlined" />
+        </div>
+        <div className="col">
+          <p>
+            Last School Year completed
+          </p>
+          <TextField fullWidth disabled id="standard-disabled"  defaultValue="2020-2021" variant="outlined" />
+        </div>
+        <div className="col">
+          <p>
+            Last School Attended
+          </p>
+         <TextField fullWidth disabled id="standard-disabled" defaultValue="UIC" variant="outlined" />
+        </div>
+        <div className="col">
+          <p>
+            School Id
+          </p>
+         <TextField fullWidth disabled id="standard-disabled"  defaultValue="180000002712" variant="outlined" />
+        </div>
+        <div className="col">
+          <p>
+            School Address
+          </p>
+        <TextField fullWidth disabled id="standard-disabled"defaultValue="Father Selga St." variant="outlined" />
+        </div>
+      </div>
+      
+    <div>
+        <p>School Type</p>
+
+    </div>
       <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Public" />
       <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Private" />
-      <TextField fullWidth disabled id="standard-disabled" label="School to enroll in" defaultValue="UIC" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="School Id" defaultValue="180000002712" variant="outlined" />
-      <TextField fullWidth disabled id="standard-disabled" label="School Address" defaultValue="Father Selga St." variant="outlined" />
+      <div className="row">
+      <div className="col">
+        <p>
+          School to enroll in
+        </p>
+      <TextField fullWidth disabled id="standard-disabled"  defaultValue="UIC" variant="outlined" />
+      </div>
+      <div className="col">
+        <p>
+          School Id
+        </p>
+      <TextField fullWidth disabled id="standard-disabled"  defaultValue="180000002712" variant="outlined" />
+      </div>
+      <div className="col">
+        <p>
+          School Address
+        </p>
+      <TextField fullWidth disabled id="standard-disabled"  defaultValue="Father Selga St." variant="outlined" />
+      </div>
       </div>
       <div>
           <h4>
               FOR SENIOR HIGH SCHOOL ONLY
           </h4>
-          <TextField fullWidth disabled id="standard-disabled" label="Semester (1st/2nd)" defaultValue="1st" variant="outlined" />
-          <TextField fullWidth disabled id="standard-disabled" label="Track" defaultValue="Technical Vocational Livelihood" variant="outlined" />
-          <TextField fullWidth disabled id="standard-disabled" label="Strand (if any)" defaultValue="ICT" variant="outlined" />
+          <div className="row">
+            <div className="col">
+              <p>
+                Semester (1st/ 2nd)
+              </p>
+            <TextField fullWidth disabled id="standard-disabled"  defaultValue="1st" variant="outlined" />  
+            </div>
+            <div className="col">
+              <p>
+                Track
+              </p>
+            <TextField fullWidth disabled id="standard-disabled"  defaultValue="Technical Vocational Livelihood" variant="outlined" />
+            </div>
+            <div className="col">
+              <p>
+                Strand (if/ any)
+              </p>
+            <TextField fullWidth disabled id="standard-disabled"  defaultValue="ICT" variant="outlined" />
+            </div>
+          </div>
       </div>
-    </form>
+      </div>
   );
 }
