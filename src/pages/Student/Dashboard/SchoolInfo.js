@@ -55,12 +55,15 @@ export default function FormPropsTextFields() {
           </p>
           <TextField fullWidth disabled id="standard-disabled"  defaultValue="Grade 12" variant="outlined" />
         </div>
+
         <div className="col">
           <p>
             Last School Year completed
           </p>
           <TextField fullWidth disabled id="standard-disabled"  defaultValue="2020-2021" variant="outlined" />
         </div>
+      </div>
+      <div className="row">
         <div className="col">
           <p>
             Last School Attended
