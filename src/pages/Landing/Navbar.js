@@ -54,10 +54,12 @@ function Navbar() {
         </div>
 
         <div className="navbar__right">
-          <p className="home">Home</p>
-          <p>About</p>
-          <p>Resources</p>
-          <p>FAQ</p>
+          <p className="navbar__links" onClick={() => history.push("/")}>
+            Home
+          </p>
+          <p className="navbar__links">About</p>
+          <p className="navbar__links">Resources</p>
+          <p className="navbar__links">FAQ</p>
           {getButton(user, setOpen, history)}
         </div>
       </Container>

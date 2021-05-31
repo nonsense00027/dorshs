@@ -77,3 +77,25 @@ form {
   color: #fff !important;
   margin-right: 10px;
 }
+
+.login .MuiInputBase-root {
+  border: 0.5px solid rgba(255, 255, 255, 0.8) !important;
+  color: #fff !important;
+}
+
+/* .login .Mui-focused {
+  border: 0.5px solid rgba(255, 255, 255, 0.8) !important;
+  outline: none !important;
+} */
+
+.login .MuiInputBase-input:focus,
+.login .MuiInputBase-input:hover {
+  /* border: 0.5px solid rgba(255, 255, 255, 0.8) !important; */
+  outline: none !important;
+}
+
+.login .MuiTextField-root:focus,
+.login .MuiTextField-root:hover {
+  /* border: 0.5px solid rgba(255, 255, 255, 0.8) !important; */
+  outline: none !important;
+}
