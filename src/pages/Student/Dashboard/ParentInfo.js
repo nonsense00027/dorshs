@@ -20,19 +20,18 @@ export default function BasicTextFields() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
+        
         <div>
-        <p>
-                Father's Fullname
-        </p>
+          <p>Father's Last Name</p>
+        <TextField disabled id="outlined-disabled" defaultValue="Miras" variant="outlined" />
         </div>
         <div>
-        <TextField disabled id="outlined-disabled" label="Father's Last name" defaultValue="Miras" variant="outlined" />
+          <p>Father's First Name</p>
+        <TextField disabled id="outlined-disabled" defaultValue="Conrado" variant="outlined" />
         </div>
         <div>
-        <TextField disabled id="outlined-disabled" label="Father's First name" defaultValue="Conrado" variant="outlined" />
-        </div>
-        <div>
-        <TextField disabled id="outlined-disabled" label="Father's Middle name" defaultValue="Serban" variant="outlined" />
+          <p>Father's Middle Name</p>
+        <TextField disabled id="outlined-disabled" defaultValue="Serban" variant="outlined" />
         </div>
         <div>
             <p>
@@ -44,8 +43,12 @@ export default function BasicTextFields() {
             <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="College graduate" /> 
             <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Vocational" /> 
             <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Masters/ Doctorate degree" />
-            <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Did not attend school" />      
-            <TextField disabled id="outlined-disabled" label="others" defaultValue="others" variant="outlined" /> 
+            <FormControlLabel disabled control={<Checkbox checked name="checkedE" />} label="Did not attend school" />  
+            <div>
+
+            <p>others</p>    
+            <TextField disabled id="outlined-disabled" defaultValue="others" variant="outlined" /> 
+            </div>
             </FormGroup>
         <div>
             <p>
@@ -70,7 +73,7 @@ export default function BasicTextFields() {
             <p>
                 Contact Number
             </p>
-            <TextField disabled id="outlined-disabled" label="Contact Number" defaultValue="+639483879921" variant="outlined" /> 
+            <TextField disabled id="outlined-disabled"  defaultValue="+639483879921" variant="outlined" /> 
         </div>
         </div>
     </form>
