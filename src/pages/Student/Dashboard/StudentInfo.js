@@ -176,10 +176,11 @@ export default function BasicTextFields() {
             </div>
           </div>
 
-
-      <div className={classes.address}> 
+      <div>
         <h4>Address</h4>
-        <div>
+      </div>
+      <div className="row">
+        <div className='col'>
           <p>House Number and Street</p>
           <TextField
             fullWidth
@@ -187,7 +188,9 @@ export default function BasicTextFields() {
             id="outlined-disabled"
             defaultValue="#532-A Greenhills St."
             variant="outlined"
-          />
+            />
+          </div>
+          <div className="col">
           <p>Subdivision/ Village/ Zone</p>
           <TextField
             fullWidth
@@ -195,7 +198,9 @@ export default function BasicTextFields() {
             id="outlined-disabled"
             defaultValue="DDF Village"
             variant="outlined"
-          />
+            />
+          </div>
+          <div className="col">
           <p>Barangay</p>
           <TextField
             fullWidth
@@ -203,17 +208,21 @@ export default function BasicTextFields() {
             id="outlined-disabled"
             defaultValue="Mandug"
             variant="outlined"
-          />
+            />
+          </div>
         </div>
-        <div>
-          <p>City/ Municipality</p>
+        <div className="row">
+          <div className="col">
+          <p>City/ Municapality</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
             defaultValue="Davao City"
             variant="outlined"
-          />
+            />
+          </div>
+          <div className="col">
           <p>Province</p>
           <TextField
             fullWidth
@@ -221,7 +230,9 @@ export default function BasicTextFields() {
             id="outlined-disabled"
             defaultValue="Davao Del Sur"
             variant="outlined"
-          />
+            />
+          </div>
+          <div className="col">
           <p>Region</p>
           <TextField
             fullWidth
@@ -229,9 +240,9 @@ export default function BasicTextFields() {
             id="outlined-disabled"
             defaultValue="Region 11"
             variant="outlined"
-          />
+            />
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
   );
 }
