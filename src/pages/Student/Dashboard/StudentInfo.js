@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(3),
     },
   },
+  address: {  
+      "& .MuiTextField-root": {
+        width: "160ch",
+        margin: theme.spacing(1),
+      },
+  },
 }));
 
 export default function BasicTextFields() {
@@ -166,7 +172,7 @@ export default function BasicTextFields() {
         />
       </div>
 
-      <div>
+      <div className={classes.address}> 
         <h4>Address</h4>
         <div>
           <TextField
