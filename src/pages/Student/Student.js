@@ -3,13 +3,14 @@ import "./Student.css";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Requirements from "./Requirements/Requirements";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { db } from "../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../shared/utilities";
 import { CircularProgress, Fab, Tooltip } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import EnrollDialog from "./EnrollDialog";
+import { useUserContext } from "../../context/UserContext";
 
 const getComponent = (index) => {
   switch (index) {
@@ -27,34 +28,42 @@ const getComponent = (index) => {
 };
 function Student() {
   const params = useParams();
+  const history = useHistory();
+  const { user } = useUserContext();
   const [activeTab, setActiveTab] = useState(0);
   const [loading, setLoading] = useState(true);
   const [student, setStudent] = useState(null);
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
 
   useEffect(() => {
-    if (params.lrn) {
-      const unsubscribe = db
-        .collection("students")
-        .where("lrnNo", "==", params.lrn)
-        .onSnapshot((snapshot) => {
-          if (snapshot.docs.length > 0) {
-            const foundUser = snapshot.docs.map((doc) =>
-              collectIdsAndDocs(doc)
-            )[0];
-            console.log("STUDENTT", foundUser);
-            setStudent(foundUser);
-            setLoading(false);
-          } else {
-            console.log("USER NOT FOUND");
-            // setLoading(false);
-          }
-          // setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-          // setStudentsLoading(false);
-        });
-      return () => {
-        unsubscribe();
-      };
+    if (user) {
+      if (params.lrn) {
+        const unsubscribe = db
+          .collection("students")
+          .where("lrnNo", "==", params.lrn)
+          .onSnapshot((snapshot) => {
+            if (snapshot.docs.length > 0) {
+              const foundUser = snapshot.docs.map((doc) =>
+                collectIdsAndDocs(doc)
+              )[0];
+              console.log("STUDENTT", foundUser);
+              setStudent(foundUser);
+              setLoading(false);
+            } else {
+              console.log("USER NOT FOUND");
+              history.push("/");
+
+              // setLoading(false);
+            }
+            // setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+            // setStudentsLoading(false);
+          });
+        return () => {
+          unsubscribe();
+        };
+      }
+    } else {
+      history.push("/");
     }
   }, []);
   const handleTabChange = (tabIndex) => {
