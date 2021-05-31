@@ -25,6 +25,7 @@ function Student({ setOpen }) {
           console.log("FOUND", foundUser);
           userLogin(foundUser);
           setLoading(false);
+          history.push(`/student/${foundUser.lrnNo}`);
         } else {
           console.log("USER NOT FOUND");
           setLoading(false);

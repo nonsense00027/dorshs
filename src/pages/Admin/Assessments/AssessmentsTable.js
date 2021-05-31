@@ -28,8 +28,9 @@ function Alert(props) {
 }
 
 const columns = [
-  { id: "lastname", label: "Lastname", minWidth: 150 },
-  { id: "firstname", label: "Firstname", minWidth: 150 },
+  { id: "lrnNo", label: "LRN No.", minWidth: 100 },
+  { id: "lastname", label: "Lastname", minWidth: 160 },
+  { id: "firstname", label: "Firstname", minWidth: 160 },
 ];
 
 const StyledTableCell = withStyles((theme) => ({
@@ -124,7 +125,8 @@ function AssessmentsTable({ enrollees }) {
                           <LaunchIcon
                             onClick={() =>
                               window.open(
-                                `${window.location.href}/${row.id}`,
+                                // `${window.location.href}/${row.id}`,
+                                `/student/${row.lrnNo}`,
                                 "_blank"
                               )
                             }

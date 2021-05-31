@@ -71,7 +71,7 @@ form {
   text-decoration: underline;
 }
 
-.MuiCircularProgress-colorPrimary {
+.login .MuiCircularProgress-colorPrimary {
   width: 20px !important;
   height: inherit !important;
   color: #fff !important;

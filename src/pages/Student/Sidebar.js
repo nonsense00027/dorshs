@@ -23,15 +23,25 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Sidebar({ activeTab, handleTabChange }) {
+const getTabs = (status) => {
+  if (status) {
+    return [
+      { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
+      { id: 1, label: "Requirements", icon: <PersonIcon /> },
+    ];
+  } else {
+    return [
+      { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
+      { id: 1, label: "Requirements", icon: <PersonIcon /> },
+      { id: 2, label: "Academic Record", icon: <SupervisorAccountIcon /> },
+      { id: 3, label: "Subjects", icon: <DnsIcon /> },
+      { id: 4, label: "Settings", icon: <SettingsIcon /> },
+    ];
+  }
+};
+
+export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
   const classes = useStyles();
-  const [tabs, setTabs] = useState([
-    { id: 0, label: "Assessments", icon: <AssessmentIcon /> },
-    { id: 1, label: "Students", icon: <PersonIcon /> },
-    { id: 2, label: "Teachers", icon: <SupervisorAccountIcon /> },
-    { id: 3, label: "Subjects", icon: <DnsIcon /> },
-    { id: 4, label: "Settings", icon: <SettingsIcon /> },
-  ]);
 
   return (
     <div className="sidebar">
@@ -42,7 +52,7 @@ export default function Sidebar({ activeTab, handleTabChange }) {
       </div> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
-          {tabs.map((tab) => (
+          {getTabs(studentStatus).map((tab) => (
             <ListItem
               className={activeTab === tab.id && `active`}
               button
