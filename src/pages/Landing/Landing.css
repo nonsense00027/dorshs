@@ -19,8 +19,12 @@
   top: 0;
   align-items: center;
   justify-content: space-between;
+  z-index: 99;
 }
 
+.navbar__links {
+  cursor: pointer;
+}
 .MuiContainer-root {
   display: flex !important;
   align-items: center !important;
@@ -61,4 +65,45 @@
 
 .navbar__right .MuiSvgIcon-root {
   margin-left: 7px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.landing .mainCarousel {
+  height: 100vh;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: 100%;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login__dialog .MuiDialog-paper {
+  background: transparent !important;
+  color: #fff !important;
 }

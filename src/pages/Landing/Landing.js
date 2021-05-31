@@ -1,6 +1,7 @@
 import React from "react";
 import "./Landing.css";
 import Navbar from "./Navbar";
+import MainCarousel from "./MainCarousel";
 
 function Landing() {
   return (
@@ -9,6 +10,9 @@ function Landing() {
       <Navbar />
 
       {/* MAIN SECTION */}
+      <div className="landing__mainCarousel">
+        <MainCarousel />
+      </div>
     </div>
   );
 }

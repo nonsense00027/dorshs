@@ -22,11 +22,7 @@ function TabPanel(props) {
       aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -82,24 +78,11 @@ export default function NavTabs() {
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <Tab
-            label="Grade Level And School Information"
-            // href="/drafts"
-            {...a11yProps(0)}
-          />
-          <Tab
-            label="Student Information"
-            // href="/trash"
-            {...a11yProps(1)}
-          />
-          <Tab
-            label="Parent/ Guardian Information "
-            // href="/spam"
-            {...a11yProps(2)}
-          />
+          <Tab label="Grade Level And School Information" {...a11yProps(0)} />
+          <Tab label="Student Information" {...a11yProps(1)} />
+          <Tab label="Parent/ Guardian Information " {...a11yProps(2)} />
           <Tab
             label="Household Capacity And Access To Distance Learning"
-            // href="/spam"
             {...a11yProps(3)}
           />
         </Tabs>
