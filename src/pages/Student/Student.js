@@ -12,10 +12,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import EnrollDialog from "./EnrollDialog";
 import { useUserContext } from "../../context/UserContext";
 
-const getComponent = (index) => {
+const getComponent = (index, student) => {
   switch (index) {
     case 0:
-      return <Dashboard />;
+      return <Dashboard student={student} />;
     case 1:
       return <Requirements />;
     // case 2:
@@ -93,35 +93,49 @@ function Student() {
         activeTab={activeTab}
         handleTabChange={handleTabChange}
       />
-      <div className="student__content">{getComponent(activeTab)}</div>
+      <div className="student__content">{getComponent(activeTab, student)}</div>
 
       {/* <Dashboard /> */}
 
-      <EnrollDialog
-        enrollDialogOpen={enrollDialogOpen}
-        setEnrollDialogOpen={setEnrollDialogOpen}
-        student={student}
-      />
-      <Tooltip title="Enroll Student" aria-label="add" arrow placement="top">
-        <Fab
-          color="primary"
-          aria-label="add"
-          className="student__enrollButton"
-          onClick={() => setEnrollDialogOpen(true)}
-        >
-          <CheckIcon />
-        </Fab>
-      </Tooltip>
-      <Tooltip title="Remove Student" aria-label="add" arrow placement="bottom">
-        <Fab
-          // color="primary"
-          aria-label="add"
-          className="student__removeButton"
-          // onClick={() => setOpen(true)}
-        >
-          <CloseIcon />
-        </Fab>
-      </Tooltip>
+      {user.role === "admin" && (
+        <>
+          <EnrollDialog
+            enrollDialogOpen={enrollDialogOpen}
+            setEnrollDialogOpen={setEnrollDialogOpen}
+            student={student}
+          />
+          <Tooltip
+            title="Enroll Student"
+            aria-label="add"
+            arrow
+            placement="top"
+          >
+            <Fab
+              color="primary"
+              aria-label="add"
+              className="student__enrollButton"
+              onClick={() => setEnrollDialogOpen(true)}
+            >
+              <CheckIcon />
+            </Fab>
+          </Tooltip>
+          <Tooltip
+            title="Remove Student"
+            aria-label="add"
+            arrow
+            placement="bottom"
+          >
+            <Fab
+              // color="primary"
+              aria-label="add"
+              className="student__removeButton"
+              // onClick={() => setOpen(true)}
+            >
+              <CloseIcon />
+            </Fab>
+          </Tooltip>
+        </>
+      )}
     </div>
   );
 }

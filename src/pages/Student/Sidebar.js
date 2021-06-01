@@ -13,12 +13,17 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     // maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
+  },
+  large: {
+    width: theme.spacing(20),
+    height: theme.spacing(20),
   },
 }));
 
@@ -45,7 +50,7 @@ const getTabs = (status) => {
 
 export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
   const history = useHistory();
-  const { userLogout } = useUserContext();
+  const { user, userLogout } = useUserContext();
   const classes = useStyles();
 
   const handleLogout = () => {
@@ -55,11 +60,11 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
 
   return (
     <div className="sidebar">
-      {/* <div className="sidebar__header">
+      <div className="sidebar__header">
         <div className="sidebar__logo">
-          <img src={logo} alt="" />
+          <img src="https://i.mydramalist.com/2xoPwc.jpg" />
         </div>
-      </div> */}
+      </div>
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           {getTabs(studentStatus).map((tab) => (
@@ -73,17 +78,19 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
               <ListItemText primary={tab.label} />
             </ListItem>
           ))}
-          <ListItem
-            // className={activeTab === tab.id && `active`}
-            button
-            key={5}
-            onClick={() => handleLogout()}
-          >
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-          </ListItem>
+          {user.role !== "admin" && (
+            <ListItem
+              // className={activeTab === tab.id && `active`}
+              button
+              key={5}
+              onClick={() => handleLogout()}
+            >
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          )}
         </List>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   CircularProgress,
@@ -9,10 +9,13 @@ import {
   TextField,
 } from "@material-ui/core";
 import { db } from "../../shared/configs/firebase";
+import { collectIdsAndDocs } from "../../shared/utilities";
+import { SubjectTwoTone } from "@material-ui/icons";
 
 function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
-  const [level, setLevel] = useState(null);
+  const [level, setLevel] = useState("");
   const [loading, setLoading] = useState(false);
+  const [subjects, setSubjects] = useState([]);
 
   const handleChange = (event) => {
     setLevel(event.target.value);
@@ -20,12 +23,21 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
 
   const handleEnrollStudent = (e) => {
     e.preventDefault();
+    console.log(subjects);
+    console.log(level);
+    var subjectsToLoad = subjects.filter((item) => item.level === level);
+    console.log("SUBJECTS TO LOAD", subjectsToLoad);
     console.log(student.id);
+    var academicRecord = student.academicRecord || [];
+    var newAcademicRecord = [...academicRecord, { [level]: subjectsToLoad }];
+    // console.log("ACADS", newAcademicRecord);
+    // newAcademicRecord.forEach((item) => console.log(item[level]));
     db.collection("students")
       .doc(student.id)
       .set(
         {
           newEnrollee: false,
+          academicRecord: newAcademicRecord,
         },
         { merge: true }
       )
@@ -34,6 +46,19 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
         setEnrollDialogOpen(false);
       });
   };
+
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("subjects")
+      .orderBy("level", "asc")
+      .onSnapshot((snapshot) => {
+        setSubjects(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <Dialog
       className="subjects__addForm"

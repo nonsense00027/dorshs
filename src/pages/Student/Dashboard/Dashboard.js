@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavTabs() {
+export default function NavTabs({ student }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -88,13 +88,13 @@ export default function NavTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SchoolInfo />
+        <SchoolInfo student={student} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <StudentInfo />
+        <StudentInfo student={student} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ParentInfo />
+        <ParentInfo student={student} />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Household />

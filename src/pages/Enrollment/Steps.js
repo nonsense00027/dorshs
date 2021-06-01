@@ -146,7 +146,7 @@ export default function Steps() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((result) => {
-        setIdCode(result.id);
+        setIdCode({ lrn: stepb.lrnNo, id: result.id });
         setOpen(false);
         handleNext();
       });

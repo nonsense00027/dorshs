@@ -9,6 +9,7 @@ import Teachers from "./Teachers/Teachers";
 import Subjects from "./Subjects/Subjects";
 import Settings from "./Settings/Settings";
 import { useUserContext } from "../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
 const getComponent = (index) => {
   switch (index) {
@@ -26,13 +27,18 @@ const getComponent = (index) => {
 };
 
 function Admin() {
+  const history = useHistory();
   const { user } = useUserContext();
   const [activeTab, setActiveTab] = useState(0);
   const handleTabChange = (tabIndex) => {
     setActiveTab(tabIndex);
   };
 
-  if (!user) {
+  if (user) {
+    if (user.role !== "admin") {
+      history.push("/");
+    }
+  } else {
     return <AdminLogin />;
   }
 

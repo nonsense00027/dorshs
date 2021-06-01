@@ -19,7 +19,7 @@ function App() {
           <Route path="/enrollment">
             <Enrollment />
           </Route>
-          <Route path="/student">
+          <Route path="/student/:lrn">
             <Student />
           </Route>
           <Route path="/">

@@ -127,4 +127,6 @@ section {
 .success h4 span {
   color: var(--primary-color);
   font-size: 22px;
+  cursor: pointer;
+  text-decoration: underline;
 }

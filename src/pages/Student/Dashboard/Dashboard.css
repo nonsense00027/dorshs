@@ -56,3 +56,7 @@
 .mt {
   width: 1000px;
 }
+
+.parentInfo {
+  display: flex;
+}

@@ -22,15 +22,15 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
-  address: {  
-      "& .MuiTextField-root": {
-        width: "160ch",
-        margin: theme.spacing(1),
-      },
+  address: {
+    "& .MuiTextField-root": {
+      width: "160ch",
+      margin: theme.spacing(1),
+    },
   },
 }));
 
-export default function BasicTextFields() {
+export default function BasicTextFields({ student }) {
   const classes = useStyles();
 
   return (
@@ -42,7 +42,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="1884541365"
+            defaultValue={student.birthCertificateNo}
             variant="outlined"
           />
         </div>
@@ -52,7 +52,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="1884541365"
+            defaultValue={student.lrnNo}
             variant="outlined"
           />
         </div>
@@ -64,7 +64,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Miras"
+            defaultValue={student.lastname}
             variant="outlined"
           />
         </div>
@@ -74,7 +74,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Jaco Raven"
+            defaultValue={student.firstname}
             variant="outlined"
           />
         </div>
@@ -85,7 +85,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Remonde"
+            defaultValue={student.middlename}
             variant="outlined"
           />
         </div>
@@ -95,7 +95,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="JR"
+            defaultValue={student.extensionname}
             variant="outlined"
           />
         </div>
@@ -109,7 +109,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="02/06/2000"
+            defaultValue={student.birthdate}
             variant="outlined"
           />
         </div>
@@ -120,7 +120,7 @@ export default function BasicTextFields() {
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="20"
+            defaultValue={student.age}
             variant="outlined"
           />
         </div>
@@ -129,12 +129,12 @@ export default function BasicTextFields() {
           <p>Sex</p>
           <FormControlLabel
             disabled
-            control={<Checkbox checked name="checkedE" />}
+            control={<Checkbox checked={student.sex === "male"} />}
             label="Male"
           />
           <FormControlLabel
             disabled
-            control={<Checkbox checked name="checkedE" />}
+            control={<Checkbox checked checked={student.sex === "female"} />}
             label="Female"
           />
         </div>
@@ -143,106 +143,106 @@ export default function BasicTextFields() {
         <p>Belonging to Indigenous People (IP)</p>
         <FormControlLabel
           disabled
-          control={<Checkbox checked name="checkedE" />}
+          control={<Checkbox checked={student.ip === true} name="checkedE" />}
           label="Yes"
         />
         <FormControlLabel
           disabled
-          control={<Checkbox checked name="checkedE" />}
+          control={<Checkbox checked={student.ip === false} name="checkedE" />}
           label="No"
         />
       </div>
       {/* </form> */}
-        <div className="row">
-          <div className="col">
-             <p>Mother Tounge</p>
-               <TextField
-                fullWidth
-                disabled
-                id="outlined-disabled"
-                defaultValue="Cebuano"
-                variant="outlined"
-                />
-          </div>
-          <div className="col">
-            <p>Religion</p>
-            <TextField
-              fullWidth
-              disabled
-              id="outlined-disabled"
-              defaultValue="Roman Catholic"
-              variant="outlined"
-              />
-            </div>
-          </div>
+      <div className="row">
+        <div className="col">
+          <p>Mother Tounge</p>
+          <TextField
+            fullWidth
+            disabled
+            id="outlined-disabled"
+            defaultValue={student.motherTongue}
+            variant="outlined"
+          />
+        </div>
+        <div className="col">
+          <p>Religion</p>
+          <TextField
+            fullWidth
+            disabled
+            id="outlined-disabled"
+            defaultValue={student.religion}
+            variant="outlined"
+          />
+        </div>
+      </div>
 
       <div>
         <h4>Address</h4>
       </div>
       <div className="row">
-        <div className='col'>
+        <div className="col">
           <p>House Number and Street</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="#532-A Greenhills St."
+            defaultValue={student.houseNumber}
             variant="outlined"
-            />
-          </div>
-          <div className="col">
+          />
+        </div>
+        <div className="col">
           <p>Subdivision/ Village/ Zone</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="DDF Village"
+            defaultValue={student.subdivision}
             variant="outlined"
-            />
-          </div>
-          <div className="col">
+          />
+        </div>
+        <div className="col">
           <p>Barangay</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Mandug"
+            defaultValue={student.barangay}
             variant="outlined"
-            />
-          </div>
+          />
         </div>
-        <div className="row">
-          <div className="col">
+      </div>
+      <div className="row">
+        <div className="col">
           <p>City/ Municapality</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Davao City"
+            defaultValue={student.city}
             variant="outlined"
-            />
-          </div>
-          <div className="col">
+          />
+        </div>
+        <div className="col">
           <p>Province</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Davao Del Sur"
+            defaultValue={student.province}
             variant="outlined"
-            />
-          </div>
-          <div className="col">
+          />
+        </div>
+        <div className="col">
           <p>Region</p>
           <TextField
             fullWidth
             disabled
             id="outlined-disabled"
-            defaultValue="Region 11"
+            defaultValue={student.region}
             variant="outlined"
-            />
-          </div>
-          </div>
+          />
         </div>
+      </div>
+    </div>
   );
 }

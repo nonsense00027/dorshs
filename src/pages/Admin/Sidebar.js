@@ -9,7 +9,10 @@ import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import DnsIcon from "@material-ui/icons/Dns";
 import SettingsIcon from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
 import logo from "../../img/rslogo.png";
+import { useUserContext } from "../../context/UserContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +27,7 @@ function ListItemLink(props) {
 }
 
 export default function Sidebar({ activeTab, handleTabChange }) {
+  const { userLogout } = useUserContext();
   const classes = useStyles();
   const [tabs, setTabs] = useState([
     { id: 0, label: "Assessments", icon: <AssessmentIcon /> },
@@ -32,6 +36,11 @@ export default function Sidebar({ activeTab, handleTabChange }) {
     { id: 3, label: "Subjects", icon: <DnsIcon /> },
     { id: 4, label: "Settings", icon: <SettingsIcon /> },
   ]);
+
+  const handleLogout = () => {
+    userLogout();
+    history.push("/");
+  };
 
   return (
     <div className="sidebar">
@@ -53,6 +62,17 @@ export default function Sidebar({ activeTab, handleTabChange }) {
               <ListItemText primary={tab.label} />
             </ListItem>
           ))}
+          <ListItem
+            // className={activeTab === tab.id && `active`}
+            button
+            key={5}
+            onClick={() => handleLogout()}
+          >
+            <ListItemIcon>
+              <ExitToAppIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
         </List>
       </div>
     </div>

@@ -69,17 +69,22 @@
 }
 
 .sidebar__header {
-  margin-bottom: 20px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 50px;
 }
 
 .sidebar__logo {
-  display: grid;
-  place-items: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid lightgray;
 }
 
 .sidebar__logo img {
-  height: 150px;
-  object-fit: contain;
+  object-fit: cover;
+  width: 100%;
 }
 
 .student__content {
