@@ -38,7 +38,12 @@ function AdminLogin() {
             value={password}
             onChange={handleChange}
           />
-          <Button className="adminLogin__button" variant="contained" fullWidth>
+          <Button
+            type="submit"
+            className="adminLogin__button"
+            variant="contained"
+            fullWidth
+          >
             Login
           </Button>
           {error && <p className="adminLogin__error">Invalid Password</p>}
