@@ -23,7 +23,7 @@ function App() {
             <Student />
           </Route>
           <Route path="/">
-            <Dashboard />
+            <Landing />
           </Route>
         </Switch>
       </Router>

@@ -14,9 +14,10 @@ function Teacher({ setOpen }) {
         <div className="form">
           <form onSubmit={handleLogin}>
             <div className="form-group">
-              <p>Teacher Username</p>
+              <p>Username</p>
               <TextField
                 required
+                placeholder="Enter Username here"
                 variant="outlined"
                 fullWidth
                 value={username}
@@ -24,9 +25,10 @@ function Teacher({ setOpen }) {
               />
             </div>
             <div className="form-group">
-              <p> Password</p>
+              <p>Password</p>
               <TextField
                 required
+                placeholder="Enter Password here"
                 variant="outlined"
                 type="password"
                 fullWidth
