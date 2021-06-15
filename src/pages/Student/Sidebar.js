@@ -18,6 +18,7 @@ import { Avatar } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    paddingLeft: 20,
     // maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
   },
@@ -59,7 +60,7 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
   };
 
   return (
-    <div className="sidebar">
+    <div className="student__sidebar">
       <div className="sidebar__header">
         <div className="sidebar__logo">
           <img src="https://i.mydramalist.com/2xoPwc.jpg" />

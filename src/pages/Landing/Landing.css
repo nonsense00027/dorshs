@@ -24,6 +24,11 @@
 
 .navbar__links {
   cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar__links:hover {
+  border-bottom: 1px solid var(--secondary-color);
 }
 .MuiContainer-root {
   display: flex !important;
@@ -54,7 +59,9 @@
 
 .navbar__right p {
   margin: 0 10px;
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 1px;
 }
 
 .navbar__right .MuiButton-contained {

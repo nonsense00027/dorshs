@@ -1,12 +1,14 @@
 .adminLogin {
   display: grid;
   place-items: center;
+  background: url(../../../img/conference-room-768441_1920.jpg);
 }
 .adminLogin__card {
-  width: 300px;
+  width: 350px;
   border: 1px solid lightgray;
   padding: 20px 20px;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .adminLogin__card form {
@@ -31,7 +33,7 @@
 
 .adminLogin__button {
   background-color: var(--secondary-color) !important;
-  color: #fff;
+  color: #fff !important;
   margin-top: 10px !important;
 }
 

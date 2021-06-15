@@ -18,7 +18,7 @@
   font-size: 13px !important;
 }
 
-.sidebar {
+.student__sidebar {
   max-width: 250px;
   width: 100%;
   position: fixed;
@@ -29,11 +29,11 @@
   padding-top: 100px;
   /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
   background-color: var(--primary-color);
-  padding-left: 20px;
+  /* padding-left: 20px; */
   z-index: 999;
 }
 
-.sidebar .MuiListItem-root {
+.student__sidebar .MuiListItem-root {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   color: rgba(255, 255, 255, 0.8) !important;
@@ -42,29 +42,29 @@
   padding-left: 30px !important;
 }
 
-.sidebar .MuiSvgIcon-root {
+.student__sidebar .MuiSvgIcon-root {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-.sidebar .active {
+.student__sidebar .active {
   background-color: #fff;
   color: var(--primary-color) !important;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
 
-.sidebar .active .MuiSvgIcon-root {
+.student__sidebar .active .MuiSvgIcon-root {
   color: var(--primary-color) !important;
 }
 
-.sidebar .active:hover {
+.student__sidebar .active:hover {
   background-color: #fff;
   padding-top: 12px !important;
   padding-bottom: 12px !important;
   padding-left: 30px !important;
 }
 
-.sidebar .active .MuiListItemIcon-root {
+.student__sidebar .active .MuiListItemIcon-root {
   color: #fff !important;
 }
 

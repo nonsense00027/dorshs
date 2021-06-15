@@ -63,12 +63,15 @@ function Teachers() {
   const [lastname, setLastname] = useState("");
   const [middlename, setMiddlename] = useState("");
   const [rank, setRank] = useState("");
-  const [committee, setCommittee] = useState("");
+  const [department, setDepartment] = useState("");
+  const [adviser, setAdviser] = useState("");
   const [subjects, setSubjects] = useState([]);
   const [dbsubjects, setDbsubjects] = useState([]);
+  const [section, setSection] = useState([]);
+  const [dbsections, setDbsections] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [teachersLoading, setTeachersLoading] = useState(true);
-
+  const [selectedSectionId, setSelectedSectionId] = useState("");
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (value) => () => {
@@ -83,20 +86,50 @@ function Teachers() {
     }
   };
 
+  const handleSectionChange = (section) => {
+    console.log(section);
+    var sectionName = dbsections.filter(
+      (dbsection) => dbsection.id === section
+    )[0].name;
+    console.log(sectionName);
+    setSelectedSectionId(section);
+    setSection(sectionName);
+  };
+
   const handleAddTeacher = (e) => {
     e.preventDefault();
     setLoading(true);
     db.collection("teachers")
-      .add({ firstname, lastname, middlename, rank, committee, subjects })
+      .add({
+        firstname,
+        lastname,
+        middlename,
+        rank,
+        department,
+        adviser,
+        section,
+        subjects,
+        section_id: selectedSectionId,
+      })
       .then((result) => {
-        setOpen(false);
-        setFirstname("");
-        setLastname("");
-        setMiddlename("");
-        setRank("");
-        setSubjects([]);
-        setSnackbarOpen(true);
-        setLoading(false);
+        db.collection("sections")
+          .doc(selectedSectionId)
+          .set({ adviser: `${firstname} ${lastname}` }, { merge: true })
+          .then((result) => {
+            setOpen(false);
+            setFirstname("");
+            setLastname("");
+            setMiddlename("");
+            setRank("");
+            setDepartment("");
+            setAdviser("");
+            setSection("");
+            setSubjects([]);
+            setChecked([]);
+            setSelectedSectionId(null);
+            setSnackbarOpen(true);
+            setLoading(false);
+          });
       });
   };
 
@@ -126,6 +159,18 @@ function Teachers() {
   }, []);
 
   useEffect(() => {
+    const unsubscribe = db
+      .collection("sections")
+      .orderBy("level", "asc")
+      .onSnapshot((snapshot) => {
+        setDbsections(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
     console.log("subjects", subjects);
   }, [subjects]);
 
@@ -141,7 +186,7 @@ function Teachers() {
         Add Teacher
       </Button> */}
       <div className="teachers__tableContainer">
-        {/* <TeachersTable teachers={teachers} /> */}
+        <TeachersTable teachers={teachers} />
       </div>
 
       <Dialog
@@ -169,16 +214,16 @@ function Teachers() {
             <TextField
               id="middlename"
               label="Middlename"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
+              value={middlename}
+              onChange={(e) => setMiddlename(e.target.value)}
               fullWidth
               required
             />
             <TextField
               id="lastname"
               label="Lastname"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
               fullWidth
               required
             />
@@ -198,19 +243,53 @@ function Teachers() {
               </TextField>
 
               <TextField
-                id="committee"
+                id="department"
                 select
-                label="Select Committee"
-                value={committee}
-                onChange={(e) => setCommittee(e.target.value)}
+                label="Select Department"
+                value={department}
+                onChange={(e) => setDepartment(e.target.value)}
                 fullWidth
                 required
               >
-                <MenuItem value={"GRD7"}>Committee I</MenuItem>
-                <MenuItem value={"GRD8"}>Committee II</MenuItem>
-                <MenuItem value={"GRD9"}>Committee III</MenuItem>
+                <MenuItem value={"Junior Highschool"}>
+                  Junior Highschool
+                </MenuItem>
+                <MenuItem value={"Senior Highschool"}>
+                  Senior Highschool
+                </MenuItem>
               </TextField>
             </div>
+            <div>
+              <TextField
+                id="adviser"
+                select
+                label="Select Category"
+                value={adviser}
+                onChange={(e) => setAdviser(e.target.value)}
+                fullWidth
+                required
+              >
+                <MenuItem value={"adviser"}>Adviser</MenuItem>
+                <MenuItem value={"not adviser"}>Not an adviser</MenuItem>
+              </TextField>
+            </div>
+            {adviser === "adviser" && (
+              <div>
+                <TextField
+                  id="section"
+                  select
+                  label="Select Section"
+                  value={selectedSectionId}
+                  onChange={(e) => handleSectionChange(e.target.value)}
+                  fullWidth
+                  required
+                >
+                  {dbsections.map((section) => (
+                    <MenuItem value={section.id}>{section.name}</MenuItem>
+                  ))}
+                </TextField>
+              </div>
+            )}
             <p>Select subjects:</p>
             <div className="teachers__subjectsList">
               <List className={classes.root}>

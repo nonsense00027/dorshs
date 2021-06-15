@@ -29,11 +29,9 @@ function Alert(props) {
 }
 
 const columns = [
-  { id: "lastname", label: "Last name", minWidth: 150 },
-  { id: "firstname", label: "First name", minWidth: 150 },
-  { id: "rank", label: "Rank", minWidth: 50 },
-  { id: "department", label: "Department", minWidth: 50 },
-  { id: "section", label: "Section", minWidth: 50 },
+  { id: "level", label: "Grade Level", minWidth: 40 },
+  { id: "name", label: "Section Name", minWidth: 180 },
+  { id: "adviser", label: "Adviser Name", minWidth: 180 },
 ];
 
 const StyledTableCell = withStyles((theme) => ({
@@ -67,7 +65,7 @@ const useStyles = makeStyles({
   },
 });
 
-function TeachersTable({ teachers }) {
+function SectioningTable({ sections }) {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -86,7 +84,7 @@ function TeachersTable({ teachers }) {
 
   const handleDeleteSubject = (id) => {
     if (deleteSubject.id) {
-      db.collection("teachers")
+      db.collection("sections")
         .doc(deleteSubject.id)
         .delete()
         .then((result) => {
@@ -129,7 +127,7 @@ function TeachersTable({ teachers }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {teachers
+              {sections
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -166,7 +164,7 @@ function TeachersTable({ teachers }) {
         <TablePagination
           rowsPerPageOptions={[10, 15, 20]}
           component="div"
-          count={teachers.length}
+          count={sections.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
@@ -187,8 +185,8 @@ function TeachersTable({ teachers }) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Deleting will permanently remove the teacher from the database.
-            Please confirm that you want to proceed.
+            Deleting this subject will permanently remove the subject from the
+            database. Please confirm that you want to proceed.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -212,11 +210,11 @@ function TeachersTable({ teachers }) {
         onClose={() => setSnackbarOpen(false)}
       >
         <Alert onClose={() => setSnackbarOpen(false)} severity="success">
-          Teacher was successfully deleted!
+          Subject was successfully deleted!
         </Alert>
       </Snackbar>
     </div>
   );
 }
 
-export default TeachersTable;
+export default SectioningTable;

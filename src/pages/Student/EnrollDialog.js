@@ -37,7 +37,8 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
       .set(
         {
           newEnrollee: false,
-          academicRecord: newAcademicRecord,
+          academicRecord: subjectsToLoad,
+          currentLevel: level,
         },
         { merge: true }
       )

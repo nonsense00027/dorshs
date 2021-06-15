@@ -3,6 +3,7 @@ import "./Student.css";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Requirements from "./Requirements/Requirements";
+import AcademicRecord from "./AcademicRecord/AcademicRecord";
 import { useParams, useHistory } from "react-router-dom";
 import { db } from "../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../shared/utilities";
@@ -18,8 +19,8 @@ const getComponent = (index, student) => {
       return <Dashboard student={student} />;
     case 1:
       return <Requirements />;
-    // case 2:
-    //   return <Teachers />;
+    case 2:
+      return <AcademicRecord student={student} />;
     // case 3:
     //   return <Subjects />;
     // case 4:

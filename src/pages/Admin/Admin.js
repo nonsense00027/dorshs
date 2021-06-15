@@ -7,6 +7,7 @@ import Assessments from "./Assessments/Assessments";
 import Students from "./Students/Students";
 import Teachers from "./Teachers/Teachers";
 import Subjects from "./Subjects/Subjects";
+import Sectioning from "./Sectioning/Sectioning";
 import Settings from "./Settings/Settings";
 import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
@@ -22,6 +23,8 @@ const getComponent = (index) => {
     case 3:
       return <Subjects />;
     case 4:
+      return <Sectioning />;
+    case 5:
       return <Settings />;
   }
 };

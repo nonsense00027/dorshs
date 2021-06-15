@@ -20,8 +20,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { db } from "../../../shared/configs/firebase";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import LaunchIcon from "@material-ui/icons/Launch";
 import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {
@@ -29,11 +28,11 @@ function Alert(props) {
 }
 
 const columns = [
-  { id: "lastname", label: "Last name", minWidth: 150 },
-  { id: "firstname", label: "First name", minWidth: 150 },
-  { id: "rank", label: "Rank", minWidth: 50 },
-  { id: "department", label: "Department", minWidth: 50 },
-  { id: "section", label: "Section", minWidth: 50 },
+  { id: "title", label: "Learning Areas", minWidth: 160 },
+  { id: "q1", label: "Quarter 1", minWidth: 50 },
+  { id: "q2", label: "Quarter 2", minWidth: 50 },
+  { id: "q3", label: "Quarter 3", minWidth: 50 },
+  { id: "q4", label: "Quarter 4", minWidth: 50 },
 ];
 
 const StyledTableCell = withStyles((theme) => ({
@@ -60,20 +59,17 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   root: {
-    width: "90%",
+    width: "100%",
   },
   container: {
     maxHeight: 1000,
   },
 });
 
-function TeachersTable({ teachers }) {
+function AcademicTable({ subjects }) {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [deleteSubject, setDeleteSubject] = useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -82,29 +78,6 @@ function TeachersTable({ teachers }) {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-  };
-
-  const handleDeleteSubject = (id) => {
-    if (deleteSubject.id) {
-      db.collection("teachers")
-        .doc(deleteSubject.id)
-        .delete()
-        .then((result) => {
-          setSnackbarOpen(true);
-          setDeleteDialogOpen(false);
-        });
-    }
-  };
-
-  const handleDeleteDialogClose = () => {
-    setDeleteDialogOpen(false);
-    setDeleteSubject(null);
-  };
-
-  const handleDeleteDialogOpen = (subject) => {
-    console.log(subject);
-    setDeleteSubject(subject);
-    setDeleteDialogOpen(true);
   };
 
   return (
@@ -129,7 +102,7 @@ function TeachersTable({ teachers }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {teachers
+              {subjects
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -151,11 +124,19 @@ function TeachersTable({ teachers }) {
                       })}
                       <TableCell key={row.id} align="left">
                         <IconButton>
-                          <EditIcon />
+                          <LaunchIcon
+                            onClick={() =>
+                              window.open(
+                                // `${window.location.href}/${row.id}`,
+                                `/student/${row.lrnNo}`,
+                                "_blank"
+                              )
+                            }
+                          />
                         </IconButton>
-                        <IconButton onClick={() => handleDeleteDialogOpen(row)}>
+                        {/* <IconButton onClick={() => handleDeleteDialogOpen(row)}>
                           <DeleteIcon />
-                        </IconButton>
+                        </IconButton> */}
                       </TableCell>
                     </StyledTableRow>
                   );
@@ -163,60 +144,9 @@ function TeachersTable({ teachers }) {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 15, 20]}
-          component="div"
-          count={teachers.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
       </Paper>
-
-      <Dialog
-        open={deleteDialogOpen}
-        onClose={() => handleDeleteDialogClose()}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        maxWidth="xs"
-        fullWidth
-      >
-        <DialogTitle id="alert-dialog-title">
-          {`Delete ${deleteSubject ? deleteSubject.title : ""}?`}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Deleting will permanently remove the teacher from the database.
-            Please confirm that you want to proceed.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={() => handleDeleteDialogClose()}>
-            Disagree
-          </Button>
-          <Button
-            onClick={() => handleDeleteSubject()}
-            color="secondary"
-            variant="contained"
-            autoFocus
-          >
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={4000}
-        onClose={() => setSnackbarOpen(false)}
-      >
-        <Alert onClose={() => setSnackbarOpen(false)} severity="success">
-          Teacher was successfully deleted!
-        </Alert>
-      </Snackbar>
     </div>
   );
 }
 
-export default TeachersTable;
+export default AcademicTable;

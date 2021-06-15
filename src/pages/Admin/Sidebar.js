@@ -9,8 +9,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import DnsIcon from "@material-ui/icons/Dns";
 import SettingsIcon from "@material-ui/icons/Settings";
+import EventSeatIcon from "@material-ui/icons/EventSeat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
 import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
 
@@ -34,7 +34,8 @@ export default function Sidebar({ activeTab, handleTabChange }) {
     { id: 1, label: "Students", icon: <PersonIcon /> },
     { id: 2, label: "Teachers", icon: <SupervisorAccountIcon /> },
     { id: 3, label: "Subjects", icon: <DnsIcon /> },
-    { id: 4, label: "Settings", icon: <SettingsIcon /> },
+    { id: 4, label: "Sectioning", icon: <EventSeatIcon /> },
+    { id: 5, label: "Settings", icon: <SettingsIcon /> },
   ]);
 
   const handleLogout = () => {
