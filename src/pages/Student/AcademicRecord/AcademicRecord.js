@@ -8,7 +8,6 @@ function AcademicRecord({ student }) {
   // console.log(grades);
   return (
     <div>
-      <h1>Academic Record</h1>
       <div className="academicRecord__table">
         <AcademicTable subjects={student.academicRecord} />
       </div>
