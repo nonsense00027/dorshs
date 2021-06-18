@@ -3,6 +3,7 @@ import "./Admin.css";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import AdminLogin from "./AdminLogin/AdminLogin";
+import Dashboard from "./Dashboard/Dashboard";
 import Assessments from "./Assessments/Assessments";
 import Students from "./Students/Students";
 import Teachers from "./Teachers/Teachers";
@@ -15,16 +16,18 @@ import { useHistory } from "react-router-dom";
 const getComponent = (index) => {
   switch (index) {
     case 0:
-      return <Assessments />;
+      return <Dashboard />;
     case 1:
-      return <Students />;
+      return <Assessments />;
     case 2:
-      return <Teachers />;
+      return <Students />;
     case 3:
-      return <Subjects />;
+      return <Teachers />;
     case 4:
-      return <Sectioning />;
+      return <Subjects />;
     case 5:
+      return <Sectioning />;
+    case 6:
       return <Settings />;
   }
 };

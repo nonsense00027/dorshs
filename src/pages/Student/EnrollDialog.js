@@ -10,28 +10,32 @@ import {
 } from "@material-ui/core";
 import { db } from "../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../shared/utilities";
-import { SubjectTwoTone } from "@material-ui/icons";
 
 function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
   const [level, setLevel] = useState("");
   const [loading, setLoading] = useState(false);
   const [subjects, setSubjects] = useState([]);
+  const [section, setSection] = useState("");
+  const [selectedSectionId, setSelectedSectionId] = useState("");
+  const [dbsections, setDbsections] = useState([]);
 
   const handleChange = (event) => {
     setLevel(event.target.value);
   };
 
+  const handleSectionChange = (section) => {
+    console.log(section);
+    var sectionName = dbsections.filter(
+      (dbsection) => dbsection.id === section
+    )[0].name;
+    console.log(sectionName);
+    setSelectedSectionId(section);
+    setSection(sectionName);
+  };
+
   const handleEnrollStudent = (e) => {
     e.preventDefault();
-    console.log(subjects);
-    console.log(level);
     var subjectsToLoad = subjects.filter((item) => item.level === level);
-    console.log("SUBJECTS TO LOAD", subjectsToLoad);
-    console.log(student.id);
-    var academicRecord = student.academicRecord || [];
-    var newAcademicRecord = [...academicRecord, { [level]: subjectsToLoad }];
-    // console.log("ACADS", newAcademicRecord);
-    // newAcademicRecord.forEach((item) => console.log(item[level]));
     db.collection("students")
       .doc(student.id)
       .set(
@@ -39,6 +43,8 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
           newEnrollee: false,
           academicRecord: subjectsToLoad,
           currentLevel: level,
+          section: section,
+          section_id: selectedSectionId,
         },
         { merge: true }
       )
@@ -60,6 +66,26 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
     };
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("sections")
+      .orderBy("level", "asc")
+      .onSnapshot((snapshot) => {
+        setDbsections(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const getSections = () => {
+    if (level.length > 0) {
+      return dbsections.filter((section) => section.level === level);
+    } else {
+      return [];
+    }
+  };
+
   return (
     <Dialog
       className="subjects__addForm"
@@ -79,13 +105,11 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
               <TextField
                 id="standard-select-currency"
                 select
-                // label="Select Grade Level"
                 variant="outlined"
                 value={level}
                 onChange={handleChange}
                 fullWidth
                 required
-                // helperText="Please select your currency"
               >
                 <MenuItem value={"GRD7"}>Grade 7</MenuItem>
                 <MenuItem value={"GRD8"}>Grade 8</MenuItem>
@@ -93,6 +117,26 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
                 <MenuItem value={"GRD10"}>Grade 10</MenuItem>
                 <MenuItem value={"GRD11"}>Grade 11</MenuItem>
                 <MenuItem value={"GRD12"}>Grade 12</MenuItem>
+              </TextField>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <p>Select Section</p>
+              <TextField
+                id="section"
+                select
+                variant="outlined"
+                value={selectedSectionId}
+                onChange={(e) => handleSectionChange(e.target.value)}
+                fullWidth
+                required
+              >
+                {getSections().map((section) => (
+                  <MenuItem key={section.id} value={section.id}>
+                    {section.name}
+                  </MenuItem>
+                ))}
               </TextField>
             </div>
           </div>

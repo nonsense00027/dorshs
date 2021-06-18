@@ -44,7 +44,7 @@ function Sectioning() {
     e.preventDefault();
     setLoading(true);
     db.collection("sections")
-      .add({ name: name, level: level })
+      .add({ name: name, level: level, adviser: null })
       .then((result) => {
         setOpen(false);
         setName("");

@@ -11,6 +11,7 @@ import DnsIcon from "@material-ui/icons/Dns";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
 
@@ -30,12 +31,13 @@ export default function Sidebar({ activeTab, handleTabChange }) {
   const { userLogout } = useUserContext();
   const classes = useStyles();
   const [tabs, setTabs] = useState([
-    { id: 0, label: "Assessments", icon: <AssessmentIcon /> },
-    { id: 1, label: "Students", icon: <PersonIcon /> },
-    { id: 2, label: "Teachers", icon: <SupervisorAccountIcon /> },
-    { id: 3, label: "Subjects", icon: <DnsIcon /> },
-    { id: 4, label: "Sectioning", icon: <EventSeatIcon /> },
-    { id: 5, label: "Settings", icon: <SettingsIcon /> },
+    { id: 0, label: "Dashboard", icon: <DashboardIcon /> },
+    { id: 1, label: "Assessments", icon: <AssessmentIcon /> },
+    { id: 2, label: "Students", icon: <PersonIcon /> },
+    { id: 3, label: "Teachers", icon: <SupervisorAccountIcon /> },
+    { id: 4, label: "Subjects", icon: <DnsIcon /> },
+    { id: 5, label: "Sectioning", icon: <EventSeatIcon /> },
+    { id: 6, label: "Settings", icon: <SettingsIcon /> },
   ]);
 
   const handleLogout = () => {

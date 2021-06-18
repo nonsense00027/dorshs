@@ -90,8 +90,18 @@ function TeachersTable({ teachers }) {
         .doc(deleteSubject.id)
         .delete()
         .then((result) => {
-          setSnackbarOpen(true);
-          setDeleteDialogOpen(false);
+          if (deleteSubject.section_id) {
+            db.collection("sections")
+              .doc(deleteSubject.section_id)
+              .set({ adviser: null }, { merge: true })
+              .then((result) => {
+                setSnackbarOpen(true);
+                setDeleteDialogOpen(false);
+              });
+          } else {
+            setSnackbarOpen(true);
+            setDeleteDialogOpen(false);
+          }
         });
     }
   };
@@ -183,7 +193,7 @@ function TeachersTable({ teachers }) {
         fullWidth
       >
         <DialogTitle id="alert-dialog-title">
-          {`Delete ${deleteSubject ? deleteSubject.title : ""}?`}
+          {`Delete ${deleteSubject ? deleteSubject.lastname : ""}?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
