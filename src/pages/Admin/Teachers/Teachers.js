@@ -25,6 +25,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
+import { useAdminContext } from "../../../context/AdminContext";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -56,6 +57,7 @@ const ranks = [
 
 function Teachers() {
   const classes = useStyles();
+  const { teachers, dbsubjects } = useAdminContext();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -66,11 +68,8 @@ function Teachers() {
   const [department, setDepartment] = useState("");
   const [adviser, setAdviser] = useState("");
   const [subjects, setSubjects] = useState([]);
-  const [dbsubjects, setDbsubjects] = useState([]);
   const [section, setSection] = useState([]);
   const [dbsections, setDbsections] = useState([]);
-  const [teachers, setTeachers] = useState([]);
-  const [teachersLoading, setTeachersLoading] = useState(true);
   const [selectedSectionId, setSelectedSectionId] = useState("");
   const [checked, setChecked] = useState([]);
 
@@ -132,31 +131,6 @@ function Teachers() {
           });
       });
   };
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("teachers")
-      .orderBy("lastname", "desc")
-      .onSnapshot((snapshot) => {
-        setTeachers(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-        setTeachersLoading(false);
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("subjects")
-      .orderBy("level", "asc")
-      .onSnapshot((snapshot) => {
-        setDbsubjects(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   useEffect(() => {
     const unsubscribe = db

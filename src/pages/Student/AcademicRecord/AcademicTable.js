@@ -39,13 +39,13 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#223b23",
     color: theme.palette.common.white,
-    fontSize: "15px",
+    fontSize: "14px",
     fontWeight: "600",
     paddingTop: 15,
     paddingBottom: 15,
   },
   body: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }))(TableCell);
 

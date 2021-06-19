@@ -18,6 +18,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { collectIdsAndDocs } from "../../../shared/utilities";
 import { db } from "../../../shared/configs/firebase";
 import { makeStyles } from "@material-ui/core/styles";
+import { useAdminContext } from "../../../context/AdminContext";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -32,13 +33,14 @@ function Alert(props) {
 
 function Subjects() {
   const classes = useStyles();
+  const { dbsubjects } = useAdminContext();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [level, setLevel] = useState("");
-  const [subjects, setSubjects] = useState([]);
-  const [subjectLoading, setSubjectLoading] = useState(true);
+  // const [subjects, setSubjects] = useState([]);
+  // const [subjectLoading, setSubjectLoading] = useState(true);
 
   const handleAddSubject = (e) => {
     e.preventDefault();
@@ -58,33 +60,20 @@ function Subjects() {
     setLevel(event.target.value);
   };
 
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("subjects")
-      .orderBy("level", "asc")
-      .onSnapshot((snapshot) => {
-        setSubjects(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-        setSubjectLoading(false);
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  if (subjectLoading) {
-    return (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "grid",
-          placeItems: "center",
-        }}
-      >
-        <CircularProgress />
-      </div>
-    );
-  }
+  // if (subjectLoading) {
+  //   return (
+  //     <div
+  //       style={{
+  //         height: "100%",
+  //         width: "100%",
+  //         display: "grid",
+  //         placeItems: "center",
+  //       }}
+  //     >
+  //       <CircularProgress />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="subjects">
@@ -98,7 +87,7 @@ function Subjects() {
         Add Subject
       </Button> */}
       <div className="subjects__tableContainer">
-        <SubjectsTable subjects={subjects} />
+        <SubjectsTable subjects={dbsubjects} />
       </div>
 
       <Dialog

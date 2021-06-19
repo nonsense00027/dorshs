@@ -1,0 +1,91 @@
+.dashboard {
+  display: flex;
+  height: 100%;
+  padding: 20px 0;
+}
+.dashboard__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__right {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard__right img {
+  width: 100%;
+  object-fit: contain;
+}
+.dashboard__right h2 {
+  text-align: center;
+}
+
+.dashboard__card {
+  width: 100%;
+  height: 200px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard__card img {
+  height: 70%;
+  object-fit: contain;
+}
+
+.dashboard__info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.dashboard__info h1 {
+  font-size: 60px;
+}
+
+.dashboard__info p {
+  font-size: 30px;
+}
+
+.applicantsCard {
+  background-color: #ff9601;
+}
+
+.studentsyearCard {
+  background-color: #4cab51;
+}
+.studentsCard {
+  background-color: #e93c34;
+}
+.teachersCard {
+  background-color: #931daf;
+}
+
+.dashboard__news {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__news img {
+  height: 300px;
+  object-fit: contain;
+}
+
+.dashboard__newsInfo h1 {
+  font-size: 40px;
+}
+.dashboard__newsInfo span {
+  color: #4cab51;
+}
+
+.row {
+}

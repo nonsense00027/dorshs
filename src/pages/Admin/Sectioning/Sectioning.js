@@ -18,6 +18,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { collectIdsAndDocs } from "../../../shared/utilities";
 import { db } from "../../../shared/configs/firebase";
 import { makeStyles } from "@material-ui/core/styles";
+import { useAdminContext } from "../../../context/AdminContext";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -32,13 +33,12 @@ function Alert(props) {
 
 function Sectioning() {
   const classes = useStyles();
+  const { sections } = useAdminContext();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [level, setLevel] = useState("");
-  const [sections, setSections] = useState([]);
-  const [sectionLoading, setSectionLoading] = useState(true);
 
   const handleAddSection = (e) => {
     e.preventDefault();
@@ -58,33 +58,20 @@ function Sectioning() {
     setLevel(event.target.value);
   };
 
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("sections")
-      .orderBy("level", "asc")
-      .onSnapshot((snapshot) => {
-        setSections(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-        setSectionLoading(false);
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  if (sectionLoading) {
-    return (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "grid",
-          placeItems: "center",
-        }}
-      >
-        <CircularProgress />
-      </div>
-    );
-  }
+  // if (sectionLoading) {
+  //   return (
+  //     <div
+  //       style={{
+  //         height: "100%",
+  //         width: "100%",
+  //         display: "grid",
+  //         placeItems: "center",
+  //       }}
+  //     >
+  //       <CircularProgress />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="subjects">

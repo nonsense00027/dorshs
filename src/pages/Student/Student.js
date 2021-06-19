@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Student.css";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
+import Information from "./Information/Information";
 import Requirements from "./Requirements/Requirements";
 import AcademicRecord from "./AcademicRecord/AcademicRecord";
 import { useParams, useHistory } from "react-router-dom";
@@ -18,8 +19,10 @@ const getComponent = (index, student) => {
     case 0:
       return <Dashboard student={student} />;
     case 1:
-      return <Requirements />;
+      return <Information student={student} />;
     case 2:
+      return <Requirements />;
+    case 3:
       return <AcademicRecord student={student} />;
     // case 3:
     //   return <Subjects />;
@@ -96,7 +99,7 @@ function Student() {
       />
       <div className="student__content">{getComponent(activeTab, student)}</div>
 
-      {/* <Dashboard /> */}
+      {/* <Information /> */}
 
       {user.role === "admin" && (
         <>

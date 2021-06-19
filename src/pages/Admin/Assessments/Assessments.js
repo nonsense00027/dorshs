@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Assessments.css";
 import AssessmentsTable from "./AssessmentsTable";
 import { db } from "../../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../../shared/utilities";
@@ -22,8 +23,7 @@ function Assessments() {
   }, []);
 
   return (
-    <div>
-      <h1>Assessments</h1>
+    <div className="assessments">
       <AssessmentsTable enrollees={newEnrollees} />
     </div>
   );

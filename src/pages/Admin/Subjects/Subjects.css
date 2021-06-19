@@ -1,7 +1,6 @@
 .subjects {
   width: 100%;
-  height: 100%;
-  padding-top: 50px;
+  padding: 20px 0;
 }
 
 .subjects__addButton {
@@ -9,7 +8,7 @@
 }
 
 .subjects__tableContainer {
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .subjects__addForm form div {

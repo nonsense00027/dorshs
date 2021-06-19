@@ -1,0 +1,62 @@
+/* .dashboard {
+  width: 100%;
+  background-color: rgba(34, 59, 35, 0.85);
+  height: 65px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MuiContainer-root {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__left > img {
+  object-fit: contain;
+  height: 60px;
+}
+
+.navbar__left p {
+  margin-left: 10px;
+  color: #fff;
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.navbar__right p {
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.col {
+  flex: 1;
+  padding: 5px;
+}
+
+.col p {
+  margin-bottom: 5px;
+}
+
+.mt {
+  width: 1000px;
+}
+
+.parentInfo {
+  display: flex;
+} */

@@ -7,6 +7,7 @@ import Admin from "./pages/Admin/Admin";
 import StepC from "./pages/Enrollment/StepC";
 import Dashboard from "./pages/Student/Dashboard/Dashboard";
 import Student from "./pages/Student/Student";
+import { AdminProvider } from "./context/AdminContext";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/admin">
-            <Admin />
+            <AdminProvider>
+              <Admin />
+            </AdminProvider>
           </Route>
           <Route path="/enrollment">
             <Enrollment />

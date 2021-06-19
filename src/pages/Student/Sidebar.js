@@ -36,15 +36,17 @@ const getTabs = (status) => {
   if (status) {
     return [
       { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
-      { id: 1, label: "Requirements", icon: <PersonIcon /> },
+      { id: 1, label: "Student Information", icon: <AssessmentIcon /> },
+      { id: 2, label: "Requirements", icon: <PersonIcon /> },
     ];
   } else {
     return [
       { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
-      { id: 1, label: "Requirements", icon: <PersonIcon /> },
-      { id: 2, label: "Academic Record", icon: <SupervisorAccountIcon /> },
-      { id: 3, label: "Subjects", icon: <DnsIcon /> },
-      { id: 4, label: "Settings", icon: <SettingsIcon /> },
+      { id: 1, label: "Student Information", icon: <AssessmentIcon /> },
+      { id: 2, label: "Requirements", icon: <PersonIcon /> },
+      { id: 3, label: "Academic Record", icon: <SupervisorAccountIcon /> },
+      { id: 4, label: "Subjects", icon: <DnsIcon /> },
+      { id: 5, label: "Settings", icon: <SettingsIcon /> },
     ];
   }
 };
@@ -61,11 +63,11 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
 
   return (
     <div className="student__sidebar">
-      <div className="sidebar__header">
+      {/* <div className="sidebar__header">
         <div className="sidebar__logo">
           <img src="https://i.mydramalist.com/2xoPwc.jpg" />
         </div>
-      </div>
+      </div> */}
       <div className={classes.root}>
         <List component="nav" aria-label="main mailbox folders">
           {getTabs(studentStatus).map((tab) => (

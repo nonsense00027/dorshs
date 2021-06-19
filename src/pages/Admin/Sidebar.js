@@ -42,7 +42,8 @@ export default function Sidebar({ activeTab, handleTabChange }) {
 
   const handleLogout = () => {
     userLogout();
-    history.push("/");
+    handleTabChange(0);
+    // history.push("/");
   };
 
   return (
