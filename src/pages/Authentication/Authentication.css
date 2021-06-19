@@ -65,7 +65,7 @@ form {
 }
 
 .student__enrollLabel span {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
@@ -99,3 +99,4 @@ form {
   /* border: 0.5px solid rgba(255, 255, 255, 0.8) !important; */
   outline: none !important;
 }
+

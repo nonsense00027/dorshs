@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     // height: 700,
     width: "100%",
     height: "100%",
+    fontStyle: "bold",
   },
 }));
 
@@ -81,8 +82,8 @@ export default function Login({ setOpen }) {
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab label="Student" {...a11yProps(0)} />
-            <Tab label="Teacher" {...a11yProps(1)} />
+            <Tab className="tab" label="Student" {...a11yProps(0)} />
+            <Tab className="tab" label="Teacher" {...a11yProps(1)} />
             {/* <Tab label="Admin" {...a11yProps(2)} /> */}
           </Tabs>
         </AppBar>
