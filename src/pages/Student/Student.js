@@ -8,7 +8,17 @@ import AcademicRecord from "./AcademicRecord/AcademicRecord";
 import { useParams, useHistory } from "react-router-dom";
 import { db } from "../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../shared/utilities";
-import { CircularProgress, Fab, Tooltip } from "@material-ui/core";
+import {
+  CircularProgress,
+  Fab,
+  Tooltip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
+} from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import EnrollDialog from "./EnrollDialog";
@@ -38,6 +48,7 @@ function Student() {
   const [loading, setLoading] = useState(true);
   const [student, setStudent] = useState(null);
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
+  const [requirementDialog, setRequirementDialog] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -70,6 +81,14 @@ function Student() {
       history.push("/");
     }
   }, []);
+
+  useEffect(() => {
+    // console.log("STUDENT HERE", student);
+    if (student?.newEnrollee) {
+      setRequirementDialog(true);
+    }
+  }, []);
+
   const handleTabChange = (tabIndex) => {
     setActiveTab(tabIndex);
   };
@@ -100,6 +119,45 @@ function Student() {
       <div className="student__content">{getComponent(activeTab, student)}</div>
 
       {/* <Information /> */}
+
+      <Dialog
+        open={requirementDialog}
+        onClose={() => setRequirementDialog(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Complete the requirements"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            id="alert-dialog-description"
+            className="student__dialogContentText"
+          >
+            <p>
+              Please upload all of the necessary requirements listed on the
+              <strong> Requirements Tab </strong>that can be found on the
+              Sidebar.
+            </p>
+            <span>
+              <strong>Note: </strong>Failure to complete the requirements could
+              lead to your account be considered as a spam and will be deleted.
+            </span>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button> */}
+          <Button
+            onClick={() => setRequirementDialog(false)}
+            color="primary"
+            autoFocus
+          >
+            I understand
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {user.role === "admin" && (
         <>
