@@ -49,7 +49,7 @@ function Navbar() {
           <p>
             DAVAO ORIENTAL REGIONAL
             <br />
-            SCIENCE HIGH SHCOOL
+            SCIENCE HIGH SCHOOL
           </p>
         </div>
 

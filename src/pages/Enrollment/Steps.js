@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -151,6 +151,10 @@ export default function Steps() {
         handleNext();
       });
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   console.log("ENROLLMENT INFO", { ...stepa, ...stepb, ...stepc, ...stepd });
 

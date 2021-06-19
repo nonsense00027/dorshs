@@ -62,6 +62,9 @@ function Student() {
                 collectIdsAndDocs(doc)
               )[0];
               console.log("STUDENTT", foundUser);
+              if (foundUser?.newEnrollee) {
+                setRequirementDialog(true);
+              }
               setStudent(foundUser);
               setLoading(false);
             } else {
@@ -82,12 +85,12 @@ function Student() {
     }
   }, []);
 
-  useEffect(() => {
-    // console.log("STUDENT HERE", student);
-    if (student?.newEnrollee) {
-      setRequirementDialog(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log("GAWAS");
+  //   if (student?.newEnrollee) {
+  //     setRequirementDialog(true);
+  //   }
+  // }, [student?.newEnrollee]);
 
   const handleTabChange = (tabIndex) => {
     setActiveTab(tabIndex);
@@ -149,11 +152,7 @@ function Student() {
           {/* <Button onClick={handleClose} color="primary">
             Disagree
           </Button> */}
-          <Button
-            onClick={() => setRequirementDialog(false)}
-            color="primary"
-            autoFocus
-          >
+          <Button onClick={() => setRequirementDialog(false)} color="primary">
             I understand
           </Button>
         </DialogActions>

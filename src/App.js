@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./pages/Authentication/Login";
 import Landing from "./pages/Landing/Landing";
 import Enrollment from "./pages/Enrollment/Enrollment";
+import Welcome from "./pages/Welcome/Welcome";
 import Admin from "./pages/Admin/Admin";
 import StepC from "./pages/Enrollment/StepC";
 import Dashboard from "./pages/Student/Dashboard/Dashboard";
@@ -19,8 +20,11 @@ function App() {
               <Admin />
             </AdminProvider>
           </Route>
-          <Route path="/enrollment">
+          <Route path="/enrollment/grade7">
             <Enrollment />
+          </Route>
+          <Route path="/enrollment">
+            <Welcome />
           </Route>
           <Route path="/student/:lrn">
             <Student />

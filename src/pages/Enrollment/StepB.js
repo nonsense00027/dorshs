@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function StepB({ handleNext, handleStepB }) {
+function StepB({ handleNext, handleBack, handleStepB }) {
   const classes = useStyles();
 
   const [birthCertificateNo, setBirthCertificateNo] = useState("");
@@ -366,7 +366,15 @@ function StepB({ handleNext, handleStepB }) {
         </div>
       </div>
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" onClick={handleBack}>
+          Back
+        </Button>
+        <Button
+          className="nextButton"
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+        >
           Next
         </Button>
       </div>

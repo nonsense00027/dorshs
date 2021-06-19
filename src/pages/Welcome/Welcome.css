@@ -1,0 +1,85 @@
+.welcome {
+  width: 100%;
+  height: auto !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
+.welcome__image {
+  height: 300px;
+  object-fit: contain;
+}
+
+.welcome__header {
+  margin-top: -30px;
+  text-align: center;
+}
+
+.welcome__header span {
+  /* color: var(--primary-color); */
+  color: #08753b;
+}
+
+.welcome__secondHeader {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  max-width: 500px;
+}
+
+.welcome__requirements {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+
+.welcome__requirementsContent {
+  padding-left: 10px;
+}
+
+.welcome__shade {
+  opacity: 0.5;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.welcome__note {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.welcome__note span {
+  color: #f73803;
+}
+
+.welcome__email {
+  margin-bottom: 20px;
+}
+
+.welcome__email span {
+  color: #08753b;
+}
+
+.welcome__category div {
+  margin-top: 5px;
+}
+
+.welcome__categoryOptions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome__categoryButton {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  margin-top: 5px !important;
+}
+
+.welcome__categoryButtonDisabled {
+  margin-top: 5px !important;
+}

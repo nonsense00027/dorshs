@@ -101,7 +101,7 @@ const challengesList = [
   "others: ",
 ];
 
-export default function CheckboxesGroup({ handleStepD }) {
+export default function CheckboxesGroup({ handleBack, handleStepD }) {
   const [transportation, setTransportation] = useState([]);
   const [membersStudying, setMembersStudying] = useState(
     { kinder: "" },
@@ -370,7 +370,15 @@ export default function CheckboxesGroup({ handleStepD }) {
       </div>
       {/* </div> */}
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
+        <Button variant="contained" onClick={handleBack}>
+          Back
+        </Button>
+        <Button
+          className="nextButton"
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+        >
           Next
         </Button>
       </div>

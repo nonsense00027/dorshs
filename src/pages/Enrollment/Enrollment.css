@@ -130,3 +130,7 @@ section {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.nextButton {
+  margin-left: 5px !important;
+}
