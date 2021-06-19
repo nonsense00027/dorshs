@@ -90,6 +90,12 @@ function StepA({ handleNext, handleStepA }) {
 
       <div className="row">
         <div className="col">
+          <h3>Grade Level and Information</h3>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
           <p>A1. School Year</p>
           <TextField
             fullWidth

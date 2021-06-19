@@ -102,6 +102,12 @@ export default function StepC({ handleBack, handleStepC }) {
     <section>
       {/* <h2 className="section__title">Section C</h2> */}
       <div className="row">
+        <div className="col">
+          <h3>Parent/ Guardian Information</h3>
+        </div>
+      </div>
+
+      <div className="row">
         <ParentGuardianInfo
           label="Father"
           lastname={fatherLastname}

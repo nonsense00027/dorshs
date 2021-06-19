@@ -82,6 +82,11 @@ function StepB({ handleNext, handleBack, handleStepB }) {
       {/* <h2 className="section__title">Section B</h2> */}
       <div className="row">
         <div className="col">
+          <h3>Student Information</h3>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
           <p>B1, PSA Birth Certificate No. (if available upon enrollment)</p>
           <TextField
             variant="outlined"
