@@ -29,6 +29,9 @@ function App() {
           <Route path="/student/:lrn">
             <Student />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/">
             <Landing />
           </Route>

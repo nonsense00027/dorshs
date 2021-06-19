@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, CircularProgress, TextField } from "@material-ui/core";
+import { Button, CircularProgress, StylesProvider, TextField } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import { db } from "../../shared/configs/firebase";
