@@ -99,13 +99,8 @@ export default function StepC({ handleBack, handleStepC }) {
   };
 
   return (
-    <section>
-      {/* <h2 className="section__title">Section C</h2> */}
-      <div className="row">
-        <div className="col">
-          <h3>Parent/ Guardian Information</h3>
-        </div>
-      </div>
+    <div className="steps">
+      <h3>Parent Guardian Information</h3>
 
       <div className="row">
         <ParentGuardianInfo
@@ -124,7 +119,7 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleFatherWorkingChange}
           phoneNumber={fatherNumber}
           setNumber={setFatherNumber}
-        />
+          />
         <ParentGuardianInfo
           label="Mother"
           lastname={motherLastname}
@@ -141,7 +136,7 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleMotherWorkingChange}
           phoneNumber={motherNumber}
           setNumber={setMotherNumber}
-        />
+          />
         <ParentGuardianInfo
           label="Guardian"
           lastname={guardianLastname}
@@ -158,7 +153,7 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleGuardianWorkingChange}
           phoneNumber={guardianNumber}
           setNumber={setGuardianNumber}
-        />
+          />
       </div>
       <div className="enrollment__buttonContainer">
         <Button variant="contained" onClick={handleBack}>
@@ -169,10 +164,10 @@ export default function StepC({ handleBack, handleStepC }) {
           variant="contained"
           color="primary"
           onClick={handleSubmit}
-        >
+          >
           Next
         </Button>
       </div>
-    </section>
+      </div>
   );
 }

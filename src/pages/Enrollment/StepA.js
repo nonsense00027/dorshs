@@ -85,15 +85,10 @@ function StepA({ handleNext, handleStepA }) {
   };
 
   return (
-    <section>
-      {/* <h2 className="section__title">Section A</h2> */}
-
-      <div className="row">
-        <div className="col">
-          <h3>Grade Level and Information</h3>
-        </div>
-      </div>
-
+    
+    <div className="steps">
+      <h3>Grade Level Information</h3>
+      
       <div className="row">
         <div className="col">
           <p>A1. School Year</p>
@@ -102,7 +97,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={sy}
             onChange={(e) => setSy(e.target.value)}
-          />
+            />
         </div>
 
         <div className="col">
@@ -111,13 +106,13 @@ function StepA({ handleNext, handleStepA }) {
             checked={lrn === false}
             value="no lrn"
             onChange={() => setLrn(false)}
-          />
+            />
           <label>No LRN</label>
           <Checkbox
             checked={lrn === true}
             value="with lrn"
             onChange={() => setLrn(true)}
-          />
+            />
           <label>With LRN</label>
         </div>
         <div className="col">
@@ -126,7 +121,7 @@ function StepA({ handleNext, handleStepA }) {
             checked={returning}
             value="checkedC"
             onChange={() => setReturning((prevReturning) => !prevReturning)}
-          />
+            />
           <label>Returning (Balik-Aral)</label>
         </div>
       </div>
@@ -139,7 +134,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={enrollLevel}
             onChange={(e) => setEnrollLevel(e.target.value)}
-          >
+            >
             <MenuItem value={"GRD7"}>Grade 7</MenuItem>
             <MenuItem value={"GRD8"}>Grade 8</MenuItem>
             <MenuItem value={"GRD9"}>Grade 9</MenuItem>
@@ -155,7 +150,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={lastGradeLevel}
             onChange={(e) => setLastGradeLevel(e.target.value)}
-          />
+            />
         </div>
         <div className="col">
           <p>A6. Last school year completed</p>
@@ -164,7 +159,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={lastSchoolYearCompleted}
             onChange={(e) => setLastSchoolYearCompleted(e.target.value)}
-          />
+            />
         </div>
       </div>
       <div className="section__title">
@@ -178,7 +173,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={lastSchool}
             onChange={(e) => setLastSchool(e.target.value)}
-          />
+            />
         </div>
         <div className="col">
           <p>A8. Last School Id</p>
@@ -188,7 +183,7 @@ function StepA({ handleNext, handleStepA }) {
             // placeholder="School Id"
             value={lastSchoolId}
             onChange={(e) => setLastSchoolId(e.target.value)}
-          />
+            />
         </div>
       </div>
       <div className="row">
@@ -199,7 +194,7 @@ function StepA({ handleNext, handleStepA }) {
             variant="outlined"
             value={lastSchoolAddress}
             onChange={(e) => setLastSchoolAddress(e.target.value)}
-          />
+            />
         </div>
         <div className="col">
           <p>A10. Last School Type</p>
@@ -207,40 +202,40 @@ function StepA({ handleNext, handleStepA }) {
             checked={lastSchoolType === "public"}
             value="public"
             onChange={() => setLastSchoolType("public")}
-          />
+            />
           <label>Public</label>
           <Checkbox
             checked={lastSchoolType === "private"}
             value="private"
             onChange={() => setLastSchoolType("private")}
-          />
+            />
           <label>Private</label>
         </div>
       </div>
       {/* <div className="row">
         <div className="col">
-          <p>A11. School to enroll in</p>
-          <TextField
-            fullWidth
-            // placeholder="School to enroll in"
-            inputProps={{ "aria-label": "description" }}
-          />
+        <p>A11. School to enroll in</p>
+        <TextField
+        fullWidth
+        // placeholder="School to enroll in"
+        inputProps={{ "aria-label": "description" }}
+        />
         </div>
         <div className="col">
-          <p>A12. School Id</p>
-          <TextField
-            fullWidth
-            // placeholder="School Id"
-            inputProps={{ "aria-label": "description" }}
-          />
+        <p>A12. School Id</p>
+        <TextField
+        fullWidth
+        // placeholder="School Id"
+        inputProps={{ "aria-label": "description" }}
+        />
         </div>
         <div className="col">
-          <p>A13. School Address</p>
-          <TextField
-            fullWidth
-            // placeholder="School Address"
-            inputProps={{ "aria-label": "description" }}
-          />
+        <p>A13. School Address</p>
+        <TextField
+        fullWidth
+        // placeholder="School Address"
+        inputProps={{ "aria-label": "description" }}
+        />
         </div>
       </div> */}
       {isSHS(enrollLevel)}
@@ -249,7 +244,7 @@ function StepA({ handleNext, handleStepA }) {
           Next
         </Button>
       </div>
-    </section>
+  </div>
   );
 }
 

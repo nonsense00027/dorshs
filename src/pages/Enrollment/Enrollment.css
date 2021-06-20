@@ -1,4 +1,7 @@
-.enrollment {
+.enrollment > h1 {
+  display: grid;
+  place-items: center;
+  margin-top: 100px
 }
 
 .enrollment .MuiStepLabel-iconContainer .MuiSvgIcon-root {
@@ -133,4 +136,49 @@ section {
 
 .nextButton {
   margin-left: 5px !important;
+}
+
+/* enrollment */
+
+.steps {
+  background-color: white;
+  height: 100vh;
+}
+
+.steps > h3 {
+  position: relative;
+  padding: 10px;
+  background-color: var(--primary-color);
+  height: fit-content;
+  color: white;
+}
+
+/* FAQ */
+
+.faq {
+  
+}
+
+.search {
+    display: flex;
+    flex: 0.7;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-top: 200px;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.search > .MuiSvgIcon-root {
+  color: grey;
+}
+
+.search > input {
+  border-radius: 10px;
+  border-color: #fafafa;
+  width: 100%;
+  padding: 10px;
+  font-size: medium;
+  background-color: transparent;
 }

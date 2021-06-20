@@ -188,12 +188,9 @@ export default function CheckboxesGroup({ handleBack, handleStepD }) {
     }
   };
   return (
-    <div className="stepD">
-      <div className="row">
-        <div className="col">
-          <h3>Household Capacity And Access To Distance Learning</h3>
-        </div>
-      </div>
+    <div className="steps">
+      <h3>Household Capacity And Access To Distance Learning</h3>
+      
       <div className="row">
         <div className="col">
           <p>D1. How Does your child go to school? Choose all that applies</p>
