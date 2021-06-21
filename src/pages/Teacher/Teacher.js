@@ -155,7 +155,7 @@ function Teacher() {
   }
 
   return (
-    <div>
+    <div className="teacher">
       <Sidebar activeTab={activeTab} handleTabChange={handleTabChange} />
       <Header
         schoolyears={schoolyears}

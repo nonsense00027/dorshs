@@ -115,36 +115,3 @@
   background: transparent !important;
   color: #fff !important;
 }
-
-/* FAQ */
-
-.searchDesign {
-  background-color: whitesmoke;
-}
-
-.search {
-    display: flex;
-    flex: 0.7;
-    align-items: center;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    margin-left: 400px;
-    margin-right: 400px;
-}
-
-.search > .MuiSvgIcon-root {
-  color: grey;
-}
-
-.search > input {
-  border-radius: 10px;
-  border-color: #fafafa;
-  width: 100%;
-  padding: 10px;
-  font-size: medium;
-  background-color: transparent;
-} 
-
-/* .container {
-  background-color: red;
-} */
