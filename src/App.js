@@ -34,8 +34,11 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path='/about'>
+          <Route path='/about' component={About}>
             <About />
+          </Route>
+          <Route path="/FAQ" component={FAQ}>
+            <FAQ />
           </Route>
           <Route path="/">
             <Landing />
