@@ -81,10 +81,11 @@
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-left: 260px;
   padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin: 0;
   background-color: #fff;
   z-index: 99;

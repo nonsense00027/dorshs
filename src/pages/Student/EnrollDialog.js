@@ -18,6 +18,7 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
   const [section, setSection] = useState("");
   const [selectedSectionId, setSelectedSectionId] = useState("");
   const [dbsections, setDbsections] = useState([]);
+  const [dbSy, setDbSy] = useState(null);
 
   const handleChange = (event) => {
     setLevel(event.target.value);
@@ -35,16 +36,21 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
 
   const handleEnrollStudent = (e) => {
     e.preventDefault();
-    var subjectsToLoad = subjects.filter((item) => item.level === level);
+    // var subjectsToLoad = subjects.filter((item) => item.level === level);
+    let sectionToAdd = {
+      id: selectedSectionId,
+      name: section,
+      sy: dbSy.id,
+    };
+    console.log(sectionToAdd);
     db.collection("students")
       .doc(student.id)
       .set(
         {
           newEnrollee: false,
-          academicRecord: subjectsToLoad,
+          academicRecord: subjects,
           currentLevel: level,
-          section: section,
-          section_id: selectedSectionId,
+          section: [...student.section, sectionToAdd],
         },
         { merge: true }
       )
@@ -72,6 +78,25 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
       .orderBy("level", "asc")
       .onSnapshot((snapshot) => {
         setDbsections(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+      });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("schoolyears")
+      .where("active", "==", true)
+      .onSnapshot((snapshot) => {
+        if (snapshot.docs.length > 0) {
+          const foundUser = snapshot.docs.map((doc) =>
+            collectIdsAndDocs(doc)
+          )[0];
+          setDbSy(foundUser);
+        } else {
+          console.log("USER NOT FOUND");
+        }
       });
     return () => {
       unsubscribe();

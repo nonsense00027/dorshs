@@ -8,6 +8,7 @@ import Admin from "./pages/Admin/Admin";
 import StepC from "./pages/Enrollment/StepC";
 import Dashboard from "./pages/Student/Dashboard/Dashboard";
 import Student from "./pages/Student/Student";
+import Teacher from "./pages/Teacher/Teacher";
 import { AdminProvider } from "./context/AdminContext";
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
             <AdminProvider>
               <Admin />
             </AdminProvider>
+          </Route>
+          <Route path="/teacher/:id">
+            <Teacher />
           </Route>
           <Route path="/enrollment/grade7">
             <Enrollment />

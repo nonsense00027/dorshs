@@ -143,6 +143,7 @@ export default function Steps() {
         ...stepc,
         ...stepd,
         newEnrollee: true,
+        section: [],
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((result) => {

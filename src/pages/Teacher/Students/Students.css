@@ -1,0 +1,40 @@
+.teacher__students {
+  display: flex;
+  position: relative;
+  /* height: 100%; */
+  /* padding: 20px 0; */
+}
+
+.teacher__studentsContent {
+  flex: 1;
+  padding-right: 350px;
+}
+
+.studentsList {
+  position: fixed;
+  right: 0;
+  top: 90px;
+  height: 100%;
+  width: 350px;
+  border-left: 1px solid lightgray;
+  padding: 10px 0;
+}
+
+.studentsList h3 {
+  text-align: center;
+}
+
+.image__container {
+  display: flex;
+  justify-content: center;
+}
+
+.image__container .MuiAvatar-root {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.info__container {
+  padding: 0 20px;
+  margin-top: 10px;
+}
