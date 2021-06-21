@@ -1,16 +1,18 @@
 import React from 'react';
 import './Landing.css';
-import SearchIcon from '@material-ui/icons/Search';
+import Accordion from './FAQ/Accordion';
+import SearchDesign from '../Landing/FAQ/SeachDesign';
 
 function FAQ() {
     return (
         <div className="faq">
-            <div className="faq__design">
-
+           
+            <div className="searchDesign">
+                <SearchDesign />
             </div>
-            <div className="search">               
-                <SearchIcon />
-                <input placeholder="Type keywords to find the answers" type="text" />
+
+            <div className="accordion">
+                <Accordion />
             </div>
         </div>
     )
