@@ -78,8 +78,8 @@ function StepB({ handleNext, handleBack, handleStepB }) {
   };
 
   return (
-    <section>
-      {/* <h2 className="section__title">Section B</h2> */}
+      <div className="steps">
+        <h3>Student Information</h3>
       <div className="row">
         <div className="col">
           <p>B1, PSA Birth Certificate No. (if available upon enrollment)</p>
@@ -378,7 +378,7 @@ function StepB({ handleNext, handleBack, handleStepB }) {
           Next
         </Button>
       </div>
-    </section>
+    </div>
   );
 }
 

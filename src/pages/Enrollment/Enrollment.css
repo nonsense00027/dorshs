@@ -1,4 +1,7 @@
-.enrollment {
+.enrollment > h1 {
+  display: grid;
+  place-items: center;
+  margin-top: 100px
 }
 
 .enrollment .MuiStepLabel-iconContainer .MuiSvgIcon-root {
@@ -135,3 +138,25 @@ section {
 .nextButton {
   margin-left: 5px !important;
 }
+
+/* enrollment */
+
+.steps {
+  background-color: white;
+  height: 100vh;
+}
+
+.steps > h3 {
+  position: relative;
+  padding: 10px;
+  background-color: var(--primary-color);
+  height: fit-content;
+  color: white;
+}
+
+/* FAQ */
+
+ /* .faq {
+  
+} */
+

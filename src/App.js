@@ -10,6 +10,7 @@ import Dashboard from "./pages/Student/Dashboard/Dashboard";
 import Student from "./pages/Student/Student";
 import Teacher from "./pages/Teacher/Teacher";
 import { AdminProvider } from "./context/AdminContext";
+import FAQ from './pages/Landing/FAQ';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/">
-            <Landing />
+            <FAQ />
           </Route>
         </Switch>
       </Router>
