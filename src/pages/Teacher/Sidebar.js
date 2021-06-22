@@ -15,6 +15,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,7 @@ function ListItemLink(props) {
 }
 
 export default function Sidebar({ activeTab, handleTabChange }) {
+  const history = useHistory();
   const { userLogout } = useUserContext();
   const classes = useStyles();
   const [tabs, setTabs] = useState([
@@ -41,7 +43,7 @@ export default function Sidebar({ activeTab, handleTabChange }) {
   const handleLogout = () => {
     userLogout();
     handleTabChange(0);
-    // history.push("/");
+    history.push("/");
   };
 
   return (

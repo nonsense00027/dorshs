@@ -76,33 +76,43 @@ function Teacher() {
   console.log("SELECTED STUDENT", selectedStudent);
 
   const getStudents = () => {
-    if (students.length > 0 && activeSy) {
-      let sectionStudents = students.map((student) => {
-        let sectionsList = student.section.filter(
-          (item) => item.id === section.id
-        );
-        if (sectionsList.length > 0) {
-          return student;
-        }
-      });
+    // console.log("students", students.length);
+    // console.log(students.length > 0 && activeSy !== null);
+    // return [];
+    if (students.length > 0 && activeSy !== null) {
+      let sectionStudents = students
+        .map((student) => {
+          let sectionsList = student.section.filter(
+            (item) => item.id === section.id
+          );
+          if (sectionsList.length > 0) {
+            return student;
+          }
+        })
+        .filter((item) => item !== undefined);
 
-      let syStudents = sectionStudents.map((student) => {
-        let sy;
-        if (selectedSy.length > 0) {
-          sy = student.section.filter((item) => item.sy === selectedSy.id);
-        } else {
-          sy = student.section.filter((item) => item.sy === activeSy.id);
-        }
+      let syStudents = sectionStudents
+        .map((student) => {
+          let sy;
+          if (selectedSy.length > 0) {
+            sy = student.section.filter((item) => item.sy === selectedSy.id);
+          } else {
+            sy = student.section.filter((item) => item.sy === activeSy.id);
+          }
 
-        if (sy.length > 0) {
-          return student;
-        }
-      });
+          if (sy.length > 0) {
+            return student;
+          }
+        })
+        .filter((item) => item !== undefined);
       return syStudents;
+      // return sectionStudents;
     } else {
       return [];
     }
   };
+
+  console.log("GETTING STUDENTS", getStudents());
 
   useEffect(() => {
     if (user) {

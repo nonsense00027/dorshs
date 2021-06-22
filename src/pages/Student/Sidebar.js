@@ -45,8 +45,7 @@ const getTabs = (status) => {
       { id: 1, label: "Student Information", icon: <AssessmentIcon /> },
       { id: 2, label: "Requirements", icon: <PersonIcon /> },
       { id: 3, label: "Academic Record", icon: <SupervisorAccountIcon /> },
-      { id: 4, label: "Subjects", icon: <DnsIcon /> },
-      { id: 5, label: "Settings", icon: <SettingsIcon /> },
+      { id: 4, label: "Settings", icon: <SettingsIcon /> },
     ];
   }
 };
