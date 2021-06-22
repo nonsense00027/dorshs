@@ -16,7 +16,8 @@ const getComponent = (
   index,
   students,
   handleSelectStudent,
-  selectedStudent
+  selectedStudent,
+  studentLoading
 ) => {
   switch (index) {
     case 0:
@@ -27,6 +28,7 @@ const getComponent = (
           students={students}
           handleSelectStudent={handleSelectStudent}
           selectedStudent={selectedStudent}
+          studentLoading={studentLoading}
         />
       );
     case 2:
@@ -48,18 +50,30 @@ function Teacher() {
   const [loadingSy, setLoadingSy] = useState(true);
   const [selectedSy, setSelectedSy] = useState("");
   const [section, setSection] = useState({});
-  const [selectedStudent, setSelectedStudent] = useState({});
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [studentLoading, setStudentLoading] = useState(false);
+
   const handleTabChange = (tabIndex) => {
     setActiveTab(tabIndex);
   };
 
   const handleSelectStudent = (student) => {
-    if (student.id === selectedStudent.id) {
-      setSelectedStudent({});
+    setStudentLoading(true);
+    if (selectedStudent) {
+      if (student.id === selectedStudent.id) {
+        setSelectedStudent(null);
+      } else {
+        setSelectedStudent(student);
+      }
     } else {
       setSelectedStudent(student);
     }
+    setTimeout(function () {
+      setStudentLoading(false);
+    }, 700);
   };
+
+  console.log("SELECTED STUDENT", selectedStudent);
 
   const getStudents = () => {
     if (students.length > 0 && activeSy) {
@@ -167,7 +181,8 @@ function Teacher() {
           activeTab,
           getStudents(),
           handleSelectStudent,
-          selectedStudent
+          selectedStudent,
+          studentLoading
         )}
       </div>
     </div>

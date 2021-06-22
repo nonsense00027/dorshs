@@ -1,13 +1,30 @@
 .teacher__students {
   display: flex;
   position: relative;
-  /* height: 100%; */
+  height: 100%;
   /* padding: 20px 0; */
 }
 
 .teacher__studentsContent {
   flex: 1;
   padding-right: 350px;
+  padding-top: 20px;
+}
+
+.teacher__studentsInfo {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 350px;
+}
+
+.teacher__studentsInfo img {
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
 }
 
 .studentsList {

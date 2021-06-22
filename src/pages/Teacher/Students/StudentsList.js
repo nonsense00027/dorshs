@@ -22,7 +22,7 @@ function StudentsList({ students, handleSelectStudent, selectedStudent }) {
             <ListItemIcon>
               <Checkbox
                 edge="start"
-                checked={selectedStudent.id === student.id}
+                checked={selectedStudent?.id === student.id}
                 tabIndex={-1}
                 disableRipple
                 // inputProps={{ "aria-labelledby": labelId }}

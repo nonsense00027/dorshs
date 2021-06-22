@@ -24,13 +24,13 @@ function Header({ activeSy }) {
   const classes = useStyles();
   return (
     <div className="teacher__header">
-      {/* <div className="header__left">
+      <div className="header__left">
         <img src={logo} alt="" />
         <h3>
           Davao Oriental Regional <br />
           Science High School
         </h3>
-      </div> */}
+      </div>
       <div className="header__right">
         {/* <Avatar className={classes.large} src="nonsense" alt="nonsense" /> */}
         <h3>
