@@ -61,7 +61,7 @@ function Navbar() {
           <p className="navbar__links" onClick={() => history.push("/about")}> 
             About
           </p>
-          <p className="navbar__links">Resources</p>
+          <p className="navbar__links" onClick={() => history.push('/resources')}>Resources</p>
           <p className="navbar__links" onClick={() => history.push("/FAQ")}>FAQ</p>
           {getButton(user, setOpen, history)}
         </div>
