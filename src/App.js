@@ -12,6 +12,7 @@ import Teacher from "./pages/Teacher/Teacher";
 import { AdminProvider } from "./context/AdminContext";
 import FAQ from "./pages/Landing/FAQ";
 import About from "./pages/Landing/About/About";
+import Resources from "./pages/Landing/Resources/Resources";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/faq">
             <FAQ />
+          </Route>
+          <Route path='/resources' component={Resources}> 
+            <Resources />
           </Route>
           <Route path="/">
             <Landing />
