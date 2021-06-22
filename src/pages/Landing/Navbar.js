@@ -58,11 +58,11 @@ function Navbar() {
           <p className="navbar__links" onClick={() => history.push("/")}>
             Home
           </p>
-          <p className="navbar__links" onClick={() => history.push("/FAQ")}> 
+          <p className="navbar__links" onClick={() => history.push("/about")}> 
             About
           </p>
           <p className="navbar__links">Resources</p>
-          <p className="navbar__links">FAQ</p>
+          <p className="navbar__links" onClick={() => history.push("/FAQ")}>FAQ</p>
           {getButton(user, setOpen, history)}
         </div>
       </Container>

@@ -115,3 +115,65 @@
   background: transparent !important;
   color: #fff !important;
 }
+
+/* FAQ */
+
+.searchDesign {
+  background-color: whitesmoke;
+}
+
+.search {
+  display: flex;
+  flex: 0.7;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+.search > .MuiSvgIcon-root {
+  color: grey;
+}
+
+.search > input {
+  border-radius: 10px;
+  border-color: #fafafa;
+  width: 100%;
+  padding: 10px;
+  font-size: medium;
+  background-color: transparent;
+}
+
+/* .container {
+  background-color: red;
+} */
+
+/* About */
+
+.aboutUs {
+  background-color: #dde8dd;
+  padding-bottom: 200px;
+}
+
+.aboutUs > h2 {
+  padding: 20px;
+  position: absolute;
+  top: 130px;
+  left: 10px;
+}
+
+.definition {
+  background-color: white;
+  height: 100vh;
+}
+
+.definition > h3 {
+  text-align: center;
+  font: normal normal normal 25px/40px Lato;
+  letter-spacing: 0px;
+  margin: 30px;
+  margin-right: 40px;
+  margin-left: 4;
+  background-color: whitesmoke;
+}
