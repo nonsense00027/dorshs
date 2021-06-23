@@ -13,12 +13,16 @@ function Welcome() {
     switch (category) {
       case 1:
         history.push("/enrollment/grade7");
+        break;
       case 2:
         history.push("/enrollment/grade7");
+        break;
       case 3:
         history.push("/enrollment/grade7");
+        break;
       case 4:
         history.push("/enrollment/grade7");
+        break;
       default:
         console.log("ERROR");
     }

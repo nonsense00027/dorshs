@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Assessments.css";
 import AssessmentsTable from "./AssessmentsTable";
-import { db } from "../../../shared/configs/firebase";
-import { collectIdsAndDocs } from "../../../shared/utilities";
 import { useAdminContext } from "../../../context/AdminContext";
 
 function Assessments() {

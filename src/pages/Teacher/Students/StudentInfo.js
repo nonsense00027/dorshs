@@ -4,7 +4,6 @@ import AcademicTable from "./AcademicTable";
 import AddIcon from "@material-ui/icons/Add";
 import AddGradeDialog from "./AddGradeDialog";
 import { db } from "../../../shared/configs/firebase";
-import { collectIdsAndDocs } from "../../../shared/utilities";
 
 function StudentInfo({ selectedStudent, dbStudent, studentLoading }) {
   const [gradeDialogOpen, setGradeDialogOpen] = useState(false);

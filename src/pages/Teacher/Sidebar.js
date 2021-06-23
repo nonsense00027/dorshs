@@ -4,16 +4,11 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import AssessmentIcon from "@material-ui/icons/Assessment";
 import PersonIcon from "@material-ui/icons/Person";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import DnsIcon from "@material-ui/icons/Dns";
-import SettingsIcon from "@material-ui/icons/Settings";
-import EventSeatIcon from "@material-ui/icons/EventSeat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import EventNoteIcon from "@material-ui/icons/EventNote";
-import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router";
 

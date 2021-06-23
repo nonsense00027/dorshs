@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  IconButton,
   Paper,
-  Snackbar,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TablePagination,
   TableRow,
   withStyles,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
 } from "@material-ui/core";
-import { db } from "../../../shared/configs/firebase";
-import LaunchIcon from "@material-ui/icons/Launch";
 import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {
@@ -29,10 +18,10 @@ function Alert(props) {
 
 const columns = [
   { id: "title", label: "Learning Areas", minWidth: 160 },
-  { id: "q1", label: "Quarter 1", minWidth: 50 },
-  { id: "q2", label: "Quarter 2", minWidth: 50 },
-  { id: "q3", label: "Quarter 3", minWidth: 50 },
-  { id: "q4", label: "Quarter 4", minWidth: 50 },
+  { id: "q1", label: "Quarter 1", minWidth: 50, align: "center" },
+  { id: "q2", label: "Quarter 2", minWidth: 50, align: "center" },
+  { id: "q3", label: "Quarter 3", minWidth: 50, align: "center" },
+  { id: "q4", label: "Quarter 4", minWidth: 50, align: "center" },
 ];
 
 const StyledTableCell = withStyles((theme) => ({
@@ -84,7 +73,7 @@ function AcademicTable({ subjects }) {
     <div className="examTable">
       <Paper className={classes.root}>
         <TableContainer className={classes.container}>
-          <Table stickyHeader aria-label="sticky table" size="small">
+          <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
@@ -96,9 +85,9 @@ function AcademicTable({ subjects }) {
                     {column.label}
                   </StyledTableCell>
                 ))}
-                <StyledTableCell key="actions" style={{ minWidth: 50 }}>
+                {/* <StyledTableCell key="actions" style={{ minWidth: 50 }}>
                   Actions
-                </StyledTableCell>
+                </StyledTableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -122,7 +111,7 @@ function AcademicTable({ subjects }) {
                           </TableCell>
                         );
                       })}
-                      <TableCell key={row.id} align="left">
+                      {/* <TableCell key={row.id} align="left">
                         <IconButton>
                           <LaunchIcon
                             onClick={() =>
@@ -134,10 +123,7 @@ function AcademicTable({ subjects }) {
                             }
                           />
                         </IconButton>
-                        {/* <IconButton onClick={() => handleDeleteDialogOpen(row)}>
-                          <DeleteIcon />
-                        </IconButton> */}
-                      </TableCell>
+                      </TableCell> */}
                     </StyledTableRow>
                   );
                 })}

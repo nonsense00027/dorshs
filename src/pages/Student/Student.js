@@ -31,7 +31,7 @@ const getComponent = (index, student) => {
     case 1:
       return <Information student={student} />;
     case 2:
-      return <Requirements />;
+      return <Requirements student={student} />;
     case 3:
       return <AcademicRecord student={student} />;
     // case 3:

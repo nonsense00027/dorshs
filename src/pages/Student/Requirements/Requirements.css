@@ -21,7 +21,8 @@
 }
 
 .requirements__card img {
-  width: 90%;
+  /* width: 90%; */
+  height: 170px;
   object-fit: contain;
 }
 
@@ -35,6 +36,45 @@
   color: #fff !important;
 }
 
+.requirements__uploadButtonDisabled {
+  background-color: #e6e6e6 !important;
+}
+
 .requirements__uploadButton .MuiSvgIcon-root {
   margin-right: 10px;
+}
+
+.requirements__imageContainer {
+  position: relative;
+}
+
+.requirements__dbImageContainer {
+  position: relative;
+}
+
+.requirements__imageContainer img {
+  opacity: 0.3;
+}
+
+.requirements__openFileButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.requirements__openFileButton .MuiSvgIcon-root {
+  width: 4rem !important;
+  height: 4rem !important;
+  color: var(--secondary-color) !important;
+}
+
+.requirements__uploadProgress {
+  width: 90%;
+  height: 10px;
 }

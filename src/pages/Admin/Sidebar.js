@@ -12,7 +12,6 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import logo from "../../img/rslogo.png";
 import { useUserContext } from "../../context/UserContext";
 
 const useStyles = makeStyles((theme) => ({

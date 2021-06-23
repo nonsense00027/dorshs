@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  IconButton,
   Paper,
-  Snackbar,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TablePagination,
   TableRow,
   withStyles,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
 } from "@material-ui/core";
-import { db } from "../../../shared/configs/firebase";
-import LaunchIcon from "@material-ui/icons/Launch";
 import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {

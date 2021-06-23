@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Sectioning.css";
 import SectioningTable from "./SectioningTable";
 import {
@@ -15,7 +15,6 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import MuiAlert from "@material-ui/lab/Alert";
-import { collectIdsAndDocs } from "../../../shared/utilities";
 import { db } from "../../../shared/configs/firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAdminContext } from "../../../context/AdminContext";
@@ -32,7 +31,6 @@ function Alert(props) {
 }
 
 function Sectioning() {
-  const classes = useStyles();
   const { sections } = useAdminContext();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [open, setOpen] = useState(false);
