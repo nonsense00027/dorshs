@@ -206,7 +206,9 @@
 
 .resources {
   background-color: whitesmoke;
-  display: flex;
+  display: grid;
+  /* padding-top: 67px; */
+  place-items: center;
 }
 
 .head {
