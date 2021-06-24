@@ -9,8 +9,12 @@ import Input from "@material-ui/core/Input";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(2),
-      width: "35ch",
+      margin: theme.spacing(1),
+      width: "25ch",
+      display: "flex",
+    },
+    formControl: {
+      margin: theme.spacing(3),
     },
   },
 }));
@@ -54,6 +58,7 @@ function ParentGuardianInfo({
           id="outlined-disabled"
           defaultValue={lastname}
           variant="outlined"
+          fullWidth
         />
       </div>
       <div>
@@ -63,6 +68,7 @@ function ParentGuardianInfo({
           id="outlined-disabled"
           defaultValue={firstname}
           variant="outlined"
+          fullWidth
         />
       </div>
       <div>
@@ -72,6 +78,7 @@ function ParentGuardianInfo({
           id="outlined-disabled"
           defaultValue={middlename}
           variant="outlined"
+          fullWidth
         />
       </div>
       <div>

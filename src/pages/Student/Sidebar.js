@@ -9,6 +9,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 
@@ -33,14 +34,14 @@ const getTabs = (status) => {
   if (status) {
     return [
       { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
-      { id: 1, label: "Student Information", icon: <AssessmentIcon /> },
-      { id: 2, label: "Requirements", icon: <PersonIcon /> },
+      { id: 1, label: "Student Information", icon: <PersonIcon /> },
+      { id: 2, label: "Requirements", icon: <AssignmentIcon /> },
     ];
   } else {
     return [
       { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
-      { id: 1, label: "Student Information", icon: <AssessmentIcon /> },
-      { id: 2, label: "Requirements", icon: <PersonIcon /> },
+      { id: 1, label: "Student Information", icon: <PersonIcon /> },
+      { id: 2, label: "Requirements", icon: <AssignmentIcon /> },
       { id: 3, label: "Academic Record", icon: <SupervisorAccountIcon /> },
       { id: 4, label: "Settings", icon: <SettingsIcon /> },
     ];

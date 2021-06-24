@@ -60,3 +60,11 @@
 .parentInfo {
   display: flex;
 } */
+
+.parentInfo {
+  display: flex;
+}
+
+.parentInfo p {
+  font-size: 14px;
+}
