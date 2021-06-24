@@ -26,7 +26,7 @@ function AdminLogin() {
     <div className="adminLogin">
       <div className="adminLogin__card">
         <form onSubmit={handleAdminLogin}>
-          <img src={logo} />
+          <img src={logo} alt="" />
           <h3>Welcome Admin</h3>
           <p>Password:</p>
           <TextField

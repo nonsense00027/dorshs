@@ -68,7 +68,7 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
         <List component="nav" aria-label="main mailbox folders">
           {getTabs(studentStatus).map((tab) => (
             <ListItem
-              className={activeTab === tab.id && `active`}
+              className={activeTab === tab.id ? "active" : ""}
               button
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}

@@ -1,7 +1,4 @@
 import React from "react";
-import main1 from "../../img/main1.jpg";
-import main2 from "../../img/main2.jpg";
-import main3 from "../../img/main3.jpg";
 import first from "../../img/first.jpeg";
 import second from "../../img/second.png";
 import third from "../../img/third.png";
@@ -31,7 +28,7 @@ function MainCarousel() {
     >
       <SwiperSlide>
         <div className="carousel__slideContainer">
-          <img src={first} />
+          <img src={first} alt="" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -43,7 +40,7 @@ function MainCarousel() {
               are Achievers
             </h1>
           </div>
-          <img src={second} />
+          <img src={second} alt="" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -55,7 +52,7 @@ function MainCarousel() {
               Learners tomorrow
             </h1>
           </div>
-          <img src={third} />
+          <img src={third} alt="" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -69,7 +66,7 @@ function MainCarousel() {
               of you.
             </h1>
           </div>
-          <img src={fourth} />
+          <img src={fourth} alt="" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -78,7 +75,7 @@ function MainCarousel() {
             <p>A tradition of</p>
             <h1>Excellence</h1>
           </div>
-          <img src={fifth} />
+          <img src={fifth} alt="" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -90,7 +87,7 @@ function MainCarousel() {
               Always a RegScian
             </h1>
           </div>
-          <img src={sixth} />
+          <img src={sixth} alt="" />
         </div>
       </SwiperSlide>
     </Swiper>

@@ -15,10 +15,6 @@ import {
 import LaunchIcon from "@material-ui/icons/Launch";
 import MuiAlert from "@material-ui/lab/Alert";
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
 const columns = [
   { id: "lrnNo", label: "LRN No.", minWidth: 100 },
   { id: "lastname", label: "Lastname", minWidth: 160 },

@@ -1,30 +1,13 @@
 import React, { useState } from "react";
 import "../Enrollment/Enrollment.css";
-import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import {
   Button,
   Input,
   TextField,
-  FormLabel,
   FormGroup,
-  FormControl,
   FormControlLabel,
-  FormHelperText,
 } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-      display: "flex",
-    },
-    formControl: {
-      margin: theme.spacing(3),
-    },
-  },
-}));
 
 const transportationList = [
   "Walking",
@@ -190,7 +173,7 @@ export default function CheckboxesGroup({ handleBack, handleStepD }) {
   return (
     <div className="steps">
       <h3>Household Capacity And Access To Distance Learning</h3>
-      
+
       <div className="row">
         <div className="col">
           <p>D1. How Does your child go to school? Choose all that applies</p>

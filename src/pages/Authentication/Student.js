@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Button, CircularProgress, StylesProvider, TextField } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  StylesProvider,
+  TextField,
+} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import { db } from "../../shared/configs/firebase";
@@ -12,6 +17,7 @@ function Student({ setOpen }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -22,8 +28,8 @@ function Student({ setOpen }) {
           const foundUser = snapshot.docs.map((doc) =>
             collectIdsAndDocs(doc)
           )[0];
-          console.log("FOUND", foundUser);
-          userLogin(foundUser);
+          console.log("LOGGING IN USER FOUND", foundUser);
+          userLogin({ lrnNo: foundUser.lrnNo, role: "student" });
           setLoading(false);
           history.push(`/student/${foundUser.lrnNo}`);
         } else {

@@ -11,8 +11,11 @@ import { AdminProvider } from "./context/AdminContext";
 import FAQ from "./pages/Landing/FAQ";
 import About from "./pages/Landing/About/About";
 import Resources from "./pages/Landing/Resources/Resources";
+import { useUserContext } from "./context/UserContext";
 
 function App() {
+  const { user } = useUserContext();
+  console.log("USER SA APP.JS", user);
   return (
     <div className="app">
       <Router>

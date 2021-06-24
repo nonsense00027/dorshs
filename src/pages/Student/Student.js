@@ -51,10 +51,10 @@ function Student() {
   const [requirementDialog, setRequirementDialog] = useState(false);
 
   useEffect(() => {
+    console.log("GETTING USER", user);
     if (user) {
       if (params.lrn) {
-        const unsubscribe = db
-          .collection("students")
+        db.collection("students")
           .where("lrnNo", "==", params.lrn)
           .onSnapshot((snapshot) => {
             if (snapshot.docs.length > 0) {
@@ -70,18 +70,11 @@ function Student() {
             } else {
               console.log("USER NOT FOUND");
               history.push("/");
-
-              // setLoading(false);
             }
-            // setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-            // setStudentsLoading(false);
           });
-        return () => {
-          unsubscribe();
-        };
       }
     } else {
-      history.push("/");
+      // history.push("/");
     }
   }, []);
 
@@ -111,7 +104,6 @@ function Student() {
     );
   }
 
-  console.log("STUDENTTT", student);
   return (
     <div className="student">
       <Sidebar

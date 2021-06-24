@@ -29,6 +29,8 @@ const getComponent = (index) => {
       return <Sectioning />;
     case 6:
       return <Settings />;
+    default:
+      console.log("ERROR");
   }
 };
 

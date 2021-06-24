@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import Cookie from "js-cookie";
 
-const userCookie = Cookie.getJSON("user") || null;
+const userCookie = Cookie.getJSON("user") ? Cookie.getJSON("user") : null;
 
 //Prepares the data layer
 export const UserContext = createContext();
@@ -9,9 +9,11 @@ export const UserContext = createContext();
 //Wrap our app and provide the Data Layer
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(userCookie);
+
   const userLogin = (user) => {
     setUser(user);
     Cookie.set("user", JSON.stringify(user));
+    console.log("AFTER SETTING USER", user);
   };
 
   const userLogout = () => {
@@ -19,9 +21,9 @@ export const UserProvider = ({ children }) => {
     Cookie.remove("user");
   };
 
-  useEffect(() => {
-    console.log("USER", user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log("USER", user);
+  // }, [user]);
 
   const payload = { user, userLogin, userLogout };
 

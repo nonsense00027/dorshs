@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../img/rslogo.png";
 import { Button, Container, Dialog, DialogContent } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -8,19 +8,24 @@ import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import FAQ from "./FAQ";
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
-
 const getButton = (user, setOpen, history) => {
   console.log("USER IN NAVBARR", user);
   if (user) {
     return (
       <Button
         variant="contained"
-        onClick={() => history.push(`/student/${user.lrnNo}`)}
+        onClick={() => {
+          switch (user.role) {
+            case "teacher":
+              history.push(`/teacher/${user.id}`);
+              break;
+            case "student":
+              history.push(`/student/${user.lrnNo}`);
+              break;
+            default:
+              console.log("ERROR");
+          }
+        }}
       >
         Account
         <ExitToAppIcon />
@@ -38,9 +43,15 @@ const getButton = (user, setOpen, history) => {
 
 function Navbar() {
   const { user } = useUserContext();
-  const classes = useStyles();
   const history = useHistory();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+
+  console.log("USER", user);
+  useEffect(() => {
+    if (!user) {
+      setOpen(true);
+    }
+  }, [user]);
 
   return (
     <div className="navbar">

@@ -3,7 +3,6 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
@@ -78,8 +77,8 @@ function StepB({ handleNext, handleBack, handleStepB }) {
   };
 
   return (
-      <div className="steps">
-        <h3>Student Information</h3>
+    <div className="steps">
+      <h3>Student Information</h3>
       <div className="row">
         <div className="col">
           <p>B1, PSA Birth Certificate No. (if available upon enrollment)</p>

@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import Cookie from "js-cookie";
 import { collectIdsAndDocs } from "../shared/utilities";
 import { db } from "../shared/configs/firebase";
 

@@ -26,7 +26,7 @@ function Teacher({ setOpen }) {
             collectIdsAndDocs(doc)
           )[0];
           console.log("FOUND", foundUser);
-          userLogin(foundUser);
+          userLogin({ ...foundUser, role: "teacher" });
           setLoading(false);
           history.push(`/teacher/${foundUser.id}`);
         } else {

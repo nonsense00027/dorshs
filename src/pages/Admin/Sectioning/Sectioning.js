@@ -16,15 +16,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import MuiAlert from "@material-ui/lab/Alert";
 import { db } from "../../../shared/configs/firebase";
-import { makeStyles } from "@material-ui/core/styles";
 import { useAdminContext } from "../../../context/AdminContext";
-
-const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: "#fff",
-  },
-}));
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;

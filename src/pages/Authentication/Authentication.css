@@ -100,3 +100,6 @@ form {
   outline: none !important;
 }
 
+.login .form-group p {
+  margin-bottom: 5px !important;
+}
