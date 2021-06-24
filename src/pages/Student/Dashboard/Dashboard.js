@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import SDashboard from './SDashboard';
 
 function Dashboard() {
-  return <div></div>;
+  return (
+    <div className='dashboard'> 
+        <SDashboard />
+    </div>
+  )
 }
 
 export default Dashboard;
