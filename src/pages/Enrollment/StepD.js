@@ -354,11 +354,15 @@ export default function CheckboxesGroup({ handleBack, handleStepD }) {
       </div>
       {/* </div> */}
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" onClick={handleBack}>
+        <Button
+          variant="contained"
+          onClick={handleBack}
+          className="steps__backButton"
+        >
           Back
         </Button>
         <Button
-          className="nextButton"
+          className="steps__nextButton"
           variant="contained"
           color="primary"
           onClick={handleSubmit}

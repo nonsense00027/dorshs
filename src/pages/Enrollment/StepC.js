@@ -119,7 +119,7 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleFatherWorkingChange}
           phoneNumber={fatherNumber}
           setNumber={setFatherNumber}
-          />
+        />
         <ParentGuardianInfo
           label="Mother"
           lastname={motherLastname}
@@ -136,7 +136,7 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleMotherWorkingChange}
           phoneNumber={motherNumber}
           setNumber={setMotherNumber}
-          />
+        />
         <ParentGuardianInfo
           label="Guardian"
           lastname={guardianLastname}
@@ -153,21 +153,25 @@ export default function StepC({ handleBack, handleStepC }) {
           handleWorkingChange={handleGuardianWorkingChange}
           phoneNumber={guardianNumber}
           setNumber={setGuardianNumber}
-          />
+        />
       </div>
       <div className="enrollment__buttonContainer">
-        <Button variant="contained" onClick={handleBack}>
+        <Button
+          variant="contained"
+          onClick={handleBack}
+          className="steps__backButton"
+        >
           Back
         </Button>
         <Button
-          className="nextButton"
+          className="steps__nextButton"
           variant="contained"
           color="primary"
           onClick={handleSubmit}
-          >
+        >
           Next
         </Button>
       </div>
-      </div>
+    </div>
   );
 }

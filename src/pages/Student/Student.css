@@ -150,7 +150,6 @@
   background-color: #999 !important;
 }
 
-
 /* SDashboard */
 .dashboard {
   display: flex;
@@ -174,9 +173,9 @@
 }
 
 .col {
- flex: 1;
- margin: 20px;
- margin-bottom: 20px;
+  flex: 1;
+  /* margin: 20px; */
+  margin-bottom: 10px;
 }
 
 .row2 {
@@ -185,15 +184,14 @@
 }
 
 .col2 {
- flex: 1;
- margin: 10px;
- margin-left: 60px;
- margin-bottom: 10px;
- float: left;
- padding: 0 10px;
- width: 25%;
+  flex: 1;
+  margin: 10px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+  float: left;
+  padding: 0 10px;
+  width: 25%;
 }
-
 
 .row3 {
   display: flex;
@@ -201,9 +199,9 @@
 }
 
 .col3 {
- flex: 1;
- margin-left: 80px;
- margin-bottom: 5px;
+  flex: 1;
+  margin-left: 80px;
+  margin-bottom: 5px;
 }
 
 .row4 {
@@ -212,10 +210,10 @@
 }
 
 .col4 {
- flex: 1;
- margin-left: 80px;
- margin-top: 20px;
- margin-bottom: 5px;
+  flex: 1;
+  margin-left: 80px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .coreSub {
