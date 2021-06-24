@@ -149,3 +149,91 @@
 .student__removeButton {
   background-color: #999 !important;
 }
+
+
+/* SDashboard */
+.dashboard {
+  display: flex;
+  margin-left: 10px;
+}
+.avatar {
+  display: flex;
+  margin: 40px;
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.avatar__text {
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.col {
+ flex: 1;
+ margin: 20px;
+ margin-bottom: 20px;
+}
+
+.row2 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.col2 {
+ flex: 1;
+ margin: 10px;
+ margin-left: 60px;
+ margin-bottom: 10px;
+ float: left;
+ padding: 0 10px;
+ width: 25%;
+}
+
+
+.row3 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.col3 {
+ flex: 1;
+ margin-left: 80px;
+ margin-bottom: 5px;
+}
+
+.row4 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.col4 {
+ flex: 1;
+ margin-left: 80px;
+ margin-top: 20px;
+ margin-bottom: 5px;
+}
+
+.coreSub {
+  margin-left: 80px;
+  font-size: 15px;
+}
+
+.subjects {
+  margin-left: 90px;
+  margin-top: 10px;
+}
+
+.enrolledSub {
+  margin-left: 50px;
+}
+
+.card {
+  box-shadow: 0px 3px, 6px 0px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  background-color: #f1f1f1;
+}
