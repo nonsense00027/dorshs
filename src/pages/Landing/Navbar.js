@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Login from "../Authentication/Login";
 import { useUserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
-import FAQ from './FAQ';
+import FAQ from "./FAQ";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -40,7 +40,7 @@ function Navbar() {
   const { user } = useUserContext();
   const classes = useStyles();
   const history = useHistory();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <div className="navbar">
@@ -58,11 +58,18 @@ function Navbar() {
           <p className="navbar__links" onClick={() => history.push("/")}>
             Home
           </p>
-          <p className="navbar__links" onClick={() => history.push("/about")}> 
+          <p className="navbar__links" onClick={() => history.push("/about")}>
             About
           </p>
-          <p className="navbar__links" onClick={() => history.push('/resources')}>Resources</p>
-          <p className="navbar__links" onClick={() => history.push("/FAQ")}>FAQ</p>
+          <p
+            className="navbar__links"
+            onClick={() => history.push("/resources")}
+          >
+            Resources
+          </p>
+          <p className="navbar__links" onClick={() => history.push("/FAQ")}>
+            FAQ
+          </p>
           {getButton(user, setOpen, history)}
         </div>
       </Container>

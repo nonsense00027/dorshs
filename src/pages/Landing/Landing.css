@@ -223,3 +223,74 @@
   letter-spacing: 2px;
   text-align: center;
 }
+
+.carousel__slideContainer {
+  position: relative;
+}
+
+.carousel__slideText {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel__slideText.first {
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  font-size: 50px;
+  text-align: left;
+}
+
+.carousel__slideText.second {
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 40px;
+  text-align: left;
+  padding-right: 90px;
+  padding-bottom: 200px;
+}
+
+.carousel__slideText.third {
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  font-size: 50px;
+  text-align: left;
+  color: #fff;
+}
+
+.carousel__slideText.fourth {
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 70px;
+  text-align: left;
+  padding-right: 90px;
+  padding-bottom: 100px;
+}
+
+.carousel__slideText.fourth p {
+}
+
+.carousel__slideText.fifth {
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  padding-top: 100px;
+  font-size: 45px;
+  text-align: left;
+  color: #fff;
+}
