@@ -12,6 +12,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { db } from "../../shared/configs/firebase";
 import firebase from "firebase";
+import Cookie from "js-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,6 +145,10 @@ export default function Steps() {
       })
       .then((result) => {
         setIdCode({ lrn: stepb.lrnNo, id: result.id });
+        Cookie.remove("stepa");
+        Cookie.remove("stepb");
+        Cookie.remove("stepc");
+        Cookie.remove("stepd");
         setOpen(false);
         handleNext();
       });
@@ -171,7 +176,6 @@ export default function Steps() {
           </div>
         ) : (
           <div>
-            {/* <Typography> */}
             {getStepContent(
               activeStep,
               handleNext,
@@ -181,7 +185,6 @@ export default function Steps() {
               handleStepC,
               handleStepD
             )}
-            {/* </Typography> */}
           </div>
         )}
       </div>

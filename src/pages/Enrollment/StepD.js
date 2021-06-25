@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Enrollment/Enrollment.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import {
@@ -8,6 +8,7 @@ import {
   FormGroup,
   FormControlLabel,
 } from "@material-ui/core";
+import Cookie from "js-cookie";
 
 const transportationList = [
   "Walking",
@@ -120,7 +121,45 @@ export default function CheckboxesGroup({ handleBack, handleStepD }) {
       modality,
       challenges,
     });
+    putToCookie();
   };
+
+  const handleGoBack = () => {
+    putToCookie();
+    handleBack();
+  };
+
+  const putToCookie = () => {
+    Cookie.set(
+      "stepd",
+      JSON.stringify({
+        transportation,
+        membersStudying,
+        membersSupport,
+        devicesHome,
+        internet,
+        internetType,
+        modality,
+        challenges,
+      })
+    );
+  };
+
+  useEffect(() => {
+    const stepdCookie = Cookie.getJSON("stepd")
+      ? Cookie.getJSON("stepd")
+      : null;
+    if (stepdCookie) {
+      setTransportation(stepdCookie.transportation);
+      setMembersStudying(stepdCookie.membersStudying);
+      setMembersSupport(stepdCookie.membersSupport);
+      setDevicesHome(stepdCookie.devicesHome);
+      setInternet(stepdCookie.internet);
+      setInternetType(stepdCookie.internetType);
+      setModality(stepdCookie.modality);
+      setChallenges(stepdCookie.challenges);
+    }
+  }, []);
 
   const handleTransportationChange = (e) => {
     if (e.target.checked) {
@@ -356,7 +395,7 @@ export default function CheckboxesGroup({ handleBack, handleStepD }) {
       <div className="enrollment__buttonContainer">
         <Button
           variant="contained"
-          onClick={handleBack}
+          onClick={handleGoBack}
           className="steps__backButton"
         >
           Back

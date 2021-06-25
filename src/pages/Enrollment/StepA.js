@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Checkbox, Button, MenuItem } from "@material-ui/core";
+import Cookie from "js-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,7 @@ const isSHS = (level) => {
             <TextField
               fullWidth
               variant="outlined"
+              required
               inputProps={{ "aria-label": "description" }}
             />
           </div>
@@ -32,6 +34,7 @@ const isSHS = (level) => {
             <TextField
               fullWidth
               variant="outlined"
+              required
               inputProps={{ "aria-label": "description" }}
             />
           </div>
@@ -40,6 +43,7 @@ const isSHS = (level) => {
             <TextField
               fullWidth
               variant="outlined"
+              required
               inputProps={{ "aria-label": "description" }}
             />
           </div>
@@ -66,7 +70,8 @@ function StepA({ handleNext, handleStepA }) {
   const [track, setTrack] = useState("");
   const [strand, setStrand] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     handleStepA({
       sy,
       lrn,
@@ -82,136 +87,182 @@ function StepA({ handleNext, handleStepA }) {
       track,
       strand,
     });
+    Cookie.set(
+      "stepa",
+      JSON.stringify({
+        sy,
+        lrn,
+        returning,
+        enrollLevel,
+        lastSchool,
+        lastSchoolId,
+        lastGradeLevel,
+        lastSchoolAddress,
+        lastSchoolYearCompleted,
+        lastSchoolType,
+        semester,
+        track,
+        strand,
+      })
+    );
   };
+
+  useEffect(() => {
+    const stepaCookie = Cookie.getJSON("stepa")
+      ? Cookie.getJSON("stepa")
+      : null;
+    if (stepaCookie) {
+      setSy(stepaCookie.sy);
+      setLrn(stepaCookie.lrn);
+      setReturning(stepaCookie.returning);
+      setEnrollLevel(stepaCookie.enrollLevel);
+      setLastSchool(stepaCookie.lastSchool);
+      setLastSchoolId(stepaCookie.lastSchoolId);
+      setLastGradeLevel(stepaCookie.lastGradeLevel);
+      setLastSchoolAddress(stepaCookie.lastSchoolAddress);
+      setLastSchoolYearCompleted(stepaCookie.lastSchoolYearCompleted);
+      setLastSchoolType(stepaCookie.lastSchoolType);
+      setSemester(stepaCookie.semester);
+      setTrack(stepaCookie.track);
+      setStrand(stepaCookie.strand);
+    }
+  }, []);
 
   return (
     <div className="steps">
       <h3>Grade Level Information</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col">
+            <p>A1. School Year</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              value={sy}
+              onChange={(e) => setSy(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="row">
-        <div className="col">
-          <p>A1. School Year</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={sy}
-            onChange={(e) => setSy(e.target.value)}
-          />
+          <div className="col">
+            <p>A2. Check the appropriate boxes only</p>
+            <Checkbox
+              checked={lrn === false}
+              value="no lrn"
+              onChange={() => setLrn(false)}
+            />
+            <label>No LRN</label>
+            <Checkbox
+              checked={lrn === true}
+              value="with lrn"
+              onChange={() => setLrn(true)}
+            />
+            <label>With LRN</label>
+          </div>
+          <div className="col">
+            <p>A3. Returning (Balik-Aral)</p>
+            <Checkbox
+              checked={returning}
+              value="checkedC"
+              onChange={() => setReturning((prevReturning) => !prevReturning)}
+            />
+            <label>Returning (Balik-Aral)</label>
+          </div>
         </div>
-
-        <div className="col">
-          <p>A2. Check the appropriate boxes only</p>
-          <Checkbox
-            checked={lrn === false}
-            value="no lrn"
-            onChange={() => setLrn(false)}
-          />
-          <label>No LRN</label>
-          <Checkbox
-            checked={lrn === true}
-            value="with lrn"
-            onChange={() => setLrn(true)}
-          />
-          <label>With LRN</label>
+        <div className="row">
+          <div className="col">
+            <p>A4. Grade Level to enroll</p>
+            <TextField
+              fullWidth
+              select
+              variant="outlined"
+              required
+              value={enrollLevel}
+              onChange={(e) => setEnrollLevel(e.target.value)}
+            >
+              <MenuItem value={"GRD7"}>Grade 7</MenuItem>
+              <MenuItem value={"GRD8"}>Grade 8</MenuItem>
+              <MenuItem value={"GRD9"}>Grade 9</MenuItem>
+              <MenuItem value={"GRD10"}>Grade 10</MenuItem>
+              <MenuItem value={"GRD11"}>Grade 11</MenuItem>
+              <MenuItem value={"GRD12"}>Grade 12</MenuItem>
+            </TextField>
+          </div>
+          <div className="col">
+            <p>A5. Last Grade Level Completed</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              value={lastGradeLevel}
+              onChange={(e) => setLastGradeLevel(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <p>A6. Last school year completed</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              value={lastSchoolYearCompleted}
+              onChange={(e) => setLastSchoolYearCompleted(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="col">
-          <p>A3. Returning (Balik-Aral)</p>
-          <Checkbox
-            checked={returning}
-            value="checkedC"
-            onChange={() => setReturning((prevReturning) => !prevReturning)}
-          />
-          <label>Returning (Balik-Aral)</label>
+        <div className="section__title">
+          <h4>Last School Information</h4>
         </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p>A4. Grade Level to enroll</p>
-          <TextField
-            fullWidth
-            select
-            variant="outlined"
-            value={enrollLevel}
-            onChange={(e) => setEnrollLevel(e.target.value)}
-          >
-            <MenuItem value={"GRD7"}>Grade 7</MenuItem>
-            <MenuItem value={"GRD8"}>Grade 8</MenuItem>
-            <MenuItem value={"GRD9"}>Grade 9</MenuItem>
-            <MenuItem value={"GRD10"}>Grade 10</MenuItem>
-            <MenuItem value={"GRD11"}>Grade 11</MenuItem>
-            <MenuItem value={"GRD12"}>Grade 12</MenuItem>
-          </TextField>
+        <div className="row">
+          <div className="col">
+            <p>A7. Last school attended</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              value={lastSchool}
+              onChange={(e) => setLastSchool(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <p>A8. Last School Id</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              // placeholder="School Id"
+              value={lastSchoolId}
+              onChange={(e) => setLastSchoolId(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="col">
-          <p>A5. Last Grade Level Completed</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={lastGradeLevel}
-            onChange={(e) => setLastGradeLevel(e.target.value)}
-          />
+        <div className="row">
+          <div className="col">
+            <p>A9. Last School Address</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              value={lastSchoolAddress}
+              onChange={(e) => setLastSchoolAddress(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <p>A10. Last School Type</p>
+            <Checkbox
+              checked={lastSchoolType === "public"}
+              value="public"
+              onChange={() => setLastSchoolType("public")}
+            />
+            <label>Public</label>
+            <Checkbox
+              checked={lastSchoolType === "private"}
+              value="private"
+              onChange={() => setLastSchoolType("private")}
+            />
+            <label>Private</label>
+          </div>
         </div>
-        <div className="col">
-          <p>A6. Last school year completed</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={lastSchoolYearCompleted}
-            onChange={(e) => setLastSchoolYearCompleted(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="section__title">
-        <h4>Last School Information</h4>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p>A7. Last school attended</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={lastSchool}
-            onChange={(e) => setLastSchool(e.target.value)}
-          />
-        </div>
-        <div className="col">
-          <p>A8. Last School Id</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            // placeholder="School Id"
-            value={lastSchoolId}
-            onChange={(e) => setLastSchoolId(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p>A9. Last School Address</p>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={lastSchoolAddress}
-            onChange={(e) => setLastSchoolAddress(e.target.value)}
-          />
-        </div>
-        <div className="col">
-          <p>A10. Last School Type</p>
-          <Checkbox
-            checked={lastSchoolType === "public"}
-            value="public"
-            onChange={() => setLastSchoolType("public")}
-          />
-          <label>Public</label>
-          <Checkbox
-            checked={lastSchoolType === "private"}
-            value="private"
-            onChange={() => setLastSchoolType("private")}
-          />
-          <label>Private</label>
-        </div>
-      </div>
-      {/* <div className="row">
+        {/* <div className="row">
         <div className="col">
         <p>A11. School to enroll in</p>
         <TextField
@@ -237,17 +288,19 @@ function StepA({ handleNext, handleStepA }) {
         />
         </div>
       </div> */}
-      {isSHS(enrollLevel)}
-      <div className="enrollment__buttonContainer">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          className="steps__nextButton"
-        >
-          Next
-        </Button>
-      </div>
+        {isSHS(enrollLevel)}
+        <div className="enrollment__buttonContainer">
+          <Button
+            variant="contained"
+            color="primary"
+            // onClick={handleSubmit}
+            type="submit"
+            className="steps__nextButton"
+          >
+            Next
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }
