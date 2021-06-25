@@ -58,7 +58,8 @@ function ParentGuardianInfo({
   const classes = useStyles();
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    // <form className={classes.root} noValidate autoComplete="off">
+    <div>
       <div className="c1">
         <p>{`C1. ${label}'s Fullname`}</p>
         <TextField
@@ -150,13 +151,14 @@ function ParentGuardianInfo({
             <TextField
               variant="outlined"
               fullWidth
+              required
               value={phoneNumber}
               onChange={(e) => setNumber(e.target.value)}
             />
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 }
 

@@ -74,7 +74,7 @@ function Student() {
           });
       }
     } else {
-      // history.push("/");
+      history.push("/");
     }
   }, []);
 

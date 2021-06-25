@@ -39,7 +39,7 @@ function StudentInfo({ selectedStudent, dbStudent, studentLoading }) {
     <>
       <div className="teacher__studentsContent">
         <div className="image__container">
-          <Avatar alt="Remy Sharp" src="nonsense" />
+          <Avatar alt={student.lastname} src={student.idPicture} />
         </div>
         <div className="info__container">
           <div className="row">

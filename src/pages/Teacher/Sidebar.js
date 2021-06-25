@@ -42,7 +42,7 @@ export default function Sidebar({ activeTab, handleTabChange }) {
   };
 
   return (
-    <div className="sidebar">
+    <div className="teacher__sidebar">
       {/* <div className="sidebar__header">
         <div className="sidebar__logo">
           <img src={logo} alt="" />

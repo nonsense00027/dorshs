@@ -1,0 +1,75 @@
+.dashboard__student {
+  /* width: 100%; */
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  height: 100%;
+}
+
+.dashboard__studentLeft {
+  padding: 20px;
+}
+
+.dashboard__studentRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 350px;
+  height: 100%;
+  border-left: 1px solid lightgray;
+  padding: 20px;
+}
+
+.dashboard__studentRight h2 {
+  text-align: center;
+}
+
+.dashboard__studentRight img {
+  height: 200px;
+}
+
+.dashboard__empty {
+  display: grid;
+  place-items: center;
+  padding-top: 50px;
+}
+
+.dashboard__empty h2 {
+  margin-top: 20px;
+}
+.dashboard__blank {
+  height: 250px;
+  object-fit: contain;
+}
+
+.sDashboard {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.dashboard__header {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard__header .MuiAvatar-root {
+  height: 150px !important;
+  width: 150px !important;
+}
+
+.dashboard__headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard__headerLeftInfo {
+  margin-left: 20px;
+}
+
+.dashboard__headerRight {
+  flex: 1;
+  padding-left: 70px;
+}

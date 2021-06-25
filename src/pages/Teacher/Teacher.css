@@ -13,8 +13,8 @@
   align-items: center;
   padding-left: 260px;
   padding-right: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 0;
   background-color: #fff;
   z-index: 99;
@@ -22,6 +22,56 @@
 
 .teacher__content {
   padding-left: 250px;
-  padding-top: 90px;
+  padding-top: 70px;
   height: 100%;
+}
+
+.teacher__sidebar {
+  max-width: 250px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  /* padding: 30px 0; */
+  padding-top: 70px;
+  /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
+  background-color: var(--primary-color);
+  padding-left: 20px;
+  z-index: 999;
+}
+
+.teacher__sidebar .MuiListItem-root {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 30px !important;
+}
+
+.teacher__sidebar .MuiSvgIcon-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.teacher__sidebar .active {
+  background-color: #fff;
+  color: var(--primary-color) !important;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.teacher__sidebar .active .MuiSvgIcon-root {
+  color: var(--primary-color) !important;
+}
+
+.teacher__sidebar .active:hover {
+  background-color: #fff;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 30px !important;
+}
+
+.teacher__sidebar .active .MuiListItemIcon-root {
+  color: #fff !important;
 }
