@@ -37,6 +37,14 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
   const handleEnrollStudent = (e) => {
     e.preventDefault();
     // var subjectsToLoad = subjects.filter((item) => item.level === level);
+    let subjectsToLoad = [];
+    if (level !== "GRD11" && "GRD12") {
+      subjectsToLoad = subjects
+        .filter((subject) => subject.level === "JHS")
+        .map((subject) => {
+          return { ...subject, grade: level };
+        });
+    }
     let sectionToAdd = {
       id: selectedSectionId,
       name: section,
@@ -48,7 +56,7 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
       .set(
         {
           newEnrollee: false,
-          academicRecord: subjects,
+          academicRecord: subjectsToLoad,
           currentLevel: level,
           section: [...student.section, sectionToAdd],
         },

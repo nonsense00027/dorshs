@@ -1,5 +1,5 @@
 import React from "react";
-import "../Student.css";
+// import "../Student.css";
 import { Avatar } from "@material-ui/core";
 
 function SDashboard({ student }) {

@@ -117,10 +117,7 @@ function Subjects() {
                   required
                   // helperText="Please select your currency"
                 >
-                  <MenuItem value={"GRD7"}>Grade 7</MenuItem>
-                  <MenuItem value={"GRD8"}>Grade 8</MenuItem>
-                  <MenuItem value={"GRD9"}>Grade 9</MenuItem>
-                  <MenuItem value={"GRD10"}>Grade 10</MenuItem>
+                  <MenuItem value={"JHS"}>Junior High School</MenuItem>
                   <MenuItem value={"GRD11"}>Grade 11</MenuItem>
                   <MenuItem value={"GRD12"}>Grade 12</MenuItem>
                 </TextField>

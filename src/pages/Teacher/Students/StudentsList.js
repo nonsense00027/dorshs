@@ -5,6 +5,9 @@ import {
   ListItemText,
   ListItemIcon,
   Checkbox,
+  Avatar,
+  ListItemAvatar,
+  ListItemSecondaryAction,
 } from "@material-ui/core";
 
 function StudentsList({ students, handleSelectStudent, selectedStudent }) {
@@ -19,18 +22,19 @@ function StudentsList({ students, handleSelectStudent, selectedStudent }) {
             dense
             onClick={() => handleSelectStudent(student)}
           >
-            <ListItemIcon>
-              <Checkbox
-                edge="start"
-                checked={selectedStudent?.id === student.id}
-                tabIndex={-1}
-                disableRipple
-                // inputProps={{ "aria-labelledby": labelId }}
-              />
-            </ListItemIcon>
+            <ListItemAvatar>
+              <Avatar alt={student.lastname} src={student.idPicture} />
+            </ListItemAvatar>
             <ListItemText
+              id={student.id}
               primary={`${student.lastname}, ${student.firstname}`}
             />
+            <ListItemSecondaryAction>
+              <Checkbox
+                edge="end"
+                checked={selectedStudent?.id === student.id}
+              />
+            </ListItemSecondaryAction>
           </ListItem>
         ))}
       </List>
