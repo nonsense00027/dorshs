@@ -1,0 +1,168 @@
+.about{
+    background-color: whitesmoke;
+    font-family: "Lato", sans-serif;
+}
+
+.about_blur{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.photo {
+    display: inline;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+.photo > img {
+    width: 100%;
+    height: 300px;
+}
+
+.text {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+}
+
+.text > h2 {
+    font-weight: 600;
+}
+
+
+
+.para {
+    display: flex;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 15px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* History */
+
+/* .history {
+    display: flex;
+} */
+
+.history {
+    margin: 30px;
+}
+
+.row {
+    margin-right: 100px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.col {
+    flex: 1;
+    margin: 20px;
+}
+
+.col2 {
+    flex: 1;
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.col2 > p {
+    flex: 1;
+    margin-top: 30px;
+    text-align: justify;
+    margin-right: 30px;
+}
+
+.rsphoto > img {
+    width: 500px;
+    height: 300px;
+    border-radius: 8px;
+}
+
+.button > .MuiButton-root {
+    background-color: #5DC269;
+    color: white;
+    margin-top: 70px;
+}
+
+/* Mission and Vission */
+
+.about__missviss {
+    background-color: #f0f0f0;
+}
+
+.mission {
+    display: flex;
+    margin-left: 100px;
+    margin-top: 20px;
+    padding: 50px;
+}
+
+.mission > h3 {
+    padding: 10px;
+    color: #5DC269;
+}
+
+.vision {
+    display: flex;
+    margin-left: 100px;
+    margin-top: 10px;
+    padding: 50px;
+}
+
+.vision > h3 {
+    margin-left: -20px;
+    padding: 20px;
+    color: #5DC269;
+}
+
+.row3 {
+    margin-right: 50px;
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.col4 > h3 {
+    text-align: justify;
+    margin: 20px;
+    margin-top: -50px;
+    font-weight: 350;
+}
+
+/* Teachers */
+
+.about__teachers {
+    margin: 30px;
+}
+
+.meetTeachers {
+    margin-left: 50px;
+}
+
+.card {
+    margin: 10px;
+    margin-left: 30px;
+    padding: 15px;
+    
+}
+
+/* .col5 {
+    margin: 
+} */
