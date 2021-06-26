@@ -7,14 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import fifth from '../../../img/fifth.png';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
   },
   media: {
-    height: 140,
+    height: 190,
   },
 });
 
@@ -25,22 +24,23 @@ export default function MediaCard() {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
-          image={fifth}
+          className='colorCard'
+          title="Quality Education"
         />
-        <CardContent>
+        <CardContent className='cardContent'>
           <Typography gutterBottom variant="h5" component="h2">
-            Alma Briones
+            Quality Education
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal III
+          <Typography>
+              <p>
+                As the academic institution of DORSHS provides knowledge to students, the objective is to provide a pre-requisite for learning and 
+                human development. With that, the school provides quality education to learnings through engaging in the health, social-emotional 
+                skills, and academic capabilities of learners. The institution sees quality education as fundamental in building learners that would 
+                develop sustainable societies and improve individual well-being, thus the school seeks to achieve.
+              </p>
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
-    
   );
 }

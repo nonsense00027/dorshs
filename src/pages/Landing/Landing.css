@@ -315,6 +315,12 @@
   color: #fff;
 }
 
+/* LandSec */
+
+.landing__landSec {
+  background-color: whitesmoke;
+}
+
 /* FOOTER */
 .footer {
   width: 100%;

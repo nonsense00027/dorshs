@@ -3,6 +3,7 @@ import "./Landing.css";
 import Navbar from "./Navbar";
 import MainCarousel from "./MainCarousel";
 import Footer from "./Footer";
+import LandSec from "./Landing/LandSec";
 
 function Landing() {
   useEffect(() => {
@@ -17,6 +18,10 @@ function Landing() {
       {/* MAIN SECTION */}
       <div className="landing__mainCarousel">
         <MainCarousel />
+      </div>
+
+      <div className="landing__landSec">
+        <LandSec />
       </div>
 
       <Footer />

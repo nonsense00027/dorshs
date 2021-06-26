@@ -1,0 +1,45 @@
+.landSec {
+   display: flex;
+   text-align: center;
+   margin: 30px;
+}
+
+.landSec__text {
+    position: absolute;
+    text-align: center;
+    margin-left: 35%;
+    margin-top: -10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.col {
+    flex: 1;
+    margin: 20px;
+}
+
+.colorCard {
+    height: 190px;
+    background-color: #AE2727;
+}
+
+.cardContent {
+    background-color: #4CAB51;
+    color: white;
+}
+
+.cardContent2 {
+    background-color: #4B345D;
+    color: white;
+}
+
+.cardContent3 {
+    background-color: #EDAA16;
+    color: white;
+}
+
+
+

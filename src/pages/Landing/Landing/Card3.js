@@ -7,14 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import fifth from '../../../img/fifth.png';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
   },
   media: {
-    height: 140,
+    height: 190,
   },
 });
 
@@ -25,22 +24,24 @@ export default function MediaCard() {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
-          image={fifth}
+          className='colorCard'
+          color="red"
+          title="Contemplative Reptile"
         />
-        <CardContent>
+        <CardContent className='cardContent3'>
           <Typography gutterBottom variant="h5" component="h2">
-            Alma Briones
+            Quality Education
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal III
+          <Typography>
+           <p>
+           Skills and knowledge are factors that contribute to the growth of a learner, 
+           thus DORSHS understands that its role is to hone these capabilities. Such strength of learners requires to be assessed and improved to be 
+           done efficiently and sustainably. The institution utilizes competence to aid students to draw and build upon what they know, how they think, 
+           and what they can do.
+           </p>
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
-    
   );
 }
