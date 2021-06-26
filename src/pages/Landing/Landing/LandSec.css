@@ -1,45 +1,49 @@
 .landSec {
-   display: flex;
-   text-align: center;
-   margin: 30px;
+  /* display: flex;
+  text-align: center;
+  margin: 30px; */
+  padding: 50px 0;
 }
 
-.landSec__text {
-    position: absolute;
-    text-align: center;
-    margin-left: 35%;
-    margin-top: -10px;
+.landSec h1 {
+  margin-bottom: 40px;
+  text-align: center;
 }
 
-.row {
-    display: flex;
-    justify-content: space-evenly;
+.landSec__content {
+  display: flex;
 }
 
-.col {
-    flex: 1;
-    margin: 20px;
+.landSec__card {
+  width: 350px;
+  text-align: center;
+  margin: 0 50px;
 }
 
-.colorCard {
-    height: 190px;
-    background-color: #AE2727;
+.landSec__cardHeader img {
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
 }
 
-.cardContent {
-    background-color: #4CAB51;
-    color: white;
+.landSec__info h2 {
+  color: var(--primary-color);
 }
 
-.cardContent2 {
-    background-color: #4B345D;
-    color: white;
+.landSec__info p {
+  text-align: justify;
+  margin-top: 10px;
 }
 
-.cardContent3 {
-    background-color: #EDAA16;
-    color: white;
+.landSec__button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-
-
+.landSec__button .MuiButton-root {
+  background-color: var(--secondary-color) !important;
+  padding: 10px 50px !important;
+  color: #fff !important;
+}

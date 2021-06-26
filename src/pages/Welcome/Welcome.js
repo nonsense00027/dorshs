@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Welcome.css";
 import welcomeImage from "../../img/welcome.svg";
 import Requirements from "./Requirements";
@@ -27,6 +27,9 @@ function Welcome() {
         console.log("ERROR");
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="welcome">
       <Navbar />
