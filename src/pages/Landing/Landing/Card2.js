@@ -7,14 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import fifth from '../../../img/fifth.png';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
   },
   media: {
-    height: 140,
+    height: 190,
   },
 });
 
@@ -25,22 +24,22 @@ export default function MediaCard() {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
-          image={fifth}
+          className="colorCard"
+          title="Excellence"
         />
-        <CardContent>
+        <CardContent className="cardContent2">
           <Typography gutterBottom variant="h5" component="h2">
-            Alma Briones
+                Excellence
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Principal III
+          <Typography>
+              <p>
+                Excellence is a set of values and outcomes that students strive to achieve, yet in DORSHS, excellence is a goal for all. 
+                The school sets aspirations for students, staff and parents that is envisioned to be fulfilled. Further, the school manifests 
+                discipline, virtues and missions that sets us vessels for excellence to not an act, but a character.
+              </p>
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
-    
   );
 }

@@ -1,11 +1,11 @@
-import React from "react";
-import Blur from "./Blur";
-import History from "./History";
-import MissViss from "./MissViss";
-import Teachers from "./Teachers";
-import "./About.css";
-import Navbar from "../Navbar";
-import Footer from "../Footer";
+import React from 'react';
+import Blur from './Blur';
+import History from './History';
+import MissViss from './MissViss';
+import Teachers from './Teachers';
+import './About.css';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 function About() {
   return (

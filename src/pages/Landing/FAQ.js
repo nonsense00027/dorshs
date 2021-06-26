@@ -3,6 +3,7 @@ import "./Landing.css";
 import Accordion from "./FAQ/Accordion";
 import SearchDesign from "../Landing/FAQ/SeachDesign";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function FAQ() {
   return (
@@ -16,6 +17,7 @@ function FAQ() {
       <div className="accordion">
         <Accordion />
       </div>
+      <Footer />
     </div>
   );
 }

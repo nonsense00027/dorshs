@@ -300,8 +300,8 @@
   padding-bottom: 100px;
 }
 
-.carousel__slideText.fourth p {
-}
+/* .carousel__slideText.fourth p {
+} */
 
 .carousel__slideText.fifth {
   top: 0;
@@ -313,6 +313,12 @@
   font-size: 45px;
   text-align: left;
   color: #fff;
+}
+
+/* LandSec */
+
+.landing__landSec {
+  background-color: whitesmoke;
 }
 
 /* FOOTER */
