@@ -8,6 +8,7 @@ import AssessmentIcon from "@material-ui/icons/Assessment";
 import PersonIcon from "@material-ui/icons/Person";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import SettingsIcon from "@material-ui/icons/Settings";
+import BallotIcon from "@material-ui/icons/Ballot";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { useUserContext } from "../../context/UserContext";
@@ -78,6 +79,17 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
               <ListItemText primary={tab.label} />
             </ListItem>
           ))}
+          <ListItem
+            // className={activeTab === tab.id && `active`}
+            button
+            key={5}
+            onClick={() => handleTabChange(10)}
+          >
+            <ListItemIcon>
+              <BallotIcon />
+            </ListItemIcon>
+            <ListItemText primary="Online Enrollment" />
+          </ListItem>
           {user.role !== "admin" && (
             <ListItem
               // className={activeTab === tab.id && `active`}

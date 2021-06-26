@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Information from "./Information/Information";
 import Requirements from "./Requirements/Requirements";
 import AcademicRecord from "./AcademicRecord/AcademicRecord";
+import OnlineEnrollment from "./OnlineEnrollment/OnlineEnrollment";
 import { useParams, useHistory } from "react-router-dom";
 import { db } from "../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../shared/utilities";
@@ -34,6 +35,8 @@ const getComponent = (index, student) => {
       return <Requirements student={student} />;
     case 3:
       return <AcademicRecord student={student} />;
+    case 10:
+      return <OnlineEnrollment />;
     // case 3:
     //   return <Subjects />;
     // case 4:

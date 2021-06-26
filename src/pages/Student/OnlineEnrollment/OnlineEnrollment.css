@@ -1,0 +1,31 @@
+.onlineEnrollment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.onlineEnrollment__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.onlineEnrollment__header img {
+  height: 250px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.onlineEnrollment__headerText h1 {
+  color: var(--secondary-color);
+}
+
+.onlineEnrollment .MuiButton-root {
+  background-color: var(--secondary-color) !important;
+  padding: 5px 50px !important;
+  margin-top: 30px !important;
+  color: #fff !important;
+}
