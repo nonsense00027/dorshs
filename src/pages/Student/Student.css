@@ -184,6 +184,15 @@
 }
 
 .col2 {
+
+ flex: 1;
+ margin: 10px;
+ margin-left: 60px;
+ margin-bottom: 10px;
+ float: left;
+ padding: 0px 10px;
+ width: 25%;
+
   flex: 1;
   margin: 10px;
   margin-left: 60px;
@@ -191,6 +200,7 @@
   float: left;
   padding: 0 10px;
   width: 25%;
+
 }
 
 .row3 {
@@ -231,7 +241,7 @@
 }
 
 .card {
-  box-shadow: 0px 3px, 6px 0px rgba(0, 0, 0, 0.2);
-  padding: 15px;
+  box-shadow: 0px 3px, 6px 3px rgba(0, 0, 0, 0.2);
+  padding: 10px;
   background-color: #f1f1f1;
 }
