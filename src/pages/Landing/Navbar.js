@@ -46,13 +46,6 @@ function Navbar() {
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
-  console.log("HISTORY", history.location.pathname);
-  useEffect(() => {
-    if (!user && history.location.pathname === "/") {
-      setOpen(true);
-    }
-  }, [user]);
-
   return (
     <div className="navbar">
       <Container>

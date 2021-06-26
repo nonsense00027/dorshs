@@ -127,7 +127,6 @@ function Subjects() {
               <div className="col">
                 <p>Subject Title</p>
                 <TextField
-                  autoFocus
                   // margin="dense"
                   id="name"
                   // label="Subject Title"

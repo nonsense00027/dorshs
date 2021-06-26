@@ -172,11 +172,11 @@
   justify-content: space-evenly;
 }
 
-.col {
+/* .col {
   flex: 1;
-  /* margin: 20px; */
+  margin: 20px;
   margin-bottom: 10px;
-}
+} */
 
 .row2 {
   display: flex;
@@ -184,14 +184,13 @@
 }
 
 .col2 {
-
- flex: 1;
- margin: 10px;
- margin-left: 60px;
- margin-bottom: 10px;
- float: left;
- padding: 0px 10px;
- width: 25%;
+  flex: 1;
+  margin: 10px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+  float: left;
+  padding: 0px 10px;
+  width: 25%;
 
   flex: 1;
   margin: 10px;
@@ -200,7 +199,6 @@
   float: left;
   padding: 0 10px;
   width: 25%;
-
 }
 
 .row3 {
