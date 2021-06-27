@@ -31,12 +31,12 @@ export default function SimpleAccordion() {
           id="panel1a-header"
         >
           <Typography className={classes.heading}>
-            What are the requirements for incoming Grade 7 enrollees at DORSHS?
+             What are the requirements for incoming Grade 7 enrollees at DORSHS?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            The requirements for incoming Grade 7 are Card (form 138), Form 137, Good Moral, 1x1 (2pcs) and Diploma.
+            The requirements for incoming Grade 7 are Card (form 138), Form 137, Good Moral, 1x1 ( 2pcs) and Diploma.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -53,7 +53,7 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            The requirements for incoming Senior High School are Card (form 138), Form 137, NCAE, Good Moral, 1x1 (2pcs).
+            The requirements for incoming Senior High School are Card (form 138), Form 137, NCAE, Good Moral, 1x1 (2pcs)
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -65,12 +65,12 @@ export default function SimpleAccordion() {
           id="panel1a-header"
         >
           <Typography className={classes.heading}>
-            What is the required average to be accepted to DORSHS for the incoming Grade 7?
+            What is the required average to be accepted to DORSHS for the incoming Grade seven?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Students should have a cumulative grade point average of 85 or higher in Sciencem Mathm and English. In addition, there 
+            Students should have a cumulative grade point average of 85 or higher in Science Math and English. In addition, there 
             should be no line 7 in form 137 for the student.
           </Typography>
         </AccordionDetails>
@@ -156,7 +156,7 @@ export default function SimpleAccordion() {
           id="panel1a-header"
         >
           <Typography className={classes.heading}>
-            Where is ypur school located?
+            Where is your school located?
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -178,7 +178,8 @@ export default function SimpleAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            The Junior High School students subjects are Mathematics, English, Science, Araling Panlipunan
+            The Junior High School students subjects are Mathematics, English, Science, Araling Panlipunan, Filipino, Edukasyon sa 
+            Pagpapakatao and Music Arts Physical Education and Health.
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import rsphoto from '../../../img/rsphoto.png';
+import rsphoto from '../../../img/Header.png';
 
 function Blur() {
     return (
