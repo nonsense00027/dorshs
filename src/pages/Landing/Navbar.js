@@ -45,7 +45,30 @@ function Navbar() {
   const { user } = useUserContext();
   const history = useHistory();
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
 
+  console.log("HISTORY", history);
+
+  const handleLinkChange = (id) => {
+    console.log("ID", id);
+    setActive(id);
+    switch (id) {
+      case 0:
+        history.push("/");
+        break;
+      case 1:
+        history.push("/about");
+        break;
+      case 2:
+        history.push("/resources");
+        break;
+      case 3:
+        history.push("/FAQ");
+        break;
+      default:
+        console.log("error");
+    }
+  };
   return (
     <div className="navbar">
       <Container>
@@ -59,19 +82,44 @@ function Navbar() {
         </div>
 
         <div className="navbar__right">
-          <p className="navbar__links" onClick={() => history.push("/")}>
+          <p
+            className={
+              history.location.pathname === "/"
+                ? "navbar__links active"
+                : "navbar__links"
+            }
+            onClick={() => handleLinkChange(0)}
+          >
             Home
           </p>
-          <p className="navbar__links" onClick={() => history.push("/about")}>
+          <p
+            className={
+              history.location.pathname === "/about"
+                ? "navbar__links active"
+                : "navbar__links"
+            }
+            onClick={() => handleLinkChange(1)}
+          >
             About
           </p>
           <p
-            className="navbar__links"
-            onClick={() => history.push("/resources")}
+            className={
+              history.location.pathname === "/resources"
+                ? "navbar__links active"
+                : "navbar__links"
+            }
+            onClick={() => handleLinkChange(2)}
           >
             Resources
           </p>
-          <p className="navbar__links" onClick={() => history.push("/FAQ")}>
+          <p
+            className={
+              history.location.pathname === "/FAQ"
+                ? "navbar__links active"
+                : "navbar__links"
+            }
+            onClick={() => handleLinkChange(3)}
+          >
             FAQ
           </p>
           {getButton(user, setOpen, history)}
