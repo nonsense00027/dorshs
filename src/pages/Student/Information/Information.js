@@ -97,7 +97,7 @@ export default function NavTabs({ student }) {
         <ParentInfo student={student} />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Household />
+        <Household student={student} />
       </TabPanel>
     </div>
   );

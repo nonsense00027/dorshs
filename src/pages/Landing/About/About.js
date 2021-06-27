@@ -1,11 +1,12 @@
-import React from 'react';
-import Blur from './Blur';
-import History from './History';
-import MissViss from './MissViss';
-import Teachers from './Teachers';
-import './About.css';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import React from "react";
+import Blur from "./Blur";
+import History from "./History";
+import MissViss from "./MissViss";
+import Teachers from "./Teachers";
+import "./About.css";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
+import { Container } from "@material-ui/core";
 
 function About() {
   return (
@@ -21,7 +22,10 @@ function About() {
         <MissViss />
       </div>
       <div className="about__teachers">
-        <Teachers />
+        <Container>
+          <h1>Meet The School Heads and Teachers</h1>
+          <Teachers />
+        </Container>
       </div>
       <Footer />
     </div>

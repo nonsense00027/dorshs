@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  background-color: rgba(34, 59, 35, 0.9);
+  background-color: rgba(34, 59, 35, 0.95);
   height: 67px;
   display: flex;
   position: fixed;
@@ -237,5 +237,3 @@
 .enrolledSub {
   margin-left: 50px;
 }
-
-

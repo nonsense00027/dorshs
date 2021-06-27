@@ -5,12 +5,13 @@ import third from "../../img/third.png";
 import fourth from "../../img/fourth.png";
 import fifth from "../../img/fifth.png";
 import sixth from "../../img/sixth.png";
-import SwiperCore, { Pagination, Autoplay } from "swiper";
+import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
+import "swiper/components/navigation/navigation.scss";
 
-SwiperCore.use([Pagination, Autoplay]);
+SwiperCore.use([Pagination, Autoplay, Navigation]);
 
 function MainCarousel() {
   return (
@@ -22,6 +23,7 @@ function MainCarousel() {
       speed={600}
       loop
       slidesPerView={1}
+      navigation
       pagination={{ clickable: true }}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}

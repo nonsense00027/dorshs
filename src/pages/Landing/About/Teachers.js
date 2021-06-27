@@ -1,50 +1,40 @@
 import React from "react";
-import "./About.css";
-import Card from "./Card";
+import teachersData from "./teachersData";
+import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/navigation/navigation.scss";
 import TeacherCard from "./TeacherCard";
+
+SwiperCore.use([Pagination, Autoplay, Navigation]);
 
 function Teachers() {
   return (
-    <div className="teachers">
-      <div className="meetTeachers">
-        <h2>Meet The School Heads and Teachers</h2>
-        <hr />
-      </div>
-      <div className="teachers__carousel">
-        <TeacherCard
-          name={"Alma Briones"}
-          position={"Principal"}
-          category={"Principal II"}
-        />
-        <TeacherCard
-          name={"Edga Samson"}
-          position={"Curriculum Head"}
-          category={"Master Teacher I - Math 8"}
-        />
-        <TeacherCard
-          name={"Mariafe Dumaran"}
-          position={"SHS Focal Person"}
-          category={"Master Teacher I - Chemistry and Biology"}
-        />
-      </div>
-      {/* <div className="row">
-                <div className="col">
-                    <div className="card">
-                        <Card />
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="card">
-                        <Card />
-                    </div>
-                </div>
-                <div className="col">
-                    <div className="card">
-                        <Card />
-                    </div>
-                </div>
-            </div> */}
-    </div>
+    <Swiper
+      // autoplay={{
+      //   delay: 6000,
+      //   disableOnInteraction: false,
+      // }}
+      speed={600}
+      loop
+      slidesPerView={3}
+      navigation
+      // pagination={{ clickable: true }}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {teachersData.map((teacher) => (
+        <SwiperSlide>
+          <TeacherCard
+            name={teacher.name}
+            position={teacher.position}
+            category={teacher.category}
+            img={teacher.image}
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
 

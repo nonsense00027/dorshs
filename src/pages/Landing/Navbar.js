@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../img/rslogo.png";
+import logo from "../../img/logo.svg";
 import { Button, Container, Dialog, DialogContent } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { makeStyles } from "@material-ui/core/styles";

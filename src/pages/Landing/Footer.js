@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../img/rslogo.png";
+import logo from "../../img/logo.svg";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AdminLogin.css";
 import { Button, TextField } from "@material-ui/core";
-import logo from "../../../img/rslogo.png";
+import logo from "../../../img/logo.svg";
 import { useUserContext } from "../../../context/UserContext";
 
 function AdminLogin() {

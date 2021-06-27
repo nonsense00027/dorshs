@@ -4,3 +4,14 @@
 
 .academicRecord__table {
 }
+
+.academicRecord__selector {
+  width: 400px;
+  /* padding: 20px; */
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.academicRecord__selector h4 {
+  margin-bottom: 5px;
+}

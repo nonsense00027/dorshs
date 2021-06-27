@@ -1,7 +1,12 @@
 import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import TextField from "@material-ui/core/TextField";
+import {
+  Button,
+  Input,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,34 +18,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Household() {
+const transportationList = [
+  "Walking",
+  "Public commute (land/water)",
+  "Family-owned vehicle",
+  "School service",
+];
+
+export default function Household({ student }) {
   const classes = useStyles();
 
   return (
     <div className="houseHold">
-      <p>How does your child go to school? Choose all that applies</p>
       <div className="row">
         <div className="col">
-          <FormControlLabel
-            disabled
-            control={<Checkbox checked name="checkedE" />}
-            label="Walking"
-          />
-          <FormControlLabel
-            disabled
-            control={<Checkbox checked name="checkedE" />}
-            label="Public commute (land/water)"
-          />
-          <FormControlLabel
-            disabled
-            control={<Checkbox checked name="checkedE" />}
-            label="Family-owned vehicle"
-          />
-          <FormControlLabel
-            disabled
-            control={<Checkbox checked name="checkedE" />}
-            label="School Service"
-          />
+          <p>D1. How Does your child go to school? Choose all that applies</p>
+          <FormGroup>
+            {transportationList.map((item) => (
+              <FormControlLabel
+                key={item}
+                control={
+                  <Checkbox
+                    disabled
+                    checked={student?.transportation.includes(item)}
+                    value={item}
+                    // onChange={handleTransportationChange}
+                  />
+                }
+                label={item}
+              />
+            ))}
+          </FormGroup>
         </div>
       </div>
       <div>
