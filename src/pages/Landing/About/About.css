@@ -18,7 +18,7 @@
 
 .photo > img {
   width: 100%;
-  height: 320px;
+  height: 400px;
 }
 
 .text {
@@ -61,6 +61,10 @@
 
 .history {
   margin: 30px;
+}
+
+.about__history {
+  padding: 50px 0;
 }
 
 /* .row {

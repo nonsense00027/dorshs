@@ -2,12 +2,10 @@ import React from "react";
 import "./About.css";
 import rsphoto from "../../../img/rsphoto.png";
 import Button from "@material-ui/core/Button";
-import { useHistory } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 
 function History() {
-  // const history = useHistory();
-
+  const history = useHistory();
 
   return (
     <div className="history">
@@ -26,8 +24,11 @@ function History() {
             Regional Science High School for Region XI: Davao Region. It is
             located in Mati City, Davao Oriental, Philippines.
           </p>
-          <div className="button" >
-            <Button variant="contained">
+          <div className="button">
+            <Button
+              variant="contained"
+              onClick={() => history.push("/readmore")}
+            >
               Read More
             </Button>
           </div>
