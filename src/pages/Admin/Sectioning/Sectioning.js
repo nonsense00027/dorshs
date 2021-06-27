@@ -119,7 +119,6 @@ function Sectioning() {
               <div className="col">
                 <p>Section name</p>
                 <TextField
-                  autoFocus
                   // margin="dense"
                   id="name"
                   // label="Subject Title"

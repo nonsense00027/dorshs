@@ -46,7 +46,7 @@ function App() {
           <Route path="/faq">
             <FAQ />
           </Route>
-          <Route path="/resources" component={Resources}>
+          <Route path="/resources">
             <Resources />
           </Route>
           <Route path="/">

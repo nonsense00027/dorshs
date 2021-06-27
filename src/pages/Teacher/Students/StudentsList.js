@@ -33,6 +33,7 @@ function StudentsList({ students, handleSelectStudent, selectedStudent }) {
               <Checkbox
                 edge="end"
                 checked={selectedStudent?.id === student.id}
+                onChange={() => handleSelectStudent(student)}
               />
             </ListItemSecondaryAction>
           </ListItem>

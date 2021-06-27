@@ -65,16 +65,16 @@
   margin: 30px;
 }
 
-.row {
+/* .row {
   margin-right: 100px;
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
-.col {
+/* .col {
   flex: 1;
   margin: 20px;
-}
+} */
 
 .col2 {
   flex: 1;
