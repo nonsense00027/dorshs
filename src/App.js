@@ -11,7 +11,9 @@ import { AdminProvider } from "./context/AdminContext";
 import FAQ from "./pages/Landing/FAQ";
 import About from "./pages/Landing/About/About";
 import Resources from "./pages/Landing/Resources/Resources";
+import ReadMore from "./pages/Landing/Read More/ReadMore";
 import { useUserContext } from "./context/UserContext";
+
 
 function App() {
   const { user } = useUserContext();
@@ -48,6 +50,9 @@ function App() {
           </Route>
           <Route path="/resources">
             <Resources />
+          </Route>
+          <Route path='/readmore'>
+            <ReadMore />
           </Route>
           <Route path="/">
             <Landing />

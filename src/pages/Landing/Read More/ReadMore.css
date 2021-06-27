@@ -1,0 +1,49 @@
+.readMore {
+    background-color: whitesmoke;
+}
+
+.readMore__text {
+    margin: 30px;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+.blurred__photo {
+    position: relative;
+    display: inline;
+    top: 0;
+    left: 0;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+.blurred__photo > img {
+    width: 100%;
+    height: 260px;
+}
+
+.blurred__logo{
+    display: flex;
+    top: 80px;
+    left: 80px;
+    margin-left: 450px;
+    position: absolute;
+}
+
+.blurred__logo > img{
+    height: 100px;
+    align-items: center;
+}
+
+.blurred__text {
+
+  position: absolute;
+  top: 35%;
+  margin-left: 600px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+}
