@@ -49,7 +49,7 @@ function MainCarousel() {
             <h1>
               Students today,
               <br />
-              Learners tomorrow
+              Learders tomorrow
             </h1>
           </div>
           <img src={third} alt="" />
@@ -61,9 +61,9 @@ function MainCarousel() {
             <h1>
               Become the,
               <br />
-              best version
+              Best Version
               <br />
-              of you.
+              of You.
             </h1>
           </div>
           <img src={fourth} alt="" />
