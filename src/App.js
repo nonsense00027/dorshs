@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./pages/Authentication/Login";
@@ -8,16 +9,13 @@ import Admin from "./pages/Admin/Admin";
 import Student from "./pages/Student/Student";
 import Teacher from "./pages/Teacher/Teacher";
 import { AdminProvider } from "./context/AdminContext";
+import { TeacherProvider } from "./context/TeacherContext";
 import FAQ from "./pages/Landing/FAQ";
 import About from "./pages/Landing/About/About";
 import Resources from "./pages/Landing/Resources/Resources";
 import ReadMore from "./pages/Landing/Read More/ReadMore";
-import { useUserContext } from "./context/UserContext";
-
 
 function App() {
-  const { user } = useUserContext();
-  console.log("USER SA APP.JS", user);
   return (
     <div className="app">
       <Router>
@@ -28,7 +26,9 @@ function App() {
             </AdminProvider>
           </Route>
           <Route path="/teacher/:id">
-            <Teacher />
+            <TeacherProvider>
+              <Teacher />
+            </TeacherProvider>
           </Route>
           <Route path="/enrollment/grade7">
             <Enrollment />
@@ -51,7 +51,7 @@ function App() {
           <Route path="/resources">
             <Resources />
           </Route>
-          <Route path='/readmore'>
+          <Route path="/readmore">
             <ReadMore />
           </Route>
           <Route path="/">

@@ -56,7 +56,7 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
 
   const handleLogout = () => {
     userLogout();
-    history.push("/");
+    // history.push("/");
   };
 
   return (
@@ -80,9 +80,9 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
             </ListItem>
           ))}
           <ListItem
-            // className={activeTab === tab.id && `active`}
+            className={activeTab === 10 ? "active" : ""}
             button
-            key={5}
+            key={10}
             onClick={() => handleTabChange(10)}
           >
             <ListItemIcon>

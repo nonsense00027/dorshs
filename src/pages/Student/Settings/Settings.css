@@ -1,0 +1,20 @@
+.settings {
+  padding: 20px;
+}
+
+.settings__header {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+.settings .MuiTextField-root {
+  width: 300px !important;
+}
+
+.settings .MuiButton-root {
+  background-color: var(--secondary-color) !important;
+  width: 300px !important;
+  color: #fff;
+}

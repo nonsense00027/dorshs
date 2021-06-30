@@ -1,8 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import "../Student.css";
 import { Avatar } from "@material-ui/core";
+import { db } from "../../../shared/configs/firebase";
+import { collectIdsAndDocs } from "../../../shared/utilities";
+import { CircularProgress } from "@material-ui/core";
 
 function SDashboard({ student }) {
+  const [schoolYears, setSchoolYears] = useState([]);
+  const [loading, settLoading] = useState(true);
+
+  const getSection = () => {
+    if (schoolYears.length > 0) {
+      let activeSy = schoolYears.filter((item) => item.active === true)[0].id;
+      let activeSection = student.section.filter(
+        (item) => item.sy === activeSy
+      )[0].name;
+      return activeSection;
+    }
+  };
+  useEffect(() => {
+    const unsubscribe = db.collection("schoolyears").onSnapshot((snapshot) => {
+      setSchoolYears(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
+      settLoading(false);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  console.log(getSection());
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+  }
+  // console.log(getSection());
+  console.log(schoolYears);
   return (
     <div className="sDashboard">
       <div className="dashboard__header">
@@ -10,7 +53,9 @@ function SDashboard({ student }) {
           <Avatar src={student.idPicture} alt={student.lastname} />
           <div className="dashboard__headerLeftInfo">
             <h2>{`${student.firstname} ${student.lastname}`}</h2>
-            <h2>Grade XII - Archimedes</h2>
+            <h3>
+              {student.currentLevel} - {getSection()}
+            </h3>
             <p>LRN: {student.lrnNo}</p>
           </div>
         </div>

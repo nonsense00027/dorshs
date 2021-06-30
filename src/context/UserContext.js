@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
   const userLogout = () => {
     setUser(null);
     Cookie.remove("user");
+    window.location.reload();
   };
 
   // useEffect(() => {

@@ -1,16 +1,34 @@
 .assessments {
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .examTable {
   width: 100%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.assessments__tabContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
+}
+.assessments__selector {
+  width: 400px;
+  margin-bottom: 10px;
+  /* padding: 20px; */
+  /* padding-top: 20px; */
+  /* padding-left: 20px; */
+}
+
+.assessments__selector h4 {
+  margin-bottom: 5px;
 }

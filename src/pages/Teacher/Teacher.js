@@ -7,10 +7,10 @@ import Subjects from "./Subjects/Subjects";
 import Record from "./Record/Record";
 import Header from "./Header";
 import { db } from "../../shared/configs/firebase";
-import { collectIdsAndDocs } from "../../shared/utilities";
 import { useUserContext } from "../../context/UserContext";
 import { useParams, useHistory } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
+import { useTeacherContext } from "../../context/TeacherContext";
 
 const getComponent = (
   index,
@@ -42,9 +42,8 @@ function Teacher() {
   const params = useParams();
   const history = useHistory();
   const { user } = useUserContext();
+  const { students, schoolyears } = useTeacherContext();
   const [activeTab, setActiveTab] = useState(0);
-  const [students, setStudents] = useState([]);
-  const [schoolyears, setSchoolYears] = useState([]);
   const [activeSy, setActiveSy] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingSy, setLoadingSy] = useState(true);
@@ -73,12 +72,7 @@ function Teacher() {
     }, 700);
   };
 
-  console.log("SELECTED STUDENT", selectedStudent);
-
   const getStudents = () => {
-    // console.log("students", students.length);
-    // console.log(students.length > 0 && activeSy !== null);
-    // return [];
     if (students.length > 0 && activeSy !== null) {
       let sectionStudents = students
         .map((student) => {
@@ -106,13 +100,12 @@ function Teacher() {
         })
         .filter((item) => item !== undefined);
       return syStudents;
-      // return sectionStudents;
     } else {
       return [];
     }
   };
 
-  console.log("GETTING STUDENTS", getStudents());
+  // console.log("GETTING STUDENTS", getStudents());
 
   useEffect(() => {
     if (user) {
@@ -128,31 +121,6 @@ function Teacher() {
     } else {
       history.push("/");
     }
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("students")
-      .where("newEnrollee", "==", false)
-      // .orderBy("firstname", "desc")
-      .onSnapshot((snapshot) => {
-        setStudents(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("schoolyears")
-      .orderBy("from", "asc")
-      .onSnapshot((snapshot) => {
-        setSchoolYears(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
-      });
-    return () => {
-      unsubscribe();
-    };
   }, []);
 
   useEffect(() => {

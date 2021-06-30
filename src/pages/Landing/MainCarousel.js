@@ -51,7 +51,7 @@ function MainCarousel() {
             <h1>
               Students today,
               <br />
-              Learders tomorrow
+              Leaders tomorrow
             </h1>
           </div>
           <img src={third} alt="" />
@@ -61,7 +61,7 @@ function MainCarousel() {
         <div className="carousel__slideContainer">
           <div className="carousel__slideText third">
             <h1>
-              Become the,
+              Become the
               <br />
               Best Version
               <br />

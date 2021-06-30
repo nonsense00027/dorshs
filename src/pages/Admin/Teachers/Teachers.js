@@ -160,7 +160,12 @@ function Teachers() {
         Add Teacher
       </Button> */}
       <div className="teachers__tableContainer">
-        <TeachersTable teachers={teachers} />
+        <TeachersTable
+          teachers={teachers}
+          dbsections={dbsections}
+          dbsubjects={dbsubjects}
+          ranks={ranks}
+        />
       </div>
 
       <Dialog

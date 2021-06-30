@@ -57,7 +57,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   root: {
-    width: "90%",
+    width: "100%",
   },
   container: {
     maxHeight: 1000,

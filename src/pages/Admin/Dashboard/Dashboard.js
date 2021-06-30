@@ -6,7 +6,14 @@ import data from "../../../img/data.svg";
 import { useAdminContext } from "../../../context/AdminContext";
 
 function Dashboard() {
-  const { teachers } = useAdminContext();
+  const { students, teachers } = useAdminContext();
+
+  const getApplicantsLength = () => {
+    return students.filter((student) => student.newEnrollee === true).length;
+  };
+  const getStudentsLength = () => {
+    return students.filter((student) => student.newEnrollee === false).length;
+  };
 
   return (
     <div className="dashboard">
@@ -15,15 +22,15 @@ function Dashboard() {
           <div className="dashboard__card applicantsCard">
             <img src={data} alt="" />
             <div className="dashboard__info">
-              <h1>356</h1>
+              <h1>{getApplicantsLength()}</h1>
               <p>applicants</p>
             </div>
           </div>
           <div className="dashboard__card studentsyearCard">
             <img src={data} alt="" />
             <div className="dashboard__info">
-              <h1>2356</h1>
-              <p>students</p>
+              <h1>{getStudentsLength()}</h1>
+              <p>accepted admission</p>
             </div>
           </div>
         </div>
@@ -31,8 +38,8 @@ function Dashboard() {
           <div className="dashboard__card studentsCard">
             <img src={data} alt="" />
             <div className="dashboard__info">
-              <h1>8756</h1>
-              <p>students</p>
+              <h1>{getStudentsLength()}</h1>
+              <p>total number of students</p>
             </div>
           </div>
           <div className="dashboard__card teachersCard">

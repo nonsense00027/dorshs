@@ -92,7 +92,7 @@ function AcademicTable({ subjects }) {
             </TableHead>
             <TableBody>
               {subjects
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                // .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
                     <StyledTableRow

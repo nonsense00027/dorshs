@@ -10,7 +10,6 @@ import {
   Snackbar,
 } from "@material-ui/core";
 import { db } from "../../../shared/configs/firebase";
-// import { collectIdsAndDocs } from "../../shared/utilities";
 import MuiAlert from "@material-ui/lab/Alert";
 
 function Alert(props) {
@@ -24,8 +23,9 @@ function AddGradeDialog({ gradeDialogOpen, setGradeDialogOpen, student }) {
   const [loading, setLoading] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const handleAddGrade = (e) => {
-    e.preventDefault();
+  const handleAddGrade = () => {
+    // e.preventDefault();
+    console.log("ADDING GRADEEE");
     setLoading(true);
     let newRecord = student.academicRecord.map((subject) => {
       if (subject.id === selectedSubject) {
@@ -37,13 +37,13 @@ function AddGradeDialog({ gradeDialogOpen, setGradeDialogOpen, student }) {
         return subject;
       }
     });
-    console.log(newRecord);
     db.collection("students")
       .doc(student.id)
       .set({ academicRecord: newRecord }, { merge: true })
       .then((result) => {
         setSelectedSubject("");
         setQuarter("");
+        setGrade("");
         setLoading(false);
         setGradeDialogOpen(false);
         setSnackbarOpen(true);
@@ -65,7 +65,8 @@ function AddGradeDialog({ gradeDialogOpen, setGradeDialogOpen, student }) {
         </DialogTitle>
 
         <DialogContent>
-          <form onSubmit={handleAddGrade} autoComplete="off">
+          {/* <form onSubmit={handleAddGrade} autoComplete="off"> */}
+          <div>
             <div className="row">
               <div className="col">
                 <p>Select Subject</p>
@@ -139,14 +140,15 @@ function AddGradeDialog({ gradeDialogOpen, setGradeDialogOpen, student }) {
                 className="subjects__buttonSubmit"
                 fullWidth
                 variant="contained"
-                onClick={() => handleAddGrade}
                 color="primary"
+                onClick={() => handleAddGrade()}
               >
                 {loading && <CircularProgress color="inherit" size={20} />}
                 Proceed
               </Button>
             </div>
-          </form>
+            {/* </form> */}
+          </div>
         </DialogContent>
       </Dialog>
 
