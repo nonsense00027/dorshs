@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Students from "./Students/Students";
 import Subjects from "./Subjects/Subjects";
 import Record from "./Record/Record";
+import Settings from "./Settings/Settings";
 import Header from "./Header";
 import { db } from "../../shared/configs/firebase";
 import { useUserContext } from "../../context/UserContext";
@@ -35,6 +36,8 @@ const getComponent = (
       return <Subjects />;
     case 3:
       return <Record />;
+    case 4:
+      return <Settings />;
   }
 };
 

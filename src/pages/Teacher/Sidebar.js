@@ -6,6 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import PersonIcon from "@material-ui/icons/Person";
 import DnsIcon from "@material-ui/icons/Dns";
+import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import EventNoteIcon from "@material-ui/icons/EventNote";
@@ -33,6 +34,7 @@ export default function Sidebar({ activeTab, handleTabChange }) {
     { id: 1, label: "Students", icon: <PersonIcon /> },
     { id: 2, label: "Subjects", icon: <DnsIcon /> },
     { id: 3, label: "Class Record", icon: <EventNoteIcon /> },
+    { id: 4, label: "Settings", icon: <SettingsIcon /> },
   ]);
 
   const handleLogout = () => {

@@ -11,6 +11,7 @@ function Teacher({ setOpen }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -25,12 +26,22 @@ function Teacher({ setOpen }) {
           const foundUser = snapshot.docs.map((doc) =>
             collectIdsAndDocs(doc)
           )[0];
-          console.log("FOUND", foundUser);
-          userLogin({ ...foundUser, role: "teacher" });
-          setLoading(false);
-          history.push(`/teacher/${foundUser.id}`);
+          if (foundUser.password) {
+            if (foundUser.password === password) {
+              userLogin({ ...foundUser, role: "teacher" });
+              setLoading(false);
+              history.push(`/teacher/${foundUser.id}`);
+            } else {
+              setError("Invalid password");
+              setLoading(false);
+            }
+          } else {
+            userLogin({ ...foundUser, role: "teacher" });
+            setLoading(false);
+            history.push(`/teacher/${foundUser.id}`);
+          }
         } else {
-          console.log("USER NOT FOUND");
+          setError("User not found");
           setLoading(false);
         }
         // setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
@@ -43,6 +54,7 @@ function Teacher({ setOpen }) {
       <div className="login__header">
         <h2>Teacher Login</h2>
       </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="content">
         <div className="form">
           <form onSubmit={handleLogin}>
