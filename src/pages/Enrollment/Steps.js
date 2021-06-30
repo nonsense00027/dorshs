@@ -142,6 +142,7 @@ export default function Steps() {
         ...info,
         newEnrollee: true,
         section: [],
+        password: "temppass",
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((result) => {
