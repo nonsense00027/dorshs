@@ -1,0 +1,39 @@
+.tao {
+    font-family: "Lato", sans-serif;
+}
+
+.tao__picture {
+   display: flex;
+}
+
+.tao__picture > img {
+    width: 100%;
+    height: 500px;
+}
+
+.tao__text {
+    display: flex;
+    position: absolute;
+    text-align: left;
+    margin-top: -380px;
+    left: 150px;
+    color: black;
+}
+
+.tao__text > h2 {
+    font-weight: 1500;
+    font-size: 30px;
+}
+
+.tao__para {
+    display: flex;
+    position: absolute;
+    text-align: left;
+    margin-top: -300px;
+    text-align: left;
+    left: 150px;
+    right: 250px;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}

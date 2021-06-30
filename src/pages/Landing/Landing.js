@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import MainCarousel from "./MainCarousel";
 import Footer from "./Footer";
 import LandSec from "./Landing/LandSec";
+import Tao from "./Landing/Tao/Tao";
+import Medal from "./Landing/Medal/Medal";
 
 function Landing() {
   useEffect(() => {
@@ -20,8 +22,16 @@ function Landing() {
         <MainCarousel />
       </div>
 
+      <div className="landing__tao">
+        <Tao />
+      </div>
+
       <div className="landing__landSec">
         <LandSec />
+      </div>
+
+      <div className="landing__medal">
+        <Medal />
       </div>
 
       <Footer />
