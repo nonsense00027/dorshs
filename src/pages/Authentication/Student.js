@@ -17,6 +17,7 @@ function Student({ setOpen }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,11 +30,17 @@ function Student({ setOpen }) {
             collectIdsAndDocs(doc)
           )[0];
           console.log("LOGGING IN USER FOUND", foundUser);
-          userLogin({ lrnNo: foundUser.lrnNo, role: "student" });
-          setLoading(false);
-          history.push(`/student/${foundUser.lrnNo}`);
+          if (foundUser.password === password) {
+            userLogin({ lrnNo: foundUser.lrnNo, role: "student" });
+            setLoading(false);
+            history.push(`/student/${foundUser.lrnNo}`);
+          } else {
+            setError("Invalid password");
+            setLoading(false);
+          }
         } else {
-          console.log("USER NOT FOUND");
+          // console.log("USER NOT FOUND");
+          setError("User not found");
           setLoading(false);
         }
         // setNewEnrollees(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
@@ -45,6 +52,7 @@ function Student({ setOpen }) {
       <div className="login__header">
         <h2>Student Login</h2>
       </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="content">
         <div className="form">
           <form onSubmit={handleLogin}>

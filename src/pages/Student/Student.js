@@ -54,6 +54,7 @@ function Student() {
   const [loading, setLoading] = useState(true);
   const [student, setStudent] = useState(null);
   const [enrollDialogOpen, setEnrollDialogOpen] = useState(false);
+  const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
   const [requirementDialog, setRequirementDialog] = useState(false);
 
   useEffect(() => {
@@ -70,12 +71,14 @@ function Student() {
               console.log("STUDENTT", foundUser);
               if (foundUser?.newEnrollee) {
                 setRequirementDialog(true);
+                setActiveTab(1);
               }
               setStudent(foundUser);
               setLoading(false);
             } else {
               console.log("USER NOT FOUND");
               history.push("/");
+              // window.close();
             }
           });
       }
@@ -109,6 +112,14 @@ function Student() {
       </div>
     );
   }
+
+  const handleRemoveStudent = () => {
+    db.collection("students")
+      .doc(student.id)
+      .delete((result) => {
+        window.close();
+      });
+  };
 
   return (
     <div className="student">
@@ -156,6 +167,39 @@ function Student() {
         </DialogActions>
       </Dialog>
 
+      <Dialog
+        open={removeDialogOpen}
+        onClose={() => setRemoveDialogOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth="xs"
+        fullWidth
+      >
+        <DialogTitle id="alert-dialog-title">Deleting Student</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Deleting this student will permanently remove the student from the
+            database. Please confirm that you want to proceed.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            onClick={() => setRemoveDialogOpen(false)}
+          >
+            Disagree
+          </Button>
+          <Button
+            onClick={() => handleRemoveStudent()}
+            color="secondary"
+            variant="contained"
+            autoFocus
+          >
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {user.role === "admin" && (
         <>
           <EnrollDialog
@@ -163,21 +207,24 @@ function Student() {
             setEnrollDialogOpen={setEnrollDialogOpen}
             student={student}
           />
-          <Tooltip
-            title="Enroll Student"
-            aria-label="add"
-            arrow
-            placement="top"
-          >
-            <Fab
-              color="primary"
+          {(student.newEnrollee === true || student.enrolling === true) && (
+            <Tooltip
+              title="Enroll Student"
               aria-label="add"
-              className="student__enrollButton"
-              onClick={() => setEnrollDialogOpen(true)}
+              arrow
+              placement="top"
             >
-              <CheckIcon />
-            </Fab>
-          </Tooltip>
+              <Fab
+                color="primary"
+                aria-label="add"
+                className="student__enrollButton"
+                onClick={() => setEnrollDialogOpen(true)}
+              >
+                <CheckIcon />
+              </Fab>
+            </Tooltip>
+          )}
+
           <Tooltip
             title="Remove Student"
             aria-label="add"
@@ -188,7 +235,7 @@ function Student() {
               // color="primary"
               aria-label="add"
               className="student__removeButton"
-              // onClick={() => setOpen(true)}
+              onClick={() => setRemoveDialogOpen(true)}
             >
               <CloseIcon />
             </Fab>

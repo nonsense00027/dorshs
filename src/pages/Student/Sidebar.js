@@ -34,7 +34,7 @@ function ListItemLink(props) {
 const getTabs = (status) => {
   if (status) {
     return [
-      { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
+      // { id: 0, label: "Dashboard", icon: <AssessmentIcon /> },
       { id: 1, label: "Student Information", icon: <PersonIcon /> },
       { id: 2, label: "Requirements", icon: <AssignmentIcon /> },
     ];
