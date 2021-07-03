@@ -32,7 +32,7 @@ function Header() {
         </h3>
       </div>
       <div className="header__right">
-        <Avatar className={classes.large} src="nonsense" alt="nonsense" />
+        {/* <Avatar className={classes.large} src="nonsense" alt="nonsense" /> */}
       </div>
     </div>
   );

@@ -38,21 +38,36 @@ function Subjects() {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [level, setLevel] = useState("");
+  const [semester, setSemester] = useState("");
+
   // const [subjects, setSubjects] = useState([]);
   // const [subjectLoading, setSubjectLoading] = useState(true);
 
   const handleAddSubject = (e) => {
     e.preventDefault();
     setLoading(true);
-    db.collection("subjects")
-      .add({ title: title, level: level })
-      .then((result) => {
-        setOpen(false);
-        setTitle("");
-        setLevel("");
-        setSnackbarOpen(true);
-        setLoading(false);
-      });
+
+    if (level === "GRD11" || level === "GRD12") {
+      db.collection("subjects")
+        .add({ title: title, level: level })
+        .then((result) => {
+          setOpen(false);
+          setTitle("");
+          setLevel("");
+          setSnackbarOpen(true);
+          setLoading(false);
+        });
+    } else {
+      db.collection("subjects")
+        .add({ title: title, level: level, semester: semester })
+        .then((result) => {
+          setOpen(false);
+          setTitle("");
+          setLevel("");
+          setSnackbarOpen(true);
+          setLoading(false);
+        });
+    }
   };
 
   const handleChange = (event) => {
@@ -123,6 +138,27 @@ function Subjects() {
                 </TextField>
               </div>
             </div>
+            {(level === "GRD11" || level === "GRD12") && (
+              <div className="row">
+                <div className="col">
+                  <p>Select Semester</p>
+                  <TextField
+                    id="standard-select-currency"
+                    select
+                    // label="Select Grade Level"
+                    variant="outlined"
+                    value={semester}
+                    onChange={(e) => setSemester(e.target.value)}
+                    fullWidth
+                    required
+                    // helperText="Please select your currency"
+                  >
+                    <MenuItem value={"first"}>First semester</MenuItem>
+                    <MenuItem value={"second"}>Second semester</MenuItem>
+                  </TextField>
+                </div>
+              </div>
+            )}
             <div className="row">
               <div className="col">
                 <p>Subject Title</p>

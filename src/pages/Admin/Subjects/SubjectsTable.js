@@ -18,6 +18,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  TextField,
+  MenuItem,
+  CircularProgress,
 } from "@material-ui/core";
 import { db } from "../../../shared/configs/firebase";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -70,7 +73,10 @@ function SubjectsTable({ subjects }) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editSubject, setEditSubject] = useState({});
   const [deleteSubject, setDeleteSubject] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -79,6 +85,15 @@ function SubjectsTable({ subjects }) {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleEditSubject = (data) => {
+    if (data.semester) {
+      setEditSubject(data);
+    } else {
+      setEditSubject({ ...data, semester: "" });
+    }
+    setEditDialogOpen(true);
   };
 
   const handleDeleteSubject = (id) => {
@@ -92,6 +107,24 @@ function SubjectsTable({ subjects }) {
         });
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    db.collection("subjects")
+      .doc(editSubject.id)
+      .set(editSubject)
+      .then((result) => {
+        setEditDialogOpen(false);
+      });
+  };
+
+  const handleEditSubjectChange = (e) => {
+    setEditSubject((prevSubject) => ({
+      ...prevSubject,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  console.log("EDIT SUBJECT", editSubject);
 
   const handleDeleteDialogClose = () => {
     setDeleteDialogOpen(false);
@@ -147,7 +180,7 @@ function SubjectsTable({ subjects }) {
                         );
                       })}
                       <TableCell key={row.id} align="left">
-                        <IconButton>
+                        <IconButton onClick={() => handleEditSubject(row)}>
                           <EditIcon />
                         </IconButton>
                         <IconButton onClick={() => handleDeleteDialogOpen(row)}>
@@ -201,6 +234,104 @@ function SubjectsTable({ subjects }) {
             Agree
           </Button>
         </DialogActions>
+      </Dialog>
+
+      <Dialog
+        className="subjects__addForm"
+        maxWidth="xs"
+        fullWidth
+        onClose={() => setDeleteDialogOpen(false)}
+        aria-labelledby="simple-dialog-title"
+        open={editDialogOpen}
+      >
+        <DialogTitle id="simple-dialog-title">
+          Enter Subject Information
+        </DialogTitle>
+
+        <DialogContent>
+          <form onSubmit={handleSubmit} autoComplete="off">
+            <div className="row">
+              <div className="col">
+                <p>Select Grade Level</p>
+                <TextField
+                  id="standard-select-currency"
+                  name="level"
+                  select
+                  // label="Select Grade Level"
+                  variant="outlined"
+                  value={editSubject.level}
+                  onChange={handleEditSubjectChange}
+                  fullWidth
+                  required
+                  // helperText="Please select your currency"
+                >
+                  <MenuItem value={"JHS"}>Junior High School</MenuItem>
+                  <MenuItem value={"GRD11"}>Grade 11</MenuItem>
+                  <MenuItem value={"GRD12"}>Grade 12</MenuItem>
+                </TextField>
+              </div>
+            </div>
+            {(editSubject.level === "GRD11" ||
+              editSubject.level === "GRD12") && (
+              <div className="row">
+                <div className="col">
+                  <p>Select Semester</p>
+                  <TextField
+                    id="standard-select-currency"
+                    name="semester"
+                    select
+                    // label="Select Grade Level"
+                    variant="outlined"
+                    value={editSubject.semester}
+                    onChange={handleEditSubjectChange}
+                    fullWidth
+                    required
+                    // helperText="Please select your currency"
+                  >
+                    <MenuItem value={"first"}>First semester</MenuItem>
+                    <MenuItem value={"second"}>Second semester</MenuItem>
+                  </TextField>
+                </div>
+              </div>
+            )}
+            <div className="row">
+              <div className="col">
+                <p>Subject Title</p>
+                <TextField
+                  // margin="dense"
+                  id="name"
+                  name="title"
+                  // label="Subject Title"
+                  variant="outlined"
+                  value={editSubject.title}
+                  onChange={handleEditSubjectChange}
+                  fullWidth
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Button
+                className="subjects__buttonCancel"
+                fullWidth
+                variant="contained"
+                onClick={() => setEditDialogOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="subjects__buttonSubmit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                {loading && <CircularProgress color="inherit" size={20} />}
+                Proceed
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
       </Dialog>
 
       <Snackbar
