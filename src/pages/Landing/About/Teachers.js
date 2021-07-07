@@ -1,5 +1,5 @@
 import React from "react";
-import teachersData from "./teachersData";
+import teachersData from "../../../shared/teachersData";
 import SwiperCore, { Pagination, Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";

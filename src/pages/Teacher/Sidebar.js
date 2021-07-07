@@ -16,6 +16,7 @@ import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    paddingLeft: 20,
     // maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
   },
@@ -25,7 +26,7 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function Sidebar({ activeTab, handleTabChange }) {
+export default function Sidebar({ activeTab, handleTabChange, name, level }) {
   const history = useHistory();
   const { userLogout } = useUserContext();
   const classes = useStyles();
@@ -75,6 +76,11 @@ export default function Sidebar({ activeTab, handleTabChange }) {
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
+      </div>
+      <div className="teacher__sidebarInfo">
+        <h3>
+          {level} - {name}
+        </h3>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import briones from "../../../img/teachers/briones.jpg";
-import samson from "../../../img/teachers/samson.jpg";
-import dumaran from "../../../img/teachers/dumaran.jpg";
+import briones from "../img/teachers/briones.jpg";
+import samson from "../img/teachers/samson.jpg";
+import dumaran from "../img/teachers/dumaran.jpg";
 
 export default [
   {

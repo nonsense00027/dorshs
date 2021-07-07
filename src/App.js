@@ -14,6 +14,7 @@ import FAQ from "./pages/Landing/FAQ";
 import About from "./pages/Landing/About/About";
 import Resources from "./pages/Landing/Resources/Resources";
 import ReadMore from "./pages/Landing/Read More/ReadMore";
+import AllTeachers from "./pages/AllTeachers/AllTeachers";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/allteachers">
+            <AllTeachers />
           </Route>
           <Route path="/about">
             <About />

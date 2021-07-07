@@ -6,9 +6,11 @@ import Teachers from "./Teachers";
 import "./About.css";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { Container } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 function About() {
+  const history = useHistory();
   return (
     <div className="about">
       <Navbar />
@@ -25,6 +27,14 @@ function About() {
         <Container>
           <h1>Meet The School Heads and Teachers</h1>
           <Teachers />
+          <div
+            className="about__teachersButton"
+            style={{ float: "right", marginTop: 20, marginRight: 20 }}
+          >
+            <Button onClick={() => history.push("/allteachers")}>
+              View all
+            </Button>
+          </div>
         </Container>
       </div>
       <Footer />

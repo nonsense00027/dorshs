@@ -19,6 +19,7 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
   const [selectedSectionId, setSelectedSectionId] = useState("");
   const [dbsections, setDbsections] = useState([]);
   const [dbSy, setDbSy] = useState(null);
+  const [semester, setSemester] = useState("");
 
   const handleChange = (event) => {
     setLevel(event.target.value);
@@ -42,9 +43,18 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
       subjectsToLoad = subjects
         .filter((subject) => subject.level === "JHS")
         .map((subject) => {
-          return { ...subject, grade: level };
+          return { ...subject, grade: level, sy: dbSy.id };
+        });
+    } else {
+      subjectsToLoad = subjects
+        .filter(
+          (subject) => subject.level === level && subject.semester === semester
+        )
+        .map((subject) => {
+          return { ...subject, sy: dbSy.id, grade: level };
         });
     }
+    console.log("subjects to load", subjectsToLoad);
     let sectionToAdd = {
       id: selectedSectionId,
       name: section,
@@ -153,6 +163,28 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
               </TextField>
             </div>
           </div>
+          {(level === "GRD11" || level === "GRD12") && (
+            <div className="row">
+              <div className="col">
+                <p>Select Semester</p>
+                <TextField
+                  id="standard-select-currency"
+                  name="semester"
+                  select
+                  // label="Select Grade Level"
+                  variant="outlined"
+                  value={semester}
+                  onChange={(e) => setSemester(e.target.value)}
+                  fullWidth
+                  required
+                  // helperText="Please select your currency"
+                >
+                  <MenuItem value={"first"}>First semester</MenuItem>
+                  <MenuItem value={"second"}>Second semester</MenuItem>
+                </TextField>
+              </div>
+            </div>
+          )}
           <div className="row">
             <div className="col">
               <p>Select Section</p>

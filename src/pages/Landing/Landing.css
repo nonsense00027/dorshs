@@ -401,3 +401,11 @@
 .footer__bottom .MuiSvgIcon-root {
   margin-right: 5px;
 }
+
+/* AWARDS */
+.landing__medal {
+  z-index: 10;
+}
+.landing__awards {
+  margin-top: -200px;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import fifth from "../../../img/fifth.png";
 
 function TeacherCard({ name, position, category, img }) {
   return (

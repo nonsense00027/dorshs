@@ -1,0 +1,58 @@
+.awardCard {
+  height: 400px;
+  width: 300px;
+  border: 1px solid whitesmoke;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.awardCard__image img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.awardCard__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.awardCard__info {
+  padding: 10px 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.awardCard h3 {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.awardCard h5 {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.awardCard p {
+  font-size: 15px;
+}
+
+.awardCard__info p {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
+  text-transform: lowercase;
+}
+
+.awardCard__footer {
+  padding: 10px 10px;
+  text-align: left;
+  flex: 0.6;
+}
+
+.awardCard__footer p {
+  font-size: 14px;
+}
