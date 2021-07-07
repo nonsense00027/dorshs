@@ -1,0 +1,32 @@
+.details {
+    margin-top: 80px;
+}
+
+.details__row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.details__col {
+    flex: 1;
+    margin: 20px;
+}
+
+
+
+.details__photo > img {
+    width: 400px;
+    height: 220px;
+}
+
+.details__col > p {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: -150px;
+    margin-right: 150px;
+}
+
+.details__col > h2 {
+    margin: 5px;
+    margin-left: -150px;
+}
