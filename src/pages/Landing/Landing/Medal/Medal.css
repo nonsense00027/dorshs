@@ -1,6 +1,7 @@
 .medal {
     font-family: "Segoue", sans-serif;
     color: white;
+    margin-bottom: -150px;
 }
 
 .medal__pic {
