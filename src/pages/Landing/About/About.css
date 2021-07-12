@@ -195,7 +195,7 @@
   border: 1px solid whitesmoke;
   border-radius: 6px;
   overflow: hidden;
-  margin: 0 10px;
+  margin: 10px 10px;
 }
 
 .teacherCard__image img {
