@@ -129,7 +129,7 @@ function ParentGuardianInfo({
         </FormGroup>
 
         <div className="c4">
-          <p>C4. Working from due to community quarantine</p>
+          <p>C4. Working from home due to community quarantine</p>
           <Checkbox
             checked={workingQuarantine === "no"}
             onChange={handleWorkingChange}

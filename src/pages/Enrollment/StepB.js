@@ -421,7 +421,17 @@ function StepB({ handleNext, handleBack, handleStepB }) {
 
         <div className="row">
           <div className="col">
-            <p>B21. City/ Municipality</p>
+            <p>B21. Region</p>
+            <TextField
+              fullWidth
+              variant="outlined"
+              required
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <p>B22. City/ Municipality</p>
             <TextField
               fullWidth
               variant="outlined"
@@ -431,23 +441,13 @@ function StepB({ handleNext, handleBack, handleStepB }) {
             />
           </div>
           <div className="col">
-            <p>B22. Province</p>
+            <p>B23. Province</p>
             <TextField
               fullWidth
               variant="outlined"
               required
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-            />
-          </div>
-          <div className="col">
-            <p>B23. Region</p>
-            <TextField
-              fullWidth
-              variant="outlined"
-              required
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
             />
           </div>
         </div>

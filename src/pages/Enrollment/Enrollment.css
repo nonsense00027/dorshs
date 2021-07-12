@@ -1,3 +1,5 @@
+
+
 .enrollment > h1 {
   display: grid;
   place-items: center;
@@ -148,11 +150,13 @@ section {
 .steps .steps__nextButton {
   background-color: var(--secondary-color) !important;
   padding: 7px 40px !important;
+  margin-bottom: 10px;
 }
 .steps .steps__backButton {
   /* background-color: var(--secondary-color) !important; */
   padding: 7px 40px !important;
   margin-right: 5px !important;
+  margin-bottom: 10px;
 }
 
 .steps > h3 {
