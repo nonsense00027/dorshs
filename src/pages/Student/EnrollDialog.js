@@ -39,7 +39,7 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
     e.preventDefault();
     // var subjectsToLoad = subjects.filter((item) => item.level === level);
     let subjectsToLoad = [];
-    if (level !== "GRD11" && "GRD12") {
+    if (level !== "GRD11" && level !== "GRD12") {
       subjectsToLoad = subjects
         .filter((subject) => subject.level === "JHS")
         .map((subject) => {
@@ -60,22 +60,59 @@ function EnrollDialog({ enrollDialogOpen, setEnrollDialogOpen, student }) {
       name: section,
       sy: dbSy.id,
     };
+    let newAcademicRecord = student.academicRecord.concat(subjectsToLoad);
     console.log(sectionToAdd);
-    db.collection("students")
-      .doc(student.id)
-      .set(
-        {
-          newEnrollee: false,
-          academicRecord: subjectsToLoad,
-          currentLevel: level,
-          section: [...student.section, sectionToAdd],
-        },
-        { merge: true }
-      )
-      .then((result) => {
-        setLoading(false);
-        setEnrollDialogOpen(false);
-      });
+    if (student.newEnrollee) {
+      db.collection("students")
+        .doc(student.id)
+        .set(
+          {
+            newEnrollee: false,
+            academicRecord: newAcademicRecord,
+            currentLevel: level,
+            currentSemester: semester.length > 0 ? semester : null,
+            section: [...student.section, sectionToAdd],
+          },
+          { merge: true }
+        )
+        .then((result) => {
+          setLoading(false);
+          setEnrollDialogOpen(false);
+        });
+    } else if (student.currentSemester === "first") {
+      console.log("ENROLLING TO SECOND SEM");
+      db.collection("students")
+        .doc(student.id)
+        .set(
+          {
+            academicRecord: newAcademicRecord,
+            currentSemester: semester.length > 0 ? semester : null,
+            enrolling: false,
+          },
+          { merge: true }
+        )
+        .then((result) => {
+          setLoading(false);
+          setEnrollDialogOpen(false);
+        });
+    } else {
+      db.collection("students")
+        .doc(student.id)
+        .set(
+          {
+            academicRecord: newAcademicRecord,
+            currentLevel: level,
+            currentSemester: semester.length > 0 ? semester : null,
+            section: [...student.section, sectionToAdd],
+            enrolling: false,
+          },
+          { merge: true }
+        )
+        .then((result) => {
+          setLoading(false);
+          setEnrollDialogOpen(false);
+        });
+    }
   };
 
   useEffect(() => {

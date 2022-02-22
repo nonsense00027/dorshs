@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AllTeachers.css";
 import Navbar from "../Landing/Navbar";
 import teachersData from "../../shared/teachersData";
 import TeacherCard from "../Landing/About/TeacherCard";
 
 function AllTeachers() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="allteachers">
       <Navbar />

@@ -20,6 +20,8 @@ function Requirements({ student }) {
   const [goodMoralPreview, setGoodMoralPreview] = useState("");
   const [nso, setNso] = useState("");
   const [nsoPreview, setNsoPreview] = useState("");
+  const [ncae, setNcae] = useState("");
+  const [ncaePreview, setNcaePreview] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -43,6 +45,9 @@ function Requirements({ student }) {
             break;
           case 4:
             setNso(e.target.files[0]);
+            break;
+          case 5:
+            setNcae(e.target.files[0]);
             break;
           default:
             console.log("error");
@@ -95,6 +100,7 @@ function Requirements({ student }) {
                 setReportCard("");
                 setGoodMoral("");
                 setNso("");
+                setNcae("");
                 // setDetails("");
                 // setResult("");
                 // setImage(null);
@@ -353,6 +359,49 @@ function Requirements({ student }) {
           Upload
         </Button>
       </div>
+
+      {(student.enrollLevel === "GRD11" || student.enrollLevel === "GRD12") && (
+        <div className="requirements__card">
+          <div>
+            {dbStudent.ncae ? (
+              <div className="requirements__dbImageContainer">
+                <img src={dbStudent.ncae} alt="" />
+              </div>
+            ) : (
+              <div className="requirements__imageContainer">
+                <div
+                  className="requirements__openFileButton"
+                  onClick={() => onButtonClick(5)}
+                >
+                  <OpenInBrowserIcon />
+                </div>
+                <img src={ncaePreview ? ncaePreview : image} alt="" />
+              </div>
+            )}
+            <p>NCAE Result</p>
+          </div>
+          {ncae && (
+            <progress
+              className="requirements__uploadProgress"
+              value={progress}
+              max="100"
+            />
+          )}
+          <Button
+            className={
+              ncae
+                ? "requirements__uploadButton"
+                : "requirements__uploadButtonDisabled"
+            }
+            fullWidth
+            onClick={() => handleUpload(ncae, "ncae", "ncae")}
+            disabled={ncae.length < 1}
+          >
+            <BackupIcon />
+            Upload
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

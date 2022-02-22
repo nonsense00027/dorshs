@@ -6,9 +6,15 @@ import { Button, CircularProgress } from "@material-ui/core";
 import { db } from "../../../shared/configs/firebase";
 import { collectIdsAndDocs } from "../../../shared/utilities";
 
-function OnlineEnrollment() {
+function OnlineEnrollment({ student }) {
   const [settings, setSettings] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const handleEnrollSecondsem = () => {
+    db.collection("students")
+      .doc(student.id)
+      .set({ enrolling: true }, { merge: true });
+  };
 
   useEffect(() => {
     const unsubscribe = db.collection("admin").onSnapshot((snapshot) => {
@@ -38,7 +44,7 @@ function OnlineEnrollment() {
 
   return (
     <div className="onlineEnrollment">
-      {settings.enrollment ? (
+      {settings.enrollment && !student.enrolling ? (
         <>
           <div className="onlineEnrollment__header">
             <img src={onlineenrollment} alt="" />
@@ -47,8 +53,16 @@ function OnlineEnrollment() {
               <p>Fill out the enrollment form to register</p>
             </div>
           </div>
-          <Button variant="contained" disableElevation>
+          <Button className="enrollButton" variant="contained" disableElevation>
             Enroll now
+          </Button>
+          <Button
+            className="second-sem"
+            variant="contained"
+            disableElevation
+            onClick={() => handleEnrollSecondsem()}
+          >
+            Second semester
           </Button>
         </>
       ) : (

@@ -49,7 +49,12 @@ const getTabs = (status) => {
   }
 };
 
-export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
+export default function Sidebar({
+  student,
+  activeTab,
+  handleTabChange,
+  studentStatus,
+}) {
   const history = useHistory();
   const { user, userLogout } = useUserContext();
   const classes = useStyles();
@@ -79,6 +84,7 @@ export default function Sidebar({ activeTab, handleTabChange, studentStatus }) {
               <ListItemText primary={tab.label} />
             </ListItem>
           ))}
+
           <ListItem
             className={activeTab === 10 ? "active" : ""}
             button

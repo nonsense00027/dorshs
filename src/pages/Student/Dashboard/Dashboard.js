@@ -5,6 +5,19 @@ import EnrolledSubject from "./EnrolledSubject";
 import blank from "../../../img/blank.svg";
 import admindashboard from "../../../img/admindashboard.png";
 function Dashboard({ student }) {
+  const getCurrentSubjects = () => {
+    if (student.currentLevel === "GRD11" || student.currentLevel === "GRD12") {
+      return student.academicRecord.filter(
+        (subject) =>
+          subject.level === student.currentLevel &&
+          subject.semester === student.currentSemester
+      );
+    } else {
+      return student.academicRecord;
+    }
+  };
+
+  console.log(getCurrentSubjects());
   return (
     <div className="dashboard__student">
       <div className="dashboard__studentLeft">
@@ -15,7 +28,7 @@ function Dashboard({ student }) {
             <h2>Not yet enrolled</h2>
           </div>
         ) : (
-          <EnrolledSubject subjects={student.academicRecord} />
+          <EnrolledSubject subjects={getCurrentSubjects()} />
         )}
       </div>
       <div className="dashboard__studentRight">

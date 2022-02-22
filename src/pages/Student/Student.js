@@ -39,7 +39,7 @@ const getComponent = (index, student) => {
     case 4:
       return <Settings student={student} />;
     case 10:
-      return <OnlineEnrollment />;
+      return <OnlineEnrollment student={student} />;
     // case 3:
     //   return <Subjects />;
     // case 4:
@@ -124,6 +124,7 @@ function Student() {
   return (
     <div className="student">
       <Sidebar
+        student={student}
         studentStatus={student.newEnrollee}
         activeTab={activeTab}
         handleTabChange={handleTabChange}

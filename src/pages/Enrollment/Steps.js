@@ -141,6 +141,7 @@ export default function Steps() {
         // ...stepd,
         ...info,
         newEnrollee: true,
+        academicRecord: [],
         section: [],
         password: "temppass",
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),

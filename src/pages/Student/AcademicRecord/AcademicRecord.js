@@ -13,6 +13,18 @@ function AcademicRecord({ student }) {
     setSy(e.target.value);
   };
 
+  const getCurrentSubjects = () => {
+    if (student.currentLevel === "GRD11" || student.currentLevel === "GRD12") {
+      return student.academicRecord.filter(
+        (subject) =>
+          subject.level === student.currentLevel &&
+          subject.semester === student.currentSemester
+      );
+    } else {
+      return student.academicRecord;
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = db.collection("schoolyears").onSnapshot((snapshot) => {
       setDbSy(snapshot.docs.map((doc) => collectIdsAndDocs(doc)));
@@ -76,7 +88,7 @@ function AcademicRecord({ student }) {
         </TextField>
       </div>
       <div className="academicRecord__table">
-        <AcademicTable subjects={student.academicRecord} />
+        <AcademicTable subjects={getCurrentSubjects()} />
       </div>
     </div>
   );

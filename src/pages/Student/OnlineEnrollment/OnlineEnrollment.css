@@ -23,9 +23,16 @@
   color: var(--secondary-color);
 }
 
-.onlineEnrollment .MuiButton-root {
+.onlineEnrollment .enrollButton {
   background-color: var(--secondary-color) !important;
   padding: 5px 50px !important;
   margin-top: 30px !important;
   color: #fff !important;
+  width: 300px;
+}
+
+.second-sem {
+  padding: 5px 50px !important;
+  margin-top: 10px !important;
+  width: 300px;
 }
